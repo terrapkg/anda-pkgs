@@ -58,6 +58,7 @@ cd legcord
 mkdir -p %buildroot%_bindir %buildroot%_datadir/applications %buildroot%_datadir/pixmaps %buildroot%_datadir/legcord %buildroot%_docdir/%name
 cp -a * %buildroot%_datadir/legcord/
 ln -s %_datadir/legcord/legcord %buildroot%_bindir/legcord
+ln -s %_datadir/legcord %buildroot%_datadir/armcord
 chmod +x -R %buildroot%_datadir/legcord/*
 chmod 755 %buildroot%_datadir/legcord/legcord
 install -Dm644 .legcord.desktop %buildroot%_datadir/applications/LegCord.desktop
@@ -67,6 +68,7 @@ install -Dm644 %SOURCE2 %buildroot%_docdir/%name/
 %files
 %doc README.md
 %_datadir/legcord
+%_datadir/armcord
 %_bindir/legcord
 %_datadir/applications/LegCord.desktop
 %_datadir/pixmaps/legcord.png

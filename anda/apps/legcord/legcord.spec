@@ -51,6 +51,8 @@ install -Dm755 %SOURCE1 %buildroot/usr/bin/legcord
 install -Dm644 legcord.desktop %buildroot/usr/share/applications/LegCord.desktop
 install -Dm644 build/icon.png %buildroot/usr/share/pixmaps/legcord.png
 
+ln -s %_datadir/legcord %buildroot%_datadir/armcord
+
 %files
 %doc README.md
 %license license.txt
@@ -58,6 +60,7 @@ install -Dm644 build/icon.png %buildroot/usr/share/pixmaps/legcord.png
 /usr/share/applications/LegCord.desktop
 /usr/share/pixmaps/legcord.png
 /usr/share/legcord/app.asar
+/usr/share/armcord/app.asar
 
 %changelog
 * Mon Oct 21 2024 madonuko <mado@fyralabs.com> - 1.0.2-2
