@@ -4,7 +4,7 @@
 # Exclude input files from mangling
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 
-Name:           stardust-non-spatial-input
+Name:           stardust-xr-non-spatial-input
 Version:        %commit_date.%shortcommit
 Release:        1%?dist
 Summary:        Tools you can easily snap together to get non-spatial input into Stardust XR.
@@ -13,7 +13,7 @@ Source0:        %url/archive/%commit/non-spatial-input-%commit.tar.gz
 License:        MIT
 BuildRequires:  cargo cmake anda-srpm-macros cargo-rpm-macros mold libudev-devel g++ libinput-devel libxkbcommon-x11-devel
 
-Provides:       non-spatial-input
+Provides:       non-spatial-input stardust-non-spatial-input
 Packager:       Owen Zimmerman <owen@fyralabs.com>
 
 %description

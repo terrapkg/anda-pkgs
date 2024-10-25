@@ -4,7 +4,7 @@
 # Exclude input files from mangling
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 
-Name:           stardust-protostar
+Name:           stardust-xr-protostar
 Version:        %commit_date.%shortcommit
 Release:        1%?dist
 Summary:        Prototype application launcher for Stardust XR.
@@ -13,7 +13,7 @@ Source0:        %url/archive/%commit/protostar-%commit.tar.gz
 License:        MIT
 BuildRequires:  cargo cmake anda-srpm-macros cargo-rpm-macros mold libudev-devel g++ libinput-devel libxkbcommon-x11-devel
 
-Provides:       protostar
+Provides:       protostar stardust-protostar
 Packager:       Owen Zimmerman <owen@fyralabs.com>
 
 %description
