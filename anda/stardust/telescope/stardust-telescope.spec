@@ -6,16 +6,16 @@
 
 Name:           stardust-xr-telescope
 Version:        %commit_date.git~%shortcommit
-Release:        1%?dist
+Release:        2%?dist
 Summary:        See the stars! Easy stardust setups to run on your computer. 
 License:        MIT
 URL:            https://github.com/StardustXR/telescope
 Source0:        %url/archive/%commit.tar.gz
 Requires:       bash
-Requires:       stardust-server
-Requires:       stardust-gravity
-Requires:       stardust-black-hole
-Requires:       stardust-protostar
+Requires:       stardust-xr-server
+Requires:       stardust-xr-gravity
+Requires:       stardust-xr-black-hole
+Requires:       stardust-xr-protostar
 Requires:       xwayland-satellite
 BuildArch:      noarch
 Provides:       telescope stardust-telescope
