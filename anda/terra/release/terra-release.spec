@@ -18,7 +18,7 @@ Release package for Terra, containing the Terra repository configuration.
 %package extra
 Summary: Release package for Terra Extra
 
-%description
+%description extra
 Release package for Terra Extra, which is a repository with packages that might cause
 conflict with Fedora.
 
