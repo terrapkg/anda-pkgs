@@ -66,6 +66,13 @@ install -Dm644 .legcord.desktop %buildroot%_datadir/applications/LegCord.desktop
 install -Dm644 %SOURCE1 %buildroot%_datadir/pixmaps/legcord.png
 install -Dm644 %SOURCE2 %buildroot%_docdir/%name/
 
+# HACK: rpm bug for unability to replace existing files on system.
+%pre
+if [ -d %_datadir/armcord ] && [ ! -L %_datadir/armcord ]; then
+  echo "Found old %_datadir/armcord directory, removing…"
+  rm -rf %_datadir/armcord
+fi
+
 %files
 %doc README.md
 %_datadir/legcord
