@@ -15,7 +15,7 @@
 
 Name:			legcord-bin
 Version:		1.0.2
-Release:		2%?dist
+Release:		3%?dist
 License:		OSL-3.0
 Summary:		Custom lightweight Discord client designed to enhance your experience
 URL:			https://github.com/LegCord/LegCord
@@ -28,6 +28,7 @@ BuildRequires:  unzip
 ExclusiveArch:	x86_64 aarch64 armv7l
 Conflicts:		legcord
 BuildRequires:	add-determinism
+Obsoletes:      armcord < 3.3.2-1
 
 %description
 LegCord is a custom client designed to enhance your Discord experience
