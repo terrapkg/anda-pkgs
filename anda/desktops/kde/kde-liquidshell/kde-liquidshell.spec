@@ -17,6 +17,7 @@ BuildRequires:	extra-cmake-modules
 BuildRequires:	pkgconfig(Qt5X11Extras)
 BuildRequires:	qt5-qtbase-private-devel
 BuildRequires:	qt5-qtbase-static
+BuildRequires:  qt6-qtbase
 BuildRequires:	cmake(KF5WindowSystem)
 BuildRequires:	cmake(KF5WidgetsAddons)
 BuildRequires:	cmake(KF5ConfigWidgets)
