@@ -87,7 +87,7 @@
   </group>
   <group>
     <id>stardust-xr</id>
-    <name>Starudst XR</name>
+    <name>Stardust XR</name>
     <description>All Stardust XR packages needed to run the Stardust server</description>
     <default>false</default>
     <uservisable>true</uservisable>
