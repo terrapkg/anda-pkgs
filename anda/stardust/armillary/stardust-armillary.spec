@@ -4,7 +4,7 @@
 # Exclude input files from mangling
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 
-Name:           stardust-armillary
+Name:           stardust-xr-armillary
 Version:        %commit_date.%shortcommit
 Release:        1%?dist
 Summary:        Model viewer for Stardust XR.
@@ -13,7 +13,7 @@ Source0:        %url/archive/%commit/armillary-%commit.tar.gz
 License:        MIT
 BuildRequires:  cargo cmake anda-srpm-macros cargo-rpm-macros mold
 
-Provides:       armillary
+Provides:       armillary stardust-armillary
 Packager:       Owen Zimmerman <owen@fyralabs.com>
 
 %description
