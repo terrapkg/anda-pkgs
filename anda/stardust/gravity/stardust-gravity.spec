@@ -4,7 +4,7 @@
 # Exclude input files from mangling
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 
-Name:           stardust-gravity
+Name:           stardust-xr-gravity
 Version:        %commit_date.%shortcommit
 Release:        2%?dist
 Summary:        Utility to launch apps and Stardust XR clients spatially.
@@ -13,7 +13,7 @@ Source0:        %url/archive/%commit/gravity-%commit.tar.gz
 License:        MIT
 BuildRequires:  cargo cmake anda-srpm-macros cargo-rpm-macros mold  
 
-Provides:       gravity
+Provides:       stardust-gravity
 Packager:       Owen Zimmerman <owen@fyralabs.com>
 
 %description

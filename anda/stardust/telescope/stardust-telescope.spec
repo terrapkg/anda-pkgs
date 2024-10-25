@@ -4,7 +4,7 @@
 %global commit_date 20241023
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
-Name:           stardust-telescope
+Name:           stardust-xr-telescope
 Version:        %commit_date.git~%shortcommit
 Release:        1%?dist
 Summary:        See the stars! Easy stardust setups to run on your computer. 
@@ -18,6 +18,7 @@ Requires:       stardust-black-hole
 Requires:       stardust-protostar
 Requires:       xwayland-satellite
 BuildArch:      noarch
+Provides:       telescope stardust-telescope
 
 %description
 See the stars! Easy stardust setups to run on your computer.

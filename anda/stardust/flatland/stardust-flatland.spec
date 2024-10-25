@@ -4,7 +4,7 @@
 # Exclude input files from mangling
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 
-Name:           stardust-flatland
+Name:           stardust-xr-flatland
 Version:        %commit_date.%shortcommit
 Release:        2%?dist
 Summary:        Flatland for Stardust XR.
@@ -13,7 +13,7 @@ Source0:        %url/archive/%commit/flatland-%commit.tar.gz
 License:        MIT
 BuildRequires:  cargo cmake anda-srpm-macros cargo-rpm-macros mold
 
-Provides:       flatland
+Provides:       flatland stardust-flatland
 Packager:       Owen Zimmerman <owen@fyralabs.com>
 
 %description
