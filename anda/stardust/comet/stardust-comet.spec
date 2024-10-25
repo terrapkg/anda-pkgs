@@ -4,7 +4,7 @@
 # Exclude input files from mangling
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 
-Name:           stardust-comet
+Name:           stardust-xr-comet
 Version:        %commit_date.%shortcommit
 Release:        1%?dist
 Summary:        Annotate things in Stardust XR.
@@ -13,7 +13,7 @@ Source0:        %url/archive/%commit/comet-%commit.tar.gz
 License:        MIT
 BuildRequires:  cargo cmake anda-srpm-macros cargo-rpm-macros mold
 
-Provides:       comet
+Provides:       comet stardust-comet
 Packager:       Owen Zimmerman <owen@fyralabs.com>
 
 %description
