@@ -56,7 +56,7 @@ install -Dm644 squashfs-root%_iconsdir/hicolor/0x0/apps/voicevox.png %buildroot%
 install -Dm644 squashfs-root/voicevox.desktop %buildroot%_datadir/applications/voicevox.desktop
 
 # allocate more space
-rm -rf %S:0 %S:1 %S:2
+rm -rf %{S:0} %{S:1} %{S:2}
 
 %files
 %_bindir/voicevox
