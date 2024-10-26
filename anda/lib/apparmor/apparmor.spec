@@ -280,6 +280,8 @@ make -C utils check
 %{_presetdir}/70-apparmor.preset
 %{_prefix}/lib/apparmor
 %dir %{_sysconfdir}/apparmor
+# FIXME: the confusion…? how did this happen
+%{_sysconfdir}/apparmor/default_unconfined.template
 %config(noreplace) %{_sysconfdir}/apparmor.d/
 %config(noreplace) %{_sysconfdir}/apparmor/parser.conf
 %{_mandir}/man1/aa-enabled.1.gz
