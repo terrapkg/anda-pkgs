@@ -281,7 +281,7 @@ make -C utils check
 %{_prefix}/lib/apparmor
 %dir %{_sysconfdir}/apparmor
 # FIXME: the confusion…? how did this happen
-%{_sysconfdir}/apparmor/default_unconfined.template
+%config(noreplace) %{_sysconfdir}/apparmor/default_unconfined.template
 %config(noreplace) %{_sysconfdir}/apparmor.d/
 %config(noreplace) %{_sysconfdir}/apparmor/parser.conf
 %{_mandir}/man1/aa-enabled.1.gz
@@ -322,7 +322,7 @@ make -C utils check
 %dir %{_datadir}/apparmor
 %{_datadir}/apparmor/easyprof
 %{_datadir}/apparmor/apparmor.vim
-%{_datadir}//polkit-1/actions/com.ubuntu.pkexec.aa-notify.policy
+%{_datadir}/polkit-1/actions/com.ubuntu.pkexec.aa-notify.policy
 %{_mandir}/man5/logprof.conf.5.gz
 %{_mandir}/man8/aa-audit.8.gz
 %{_mandir}/man8/aa-autodep.8.gz
