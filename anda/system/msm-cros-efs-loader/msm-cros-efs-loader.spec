@@ -23,8 +23,13 @@ install -Dm755 %{name}.sh %{buildroot}/usr/bin/%{name}
 install -Dm644 %SOURCE1 %{buildroot}/%{_unitdir}/msm-cros-efs-loader.service
  
 %post
-systemctl mask rmtfs.service
-%systemd_post msm-cros-efs-loader.service
+%systemd_post msm-cros-efs-loader.preset
+
+%preun
+%systemd_preun msm-cros-efs-loader.preset
+
+%postun
+%systemd_postun_with_restart msm-cros-efs-loader.preset
  
 %files
 %_bindir/%name
