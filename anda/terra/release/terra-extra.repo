@@ -10,6 +10,7 @@ repo_gpgcheck=1
 enabled=1
 enabled_metadata=1
 countme=1
+priority=150
 
 [terra-extra-source]
 name=Terra $releasever (Extra) - Source
@@ -22,3 +23,4 @@ gpgkey=https://repos.fyralabs.com/terra$releasever-source/key.asc
 repo_gpgcheck=1
 enabled=0
 enabled_metadata=0
+priority=150
