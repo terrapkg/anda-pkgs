@@ -15,7 +15,7 @@
 
 Name:			legcord-bin
 Version:		1.0.2
-Release:		2%?dist
+Release:		3%?dist
 License:		OSL-3.0
 Summary:		Custom lightweight Discord client designed to enhance your experience
 URL:			https://github.com/LegCord/LegCord
@@ -28,6 +28,7 @@ BuildRequires:  unzip
 ExclusiveArch:	x86_64 aarch64 armv7l
 Conflicts:		legcord
 BuildRequires:	add-determinism
+Obsoletes:      armcord < 3.3.2-1
 
 %description
 LegCord is a custom client designed to enhance your Discord experience
@@ -58,15 +59,24 @@ cd legcord
 mkdir -p %buildroot%_bindir %buildroot%_datadir/applications %buildroot%_datadir/pixmaps %buildroot%_datadir/legcord %buildroot%_docdir/%name
 cp -a * %buildroot%_datadir/legcord/
 ln -s %_datadir/legcord/legcord %buildroot%_bindir/legcord
+ln -s %_datadir/legcord %buildroot%_datadir/armcord
 chmod +x -R %buildroot%_datadir/legcord/*
 chmod 755 %buildroot%_datadir/legcord/legcord
 install -Dm644 .legcord.desktop %buildroot%_datadir/applications/LegCord.desktop
 install -Dm644 %SOURCE1 %buildroot%_datadir/pixmaps/legcord.png
 install -Dm644 %SOURCE2 %buildroot%_docdir/%name/
 
+# HACK: rpm bug for unability to replace existing files on system.
+%pre
+if [ -d %_datadir/armcord ] && [ ! -L %_datadir/armcord ]; then
+  echo "Found old %_datadir/armcord directory, removing…"
+  rm -rf %_datadir/armcord
+fi
+
 %files
 %doc README.md
 %_datadir/legcord
+%_datadir/armcord
 %_bindir/legcord
 %_datadir/applications/LegCord.desktop
 %_datadir/pixmaps/legcord.png
