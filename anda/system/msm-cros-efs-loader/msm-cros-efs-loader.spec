@@ -8,6 +8,7 @@ Source0:                %{url}/-/archive/v%{version}/msm-cros-efs-loader-v%{vers
 Source1:                msm-cros-efs-loader.service
 Requires:               rmtfs crossystem
 BuildArch:              noarch
+Packager:               WeirdTreeThing <bradyn127@protonmail.com>
  
 %{?systemd_requires}
 BuildRequires:  systemd-rpm-macros
