@@ -24,13 +24,13 @@ install -Dm755 %{name}.sh %{buildroot}/usr/bin/%{name}
 install -Dm644 %SOURCE1 %{buildroot}/%{_unitdir}/msm-cros-efs-loader.service
  
 %post
-%systemd_post msm-cros-efs-loader.preset
+%systemd_post 88-ultramarine-chromebook-default.preset
 
 %preun
-%systemd_preun msm-cros-efs-loader.preset
+%systemd_preun 88-ultramarine-chromebook-default.preset
 
 %postun
-%systemd_postun_with_restart msm-cros-efs-loader.preset
+%systemd_postun_with_restart 88-ultramarine-chromebook-default.preset
  
 %files
 %_bindir/%name
