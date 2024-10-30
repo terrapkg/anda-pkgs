@@ -1,4 +1,3 @@
-%define debug_package %nil
 %global srcname mesa
 %global _description These drivers contains video acceleration codecs for decoding/encoding H.264 and H.265 \
 algorithms and decoding only VC1 algorithm.
@@ -13,11 +12,13 @@ algorithms and decoding only VC1 algorithm.
 %global with_r300 1
 %global with_r600 1
 %global with_nine 0
-%global with_nvk 0
+#%%if 0%%{?with_vulkan_hw}
+%global with_nvk %{with_vulkan_hw}
+#%%endif
 %global with_omx 0
 %global with_opencl 0
 %endif
-#%%global base_vulkan ,amd
+#%%global base_vulkan %%{?with_vulkan_hw:,amd}%%{!?with_vulkan_hw:%%{nil}}
 %endif
 
 #%%ifnarch %%{ix86}
@@ -31,28 +32,28 @@ algorithms and decoding only VC1 algorithm.
 %global with_i915   0
 %global with_iris   0
 %global with_xa     0
-%if !0%{?rhel}
 %global with_intel_clc 0
-%endif
-#%%global intel_platform_vulkan ,intel,intel_hasvk
+#%%global intel_platform_vulkan %%{?with_vulkan_hw:,intel,intel_hasvk}%%{!?with_vulkan_hw:%%{nil}}
 %endif
 #%%ifarch x86_64
+#%%if !0%%{?with_vulkan_hw}
 %global with_intel_vk_rt 0
+#%%endif
 #%%endif
 
 %ifarch aarch64 x86_64 %{ix86}
+%global with_kmsro     0
 %if !0%{?rhel}
 %global with_lima      0
 %global with_vc4       0
-%endif
 %global with_etnaviv   0
-%global with_freedreno 0
-%global with_kmsro     0
-%global with_panfrost  0
 %global with_tegra     0
+%endif
+%global with_freedreno 0
+%global with_panfrost  0
 %global with_v3d       0
 %global with_xa        0
-#%%global extra_platform_vulkan ,broadcom,freedreno,panfrost,imagination-experimental
+#%%global extra_platform_vulkan %%{?with_vulkan_hw:,broadcom,freedreno,panfrost,imagination-experimental}%%{!?with_vulkan_hw:%%{nil}}
 %endif
 
 %if !0%{?rhel}
@@ -66,16 +67,13 @@ algorithms and decoding only VC1 algorithm.
 %bcond_with valgrind
 %endif
 
-# todo: set to 1 when mesa 24.2 gets in the repos
-%global with_gallium_video 1
-
 #%%global vulkan_drivers swrast%%{?base_vulkan}%%{?intel_platform_vulkan}%%{?extra_platform_vulkan}%%{?with_nvk:,nouveau}
 
 Name:           %{srcname}-freeworld
 Summary:        Mesa graphics libraries
 %global ver 24.2.2
 Version:        %{lua:ver = string.gsub(rpm.expand("%{ver}"), "-", "~"); print(ver)}
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT AND BSD-3-Clause AND SGI-B-2.0
 URL:            http://www.mesa3d.org
 
@@ -97,7 +95,7 @@ BuildRequires:  kernel-headers
 # We only check for the minimum version of pkgconfig(libdrm) needed so that the
 # SRPMs for each arch still have the same build dependencies. See:
 # https://bugzilla.redhat.com/show_bug.cgi?id=1859515
-BuildRequires:  pkgconfig(libdrm) >= 2.4.97
+BuildRequires:  pkgconfig(libdrm) >= 2.4.122
 %if 0%{?with_libunwind}
 BuildRequires:  pkgconfig(libunwind)
 %endif
@@ -106,7 +104,7 @@ BuildRequires:  pkgconfig(zlib) >= 1.2.3
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(wayland-scanner)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.8
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.34
 BuildRequires:  pkgconfig(wayland-client) >= 1.11
 BuildRequires:  pkgconfig(wayland-server) >= 1.11
 BuildRequires:  pkgconfig(wayland-egl-backend) >= 3
@@ -145,20 +143,23 @@ BuildRequires:  pkgconfig(libomxil-bellagio)
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libglvnd) >= 1.3.2
 BuildRequires:  llvm-devel >= 7.0.0
-%ifarch %{ix86} x86_64
-BuildRequires:  clang-devel
-BuildRequires:  bindgen
-BuildRequires:  pkgconfig(libclc)
-BuildRequires:  pkgconfig(SPIRV-Tools)
-BuildRequires:  pkgconfig(LLVMSPIRVLib)
+%if 0%{?fedora} >= 41
+BuildRequires:  llvm-devel >= 19.0.0
 %endif
 %if 0%{?with_teflon}
 BuildRequires:  flatbuffers-devel
 BuildRequires:  flatbuffers-compiler
 BuildRequires:  xtensor-devel
 %endif
-%if 0%{?with_opencl} || 0%{?with_nvk}
+%if 0%{?with_opencl} || 0%{?with_nvk} || 0%{?with_intel_clc}
 BuildRequires:  rust-packaging
+%endif
+%ifarch %{ix86} x86_64
+BuildRequires:  clang-devel
+BuildRequires:  bindgen
+BuildRequires:  pkgconfig(libclc)
+BuildRequires:  pkgconfig(SPIRV-Tools)
+BuildRequires:  pkgconfig(LLVMSPIRVLib)
 %endif
 %if 0%{?with_nvk}
 BuildRequires:  cbindgen
@@ -220,6 +221,10 @@ export RUSTFLAGS="%build_rustflags"
 %define _lto_cflags %{nil}
 
 %meson \
+  --libdir=%{_libdir}/dri-freeworld \
+  -Dvdpau-libs-path=%{_libdir}/vdpau \
+  -Ddri-drivers-path=%{_libdir}/dri-freeworld \
+  -Dva-libs-path=%{_libdir}/dri-freeworld \
   -Dplatforms=x11,wayland \
   -Ddri3=enabled \
   -Dosmesa=false \
@@ -301,43 +306,34 @@ popd
 
 # strip unneeded files from va-api and vdpau
 rm -rf %{buildroot}%{_datadir}/{drirc.d,glvnd,vulkan}
-rm -rf %{buildroot}%{_libdir}/{d3d,EGL,gallium-pipe,libGLX,pkgconfig}
+rm -rf %{buildroot}%{_libdir}{,/dri-freeworld}/{d3d,EGL,gallium-pipe,libGLX,pkgconfig}
 rm -rf %{buildroot}%{_includedir}/{d3dadapter,EGL,GL,KHR}
 rm -fr %{buildroot}%{_sysconfdir}/OpenGL
-rm -fr %{buildroot}%{_libdir}/libGL.so*
+rm -fr %{buildroot}%{_libdir}{,/dri-freeworld}/libGL.so*
 rm -fr %{buildroot}%{_libdir}/libgallium-*.so
-rm -fr %{buildroot}%{_libdir}/libglapi.so*
+rm -fr %{buildroot}%{_libdir}{,/dri-freeworld}/libglapi.so*
 rm -fr %{buildroot}%{_libdir}/libOSMesa.so*
 rm -fr %{buildroot}%{_libdir}/pkgconfig/osmesa.pc
 rm -fr %{buildroot}%{_libdir}/libgbm.so*
 rm -fr %{buildroot}%{_includedir}/gbm.h
-rm -fr %{buildroot}%{_libdir}/libxatracker.so*
+rm -fr %{buildroot}%{_libdir}{,/dri-freeworld}/libxatracker.so*
 rm -fr %{buildroot}%{_includedir}/xa_*.h
 rm -fr %{buildroot}%{_libdir}/libMesaOpenCL.so*
 rm -fr %{buildroot}%{_libdir}/dri/*_dri.so
 rm -fr %{buildroot}%{_libdir}/libvulkan*.so
-rm -fr %{buildroot}%{_libdir}/libVkLayer_MESA_device_select.so
-
-%if %{with_gallium_video} == 0
-rm -fr %{buildroot}%{_libdir}/dri/libgallium_drv_video.so
-%endif
+rm -fr %{buildroot}%{_libdir}{,/dri-freeworld}/libVkLayer_MESA_device_select.so
 
 %if 0%{?with_va}
 %files -n %{srcname}-va-drivers-freeworld
-%{_libdir}/dri/nouveau_drv_video.so
+%{_libdir}/dri-freeworld/libgallium-%{version}.so
+%{_libdir}/dri-freeworld/nouveau_drv_video.so
 %if 0%{?with_r600}
-%{_libdir}/dri/r600_drv_video.so
+%{_libdir}/dri-freeworld/r600_drv_video.so
 %endif
 %if 0%{?with_radeonsi}
-%{_libdir}/dri/radeonsi_drv_video.so
+%{_libdir}/dri-freeworld/radeonsi_drv_video.so
 %endif
-
-
-%if %{with_gallium_video} == 1
-%dnl %{_libdir}/dri/libgallium_drv_video.so
-%endif
-
-%{_libdir}/dri/virtio_gpu_drv_video.so
+%{_libdir}/dri-freeworld/virtio_gpu_drv_video.so
 %{_metainfodir}/org.mesa3d.vaapi.freeworld.metainfo.xml
 %license docs/license.rst
 %endif
@@ -351,15 +347,46 @@ rm -fr %{buildroot}%{_libdir}/dri/libgallium_drv_video.so
 %if 0%{?with_radeonsi}
 %{_libdir}/vdpau/libvdpau_radeonsi.so.1*
 %endif
-%if 0%{?with_gallium_video} == 1
-%dnl %{_libdir}/vdpau/libvdpau_gallium.so.1*
-%endif
 %{_libdir}/vdpau/libvdpau_virtio_gpu.so.1*
 %{_metainfodir}/org.mesa3d.vdpau.freeworld.metainfo.xml
 %license docs/license.rst
 %endif
 
 %changelog
+* Mon Oct 28 2024 Thorsten Leemhuis <fedora@leemhuis.info> - 24.2.5-1
+- Update to 24.2.5
+
+* Fri Oct 04 2024 Thorsten Leemhuis <fedora@leemhuis.info> - 24.2.4-1
+- Update to 24.2.4
+- drop 0001-gallium-Don-t-pass-avx512er-and-avx512pf-features-on.patch
+
+* Sun Sep 29 2024 Thorsten Leemhuis <fedora@leemhuis.info> - 24.2.3-5
+- rebuild for -Ehuman-not-enough-tee-error
+
+* Sun Sep 29 2024 Thorsten Leemhuis <fedora@leemhuis.info> - 24.2.3-4
+- add 0001-gallium-Don-t-pass-avx512er-and-avx512pf-features-on.patch
+
+* Wed Sep 25 2024 Thorsten Leemhuis <fedora@leemhuis.info> - 24.2.3-3
+- temporarily require llvm 19 for Fedora 41 and up
+
+* Fri Sep 20 2024 Nicolas Chauvet <kwizart@gmail.com> - 24.2.3-2
+- Attempt to complement Fedora
+
+* Thu Sep 19 2024 Thorsten Leemhuis <fedora@leemhuis.info> - 24.2.3-1
+- Update to 24.2.3
+- Sync a few bits with mesa.spec from fedora
+
+* Fri Sep 6 2024 Thorsten Leemhuis <fedora@leemhuis.info> - 24.2.2-1
+- Update to 24.2.2
+- Sync a few bits with mesa.spec from fedora
+
+* Thu Aug 29 2024 Thorsten Leemhuis <fedora@leemhuis.info> - 24.2.1-1
+- Update to 24.2.1
+- Sync a few bits with mesa.spec from fedora
+
+* Mon Aug 19 2024 Thorsten Leemhuis <fedora@leemhuis.info> - 24.2.0-1
+- Update to 24.2.0
+
 * Thu Aug 8 2024 Thorsten Leemhuis <fedora@leemhuis.info> - 24.2.0~rc4-1
 - Update to 24.2.0-rc4
 
