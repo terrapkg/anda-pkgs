@@ -1,0 +1,13 @@
+[Unit]
+Description=EFS loader for Qualcomm-based Chrome OS devices
+Requires=qrtr-ns.service
+After=qrtr-ns.service
+
+[Service]
+ExecStartPre=/usr/bin/msm-cros-efs-loader
+ExecStart=/usr/bin/rmtfs -o /var/lib/rmtfs -r -s
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target
