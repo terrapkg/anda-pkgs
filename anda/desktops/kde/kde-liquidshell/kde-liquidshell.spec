@@ -1,12 +1,13 @@
 Name:		kde-liquidshell
-Version:	1.9.0
+Version:	1.10.0
 Release:	%autorelease
 Summary:	Basic desktop shell using QtWidgets
 Provides:	liquidshell = %version
 
 License:	GPL-3.0
 URL:		https://invent.kde.org/system/liquidshell
-Source0:	https://download.kde.org/stable/liquidshell/liquidshell-%version.tar.xz
+#Source0:	https://download.kde.org/stable/liquidshell/liquidshell-%version.tar.xz
+Source0:    %url/-/archive/v%version/liquidshell-v%version.tar.gz
 
 BuildRequires:	cmake
 BuildRequires:	libappstream-glib
@@ -16,6 +17,7 @@ BuildRequires:	extra-cmake-modules
 BuildRequires:	pkgconfig(Qt5X11Extras)
 BuildRequires:	qt5-qtbase-private-devel
 BuildRequires:	qt5-qtbase-static
+BuildRequires:  qt6-qtbase
 BuildRequires:	cmake(KF5WindowSystem)
 BuildRequires:	cmake(KF5WidgetsAddons)
 BuildRequires:	cmake(KF5ConfigWidgets)
@@ -44,7 +46,7 @@ Recommends:	polkit-kde
 liquidshell is a basic Desktop Shell implemented using QtWidgets.
 
 %prep
-%autosetup -n liquidshell-%version
+%autosetup -n liquidshell-v%version
 
 %build
 %cmake_kf5 -DWITH_PACKAGEKIT=true
