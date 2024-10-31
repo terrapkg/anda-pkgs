@@ -1,7 +1,7 @@
 #bcond_without tests
-%global commit 5bc5fb2835ea59bdf326bd12176d74d2c7348a95
+%global commit b6dc2c49e8793c6dfa21275e61caf49ec1148b81
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20241030
+%global commit_date 20241031
 %global ver 2024.10.22
 
 Name:           yt-dlp-nightly
