@@ -49,6 +49,7 @@ Requires: %name-devel%?_isa = %{?epoch:%epoch:}%version-%release
 
 %prep
 %autosetup -n td-%commit -p1
+rm %SOURCE0
 sed -e 's/"DEFAULT"/"PROFILE=SYSTEM"/g' -i tdnet/td/net/SslStream.cpp
 
 %build
@@ -61,6 +62,8 @@ sed -e 's/"DEFAULT"/"PROFILE=SYSTEM"/g' -i tdnet/td/net/SslStream.cpp
 
 %install
 %cmake_install
+
+rm -rf *
 
 %files
 %license LICENSE_1_0.txt
