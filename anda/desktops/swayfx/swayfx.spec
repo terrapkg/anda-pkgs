@@ -9,7 +9,7 @@ URL:            https://github.com/WillPower3309/swayfx
 License:        MIT
 
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz
-Source101:      https://github.com/wlrfx/packages/raw/fe1355c4844078f49761e9d73a376179d3007646/COPR/swayfx/sway-portals.conf
+Source101:      sway-portals.conf
 
 
 BuildRequires:  gcc-c++
