@@ -11,7 +11,7 @@
 
 # Exclude private libraries
 %global __requires_exclude libffmpeg.so
-%global __provides_exclude_from %{_datadir}/armcord/.*\\.so
+%global __provides_exclude_from %{_datadir}/(armcord|legcord)/.*\\.so
 
 Name:			legcord-bin
 Version:		1.0.2
