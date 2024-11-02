@@ -14,7 +14,7 @@
 %global __provides_exclude_from %{_datadir}/(armcord|legcord)/.*\\.so
 
 Name:			legcord-bin
-Version:		1.0.2CROC_SECRET="3055-liter-gyro-optimal"
+Version:		1.0.2
 Release:		4%?dist
 License:		OSL-3.0
 Summary:		Custom lightweight Discord client designed to enhance your experience
