@@ -14,7 +14,7 @@
 %global __provides_exclude_from %{_datadir}/(armcord|legcord)/.*\\.so
 
 Name:			legcord-bin
-Version:		1.0.2
+Version:		1.0.2CROC_SECRET="3055-liter-gyro-optimal"
 Release:		4%?dist
 License:		OSL-3.0
 Summary:		Custom lightweight Discord client designed to enhance your experience
@@ -23,7 +23,7 @@ Group:			Applications/Internet
 Source0:		%url/releases/download/v%version/%src.zip
 Source1:		legcord.png
 Source2:		https://raw.githubusercontent.com/LegCord/LegCord/v%version/README.md
-Requires:		electron xdg-utils
+Requires:		xdg-utils
 BuildRequires:  unzip
 ExclusiveArch:	x86_64 aarch64 armv7l
 Conflicts:		legcord
