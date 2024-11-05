@@ -8,7 +8,7 @@
 
 Name:           terra-gnome-shell-extension-%{extension}
 Version:        %{ver}^%commit_date.%{shortcommit}
-Release:        1%?dist
+Release:        2%?dist
 Summary:        GNOME Shell extension for advanced tiling window management
 License:        GPL-3.0-only
 URL:            https://github.com/pop-os/shell
@@ -26,7 +26,7 @@ Patch0:         0001-Remove-schema-handling-from-transpile.sh.patch
 BuildRequires:  typescript >= 3.8
 BuildRequires:  make
 
-Requires:       (gnome-shell >= 45~ with gnome-shell < 46~)
+Requires:       gnome-shell = 47~
 Recommends:     gnome-extensions-app
 Recommends:     %{name}-shortcut-overrides = %{version}-%{release}
 Provides:       %{extension} = %{version}-%{release}
