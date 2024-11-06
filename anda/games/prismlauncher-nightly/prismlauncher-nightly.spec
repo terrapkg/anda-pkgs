@@ -43,7 +43,7 @@ Patch0:           0001-find-cmark-with-pkgconfig.patch
 BuildRequires:    cmake >= 3.15
 BuildRequires:    extra-cmake-modules
 BuildRequires:    gcc-c++
-BuildRequires:    java-17-openjdk-devel
+BuildRequires:    java-21-openjdk-devel
 BuildRequires:    desktop-file-utils
 BuildRequires:    libappstream-glib
 BuildRequires:    tomlplusplus-devel
@@ -78,7 +78,6 @@ Requires:         qt%{qt_version}-qtimageformats
 Requires:         qt%{qt_version}-qtsvg
 Requires:         javapackages-filesystem
 Recommends:       java-21-openjdk
-Recommends:       java-17-openjdk
 Suggests:         java-1.8.0-openjdk
 
 # xrandr needed for LWJGL [2.9.2, 3) https://github.com/LWJGL/lwjgl/issues/128
