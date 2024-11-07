@@ -7,6 +7,7 @@ URL:			https://github.com/wmww/gtk4-layer-shell
 Source0:		%url/archive/refs/tags/v%version.tar.gz
 BuildRequires:	meson ninja-build python3.11 vala
 BuildRequires:	libwayland-client gtk4-devel gobject-introspection gtk-doc
+BuildRequires:  pkgconfig(wayland-protocols)
 Recommends:		gtk4-layer-shell-devel
 
 %description
