@@ -3,9 +3,9 @@
 %global shortcommit1 %(c=%{commit1}; echo ${c:0:7})
 
 Name:           openh264
-Version:        2.4.1
+Version:        2.5.0
 # Also bump the Release tag for gstreamer1-plugin-openh264 down below
-Release:        1%{?dist}
+Release:        1%?dist
 Summary:        H.264 codec library
 
 License:        BSD
