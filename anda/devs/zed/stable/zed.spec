@@ -9,7 +9,7 @@
 %global app_id dev.zed.Zed
 
 Name:           zed
-Version:        0.160.7
+Version:        0.161.1
 Release:        1%?dist
 Summary:        Zed is a high-performance, multiplayer code editor
 
