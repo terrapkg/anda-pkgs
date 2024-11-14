@@ -71,7 +71,7 @@ algorithms and decoding only VC1 algorithm.
 
 Name:           %{srcname}-freeworld
 Summary:        Mesa graphics libraries
-%global ver 24.3.0-rc1
+%global ver 24.3.0-rc2
 Version:        %{lua:ver = string.gsub(rpm.expand("%{ver}"), "-", "~"); print(ver)}
 Release:        2%{?dist}
 License:        MIT AND BSD-3-Clause AND SGI-B-2.0
