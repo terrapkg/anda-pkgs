@@ -25,6 +25,7 @@ BuildRequires:  libssh2-devel
 Requires:       mock
 Requires:       rpm-build
 Requires:       createrepo_c
+Requires:       git-core
 Requires:       libgit2
 %global _description %{expand:
 Andaman Build toolchain.}
