@@ -21,6 +21,7 @@ BuildRequires:  openssl-devel-engine
 BuildRequires:  git-core
 BuildRequires:  libgit2-devel
 BuildRequires:  libssh2-devel
+BuildRequires:  mold
 
 Requires:       mock
 Requires:       rpm-build
