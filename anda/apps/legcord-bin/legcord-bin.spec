@@ -14,7 +14,7 @@
 %global __provides_exclude_from %{_datadir}/(armcord|legcord)/.*\\.so
 
 Name:			legcord-bin
-Version:		stable
+Version:		1.0.3
 Release:		1%?dist
 License:		OSL-3.0
 Summary:		Custom lightweight Discord client designed to enhance your experience
