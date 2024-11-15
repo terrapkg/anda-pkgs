@@ -1,7 +1,7 @@
 %define debug_package %nil
 
 Name:		legcord
-Version:	1.0.3
+Version:	1.0.4
 Release:	1%?dist
 License:	OSL-3.0
 Summary:	Custom lightweight Discord client designed to enhance your experience
