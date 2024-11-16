@@ -1,7 +1,7 @@
 %global rn 1
 
 Name:           unity-greeter
-Version:        24.10.1
+Version:        25.04.1
 Release:        1%?dist
 Summary:        Unity Greeter for Lightdm
 

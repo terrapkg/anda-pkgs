@@ -1,5 +1,5 @@
-%global commit 09172d6f6cd50c6da8b10a9b5c5746d11cdc7d1d
-%global commit_date 20241105
+%global commit 7e27614fb8a1fa37deb1347fd84c1eb04a89b4a6
+%global commit_date 20241115
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           envision
