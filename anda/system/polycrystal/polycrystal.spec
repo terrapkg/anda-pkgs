@@ -22,6 +22,16 @@ Packager:       Owen Zimmerman <owen@fyralabs.com>
 mkdir -p %{buildroot}%{_datadir}/polycrystal
 %cargo_install
 
+# waiting on preset confirmation
+# %post
+# %systemd_post 91-ultramarine-surface-default.preset?
+
+# %preun
+# %systemd_preun 91-ultramarine-surface-default.preset?
+
+# %postun
+# %systemd_postun_with_restart 91-ultramarine-surface-default.preset?
+
 %files
 %_bindir/polycrystal
 %_datadir/polycrystal/
