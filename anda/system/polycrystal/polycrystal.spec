@@ -37,6 +37,7 @@ install -Dm644 polycrystal.service %{buildroot}%{_unitdir}/polycrystal.service
 %files
 %_bindir/polycrystal
 %_datadir/polycrystal/
+%{_unitdir}/polycrystal.service
 %license LICENSE
 %doc README.md
 
