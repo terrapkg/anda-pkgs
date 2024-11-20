@@ -21,6 +21,8 @@ Packager:       Owen Zimmerman <owen@fyralabs.com>
 %install
 mkdir -p %{buildroot}%{_datadir}/polycrystal
 %cargo_install
+mkdir -p %buildroot%{_unitdir}
+install -Dm644 polycrystal.service %{buildroot}%{_unitdir}/polycrystal.service
 
 # waiting on preset confirmation
 # %post
