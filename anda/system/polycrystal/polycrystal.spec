@@ -19,9 +19,8 @@ Packager:       Owen Zimmerman <owen@fyralabs.com>
 %cargo_build
 
 %install
-mkdir -p %{buildroot}%{_datadir}/polycrystal
+mkdir -p %{buildroot}%{_datadir}/polycrystal %{buildroot}%{_unitdir} %{_sysconfdir}/polycrystal/entries %{_sharedstatedir}/polycrystal
 %cargo_install
-mkdir -p %buildroot%{_unitdir}
 install -Dm644 polycrystal.service %{buildroot}%{_unitdir}/polycrystal.service
 
 %post
@@ -45,7 +44,7 @@ install -Dm644 polycrystal.service %{buildroot}%{_unitdir}/polycrystal.service
 %doc README.md
 
 %changelog
-* TUe Nov 19 2024 Owen-sz <owen@fyralabs.com>
+* Tue Nov 19 2024 Owen-sz <owen@fyralabs.com>
 - Switch from commit based to release based, and add systemd services
 %changelog
 * Fri Nov 15 2024 Owen-sz <owen@fyralabs.com>
