@@ -5,7 +5,7 @@ Summary:        Barebones "automatic" Flatpak installer for distribution-default
 URL:            https://github.com/Ultramarine-Linux/polycrystal
 Source0:        %url/archive/refs/tags/v%version.tar.gz
 License:        GPL
-BuildRequires:  cargo cmake anda-srpm-macros cargo-rpm-macros mold glib2-devel flatpak-devel
+BuildRequires:  cargo cmake anda-srpm-macros cargo-rpm-macros systemd-rpm-macros mold glib2-devel flatpak-devel
 Packager:       Owen Zimmerman <owen@fyralabs.com>
 
 %description
@@ -24,15 +24,14 @@ mkdir -p %{buildroot}%{_datadir}/polycrystal
 mkdir -p %buildroot%{_unitdir}
 install -Dm644 polycrystal.service %{buildroot}%{_unitdir}/polycrystal.service
 
-# waiting on preset confirmation
-# %post
-# %systemd_post 91-ultramarine-surface-default.preset?
+%post
+%systemd_post polycrystal.service
 
-# %preun
-# %systemd_preun 91-ultramarine-surface-default.preset?
+%preun
+%systemd_preun polycrystal.service
 
-# %postun
-# %systemd_postun_with_restart 91-ultramarine-surface-default.preset?
+%postun
+%systemd_postun_with_restart polycrystal.service
 
 %files
 %{_bindir}/polycrystal
