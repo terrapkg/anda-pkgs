@@ -35,9 +35,13 @@ install -Dm644 polycrystal.service %{buildroot}%{_unitdir}/polycrystal.service
 # %systemd_postun_with_restart 91-ultramarine-surface-default.preset?
 
 %files
-%_bindir/polycrystal
-%_datadir/polycrystal/
+%{_bindir}/polycrystal
+%{_datadir}/polycrystal/
 %{_unitdir}/polycrystal.service
+%dir %{_sysconfdir}/polycrystal
+%dir %{_sysconfdir}/polycrystal/entries
+%config %{_sysconfdir}/polycrystal/entries/*.json
+%dir %{_sharedstatedir}/polycrystal
 %license LICENSE
 %doc README.md
 
