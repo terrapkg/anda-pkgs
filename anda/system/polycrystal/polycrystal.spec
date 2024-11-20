@@ -1,5 +1,5 @@
 Name:           polycrystal
-Version:        0.1.0
+Version:        0.2.0
 Release:        1%?dist
 Summary:        Barebones "automatic" Flatpak installer for distribution-default Flatpak packages.
 URL:            https://github.com/Ultramarine-Linux/polycrystal
@@ -46,6 +46,5 @@ install -Dm644 polycrystal.service %{buildroot}%{_unitdir}/polycrystal.service
 %changelog
 * Tue Nov 19 2024 Owen-sz <owen@fyralabs.com>
 - Switch from commit based to release based, and add systemd services
-%changelog
 * Fri Nov 15 2024 Owen-sz <owen@fyralabs.com>
 - Package Polycrystal
