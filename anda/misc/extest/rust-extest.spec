@@ -1,6 +1,6 @@
-%global commit 79cdf2f642260d19139b071748c6f8d48a1dff10
+%global commit d6863d970d2686dd6282142af57503e1f2d561dc
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20240712
+%global commit_date 20241119
 
 # While there's an upstream version at Supreeeme/extest, we're using
 # the same fork as Bazzite so we can use the same patches.
@@ -16,7 +16,7 @@
 
 Name:           extest
 Version:        %commit_date.git~%{shortcommit}
-Release:        %autorelease
+Release:        1%?dist
 Summary:        X11 XTEST reimplementation primarily for Steam Controller on Wayland
 
 License:        MIT
