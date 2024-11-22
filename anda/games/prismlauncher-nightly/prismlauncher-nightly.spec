@@ -3,7 +3,7 @@
 
 %global commit 79dd912126a3eb498b6cc19575f4d4cfc935978b
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global libnbtplusplus_commit a5e8fd52b8bf4ab5d5bcc042b2a247867589985f
+%global libnbtplusplus_commit 23b955121b8217c1c348a9ed2483167a6f3ff4ad
 
 %global commit_date 20241121
 %global snapshot_info %{commit_date}.%{shortcommit}
