@@ -13,6 +13,7 @@ Requires:	electron xdg-utils
 Provides:   armcord
 Obsoletes:  armcord < 3.3.2-1
 Conflicts:	legcord-bin
+Conflicts:	legcord-nightly
 BuildArch:	noarch
 BuildRequires:  anda-srpm-macros pnpm
 
