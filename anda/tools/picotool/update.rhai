@@ -1,1 +1,0 @@
-rpm.version(gh("raspberrypi/picotool"));
