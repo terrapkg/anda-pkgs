@@ -1,8 +1,12 @@
 %define debug_package %nil
 
+# Exclude private libraries
+%global __requires_exclude libffmpeg.so
+%global __provides_exclude_from %{_datadir}/(armcord|legcord)/.*\\.so
+
 Name:		legcord
 Version:	1.0.4
-Release:	1%?dist
+Release:	2%?dist
 License:	OSL-3.0
 Summary:	Custom lightweight Discord client designed to enhance your experience
 URL:		https://github.com/LegCord/LegCord
