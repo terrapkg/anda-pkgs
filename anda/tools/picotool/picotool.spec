@@ -28,8 +28,8 @@ mv %buildroot{%_prefix/lib,%_libdir}/cmake
 %doc README.md
 %license LICENSE.TXT
 %_bindir/picotool
-%_libdir/picotool/
-%_datadir/picotool/
+%_libdir/cmake/picotool
+%_datadir/picotool
 
 %changelog
 * Mon Nov 18 2024 Owen-sz <owen@fyralabs.com>
