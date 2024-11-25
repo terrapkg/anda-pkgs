@@ -26,7 +26,7 @@ Picotool is a tool for inspecting RP2040 binaries, and interacting with RP2040 d
 %doc README.md
 %license LICENSE.TXT
 %_bindir/picotool
-%_libdir/cmake/picotool
+%dnl %_libdir/cmake/picotool
 %_datadir/picotool
 
 %changelog
