@@ -30,7 +30,7 @@ while keeping everything lightweight.
 
 cat <<EOF > legcord.desktop
 [Desktop Entry]
-Name=LegCord
+Name=Legcord
 Comment=%summary
 GenericName=Internet Messenger
 Type=Application
