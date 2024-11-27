@@ -1,10 +1,10 @@
 Name:       terra-obsolete
 # Please keep the version equal to the targeted Terra release
-Version:    40
+Version:    41
 # The dist number is the version here, it is intentionally not repeated in the release
 %global dist %nil
 
-Release:    3
+Release:    1
 Summary:    A package to obsolete retired packages, based on Fedora's equivalent package
 
 License:    LicenseRef-Fedora-Public-Domain
@@ -121,6 +121,8 @@ BuildArch:  noarch
 %obsolete_ticket https://github.com/terrapkg/packages/issues/991
 %obsolete iosevka-fusion-fonts 25.1.1-2
 
+%obsolete_ticket https://github.com/terrapkg/packages/pull/2522
+%obsolete terra-gnome-shell-extension-pop-shell 1.2.0^20241010.e25621e-2
 
 %description
 Currently obsoleted packages:
