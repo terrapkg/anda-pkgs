@@ -1,11 +1,11 @@
 [terra-extra]
 name=Terra $releasever (Extra)
-#baseurl=https://repos.fyralabs.com/terra$releasever
-metalink=https://tetsudou.fyralabs.com/metalink?repo=terra$releasever&arch=$basearch
+#baseurl=https://repos.fyralabs.com/terra$releasever-extras
+metalink=https://tetsudou.fyralabs.com/metalink?repo=terra$releasever-extras&arch=$basearch
 metadata_expire=6h
 type=rpm
 gpgcheck=1
-gpgkey=https://repos.fyralabs.com/terra$releasever-extra/key.asc
+gpgkey=https://repos.fyralabs.com/terra$releasever-extras/key.asc
 repo_gpgcheck=1
 enabled=1
 enabled_metadata=1
@@ -14,12 +14,12 @@ priority=150
 
 [terra-extra-source]
 name=Terra $releasever (Extra) - Source
-#baseurl=https://repos.fyralabs.com/terra$releasever-source
+#baseurl=https://repos.fyralabs.com/terra$releasever-extras-source
 metalink=https://tetsudou.fyralabs.com/metalink?repo=terra$releasever-extras-source&arch=$basearch
 metadata_expire=6h
 type=rpm
 gpgcheck=1
-gpgkey=https://repos.fyralabs.com/terra$releasever-source/key.asc
+gpgkey=https://repos.fyralabs.com/terra$releasever-extras-source/key.asc
 repo_gpgcheck=1
 enabled=0
 enabled_metadata=0
