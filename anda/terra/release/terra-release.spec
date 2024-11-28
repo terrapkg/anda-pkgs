@@ -36,7 +36,7 @@ install -Dpm644 -t %buildroot%_sysconfdir/yum.repos.d %SOURCE1
 %config(noreplace) %{_sysconfdir}/yum.repos.d/terra.repo
 
 %files extras
-%config(noreplace) %{_sysconfdir}/yum.repos.d/terra-extra.repo
+%config(noreplace) %{_sysconfdir}/yum.repos.d/terra-extras.repo
 
 %changelog
 * Fri Oct 25 2024 madonuko <mado@fyralabs.com> - 42-2
