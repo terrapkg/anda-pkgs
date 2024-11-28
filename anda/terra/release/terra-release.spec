@@ -1,12 +1,12 @@
 Name:           terra-release
 Version:        42
-Release:        2
+Release:        3
 Summary:        Release package for Terra
 
 License:        MIT
 URL:            https://terra.fyralabs.com
 Source0:        terra.repo
-Source1:        terra-extra.repo
+Source1:        terra-extras.repo
 BuildArch:      noarch
 
 %dnl We probably shouldn't do this in Rawhide!
@@ -15,10 +15,10 @@ BuildArch:      noarch
 %description
 Release package for Terra, containing the Terra repository configuration.
 
-%package extra
+%package extras
 Summary: Release package for Terra Extra
 
-%description extra
+%description extras
 Release package for Terra Extra, which is a repository with packages that might cause
 conflict with Fedora.
 
