@@ -5,8 +5,8 @@
 %global __provides_exclude_from %{_datadir}/(armcord|legcord)/.*\\.so
 
 Name:		legcord
-Version:	1.0.4
-Release:	2%?dist
+Version:	1.0.5
+Release:	1%?dist
 License:	OSL-3.0
 Summary:	Custom lightweight Discord client designed to enhance your experience
 URL:		https://github.com/LegCord/LegCord
