@@ -1,6 +1,6 @@
 Name:           anki
 Version:        24.06.3
-Release:        1%?dist
+Release:        2%?dist
 Summary:        Flashcard program for using space repetition learning
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT AND BSD-3-Clause AND CC-BY-SA-3.0 AND CC-BY-3.0 AND Apache-2.0 AND CC-BY-2.5
 URL:            https://apps.ankiweb.net/
@@ -30,6 +30,7 @@ git checkout %{version}
 %build
 export RELEASE=1
 export PYTHONPATH=%_libdir/python3/dist-packages
+%__cargo update
 mold -run ./tools/build
 
 
