@@ -1,5 +1,5 @@
-[terra-extra]
-name=Terra $releasever (Extra)
+[terra-extras]
+name=Terra $releasever (Extras)
 #baseurl=https://repos.fyralabs.com/terra$releasever-extras
 metalink=https://tetsudou.fyralabs.com/metalink?repo=terra$releasever-extras&arch=$basearch
 metadata_expire=6h
@@ -12,8 +12,8 @@ enabled_metadata=1
 countme=1
 priority=150
 
-[terra-extra-source]
-name=Terra $releasever (Extra) - Source
+[terra-extras-source]
+name=Terra $releasever (Extras) - Source
 #baseurl=https://repos.fyralabs.com/terra$releasever-extras-source
 metalink=https://tetsudou.fyralabs.com/metalink?repo=terra$releasever-extras-source&arch=$basearch
 metadata_expire=6h
