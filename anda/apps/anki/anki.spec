@@ -30,7 +30,7 @@ git checkout %{version}
 %build
 export RELEASE=1
 export PYTHONPATH=%_libdir/python3/dist-packages
-%__cargo update
+cargo update
 mold -run ./tools/build
 
 
