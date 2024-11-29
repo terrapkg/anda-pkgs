@@ -6,8 +6,8 @@
 %global crate oxipng
 
 Name:           rust-oxipng
-Version:        9.1.2
-Release:        %autorelease
+Version:        9.1.3
+Release:        1%?dist
 Summary:        Lossless PNG compression optimizer
 
 License:        MIT
