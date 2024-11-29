@@ -2,10 +2,6 @@ if !labels.branch.starts_with("f") {
     print(`mesa-freeworld: unsupported branch: ${labels.branch}`);
     terminate();
 }
-let b = labels.branch;
-if b == "frawhide" {
-    b = "rawhide";
-}
-let spec = get(`https://src.fedoraproject.org/rpms/mesa/raw/${b}/f/mesa.spec`);
-let v = find(`(?m)^%global\s+ver\s+([\w\d.-]+)$`, spec, 1);
-rpm.global("ver", v);
+let release = labels.branch.to_upper();
+let ver = get(`https://bodhi.fedoraproject.org/updates/?search=mesa&status=stable&releases=${release}&rows_per_page=1&page=1`).json().updates[0].title;
+rpm.global("ver", find(`^mesa-([\d.]+)`, ver, 1));
