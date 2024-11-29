@@ -1,7 +1,7 @@
 %define debug_package %nil
 
 Name:           pet
-Version:        0.9.1
+Version:        1.0.0
 Release:        1%?dist
 Summary:        Simple command-line snippet manager
 URL:            https://github.com/knqyf263/pet
