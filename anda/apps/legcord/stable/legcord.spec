@@ -1,5 +1,9 @@
 %define debug_package %nil
 
+# Exclude private libraries
+%global __requires_exclude libffmpeg.so
+%global __provides_exclude_from %{_datadir}/(armcord|legcord)/.*\\.so
+
 Name:		legcord
 Version:	1.0.2
 Release:	3%?dist
@@ -26,7 +30,7 @@ while keeping everything lightweight.
 
 cat <<EOF > legcord.desktop
 [Desktop Entry]
-Name=LegCord
+Name=Legcord
 Comment=%summary
 GenericName=Internet Messenger
 Type=Application
