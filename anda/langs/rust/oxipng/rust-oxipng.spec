@@ -16,7 +16,7 @@ Source:         %{crates_source}
 # Automatically generated patch to strip dependencies and normalize metadata
 Patch:          oxipng-fix-metadata-auto.diff
 
-BuildRequires:  anda-srpm-macros cargo-rpm-macros >= 24
+BuildRequires:  mold anda-srpm-macros cargo-rpm-macros >= 24
 
 %global _description %{expand:
 A lossless PNG compression optimizer.}
