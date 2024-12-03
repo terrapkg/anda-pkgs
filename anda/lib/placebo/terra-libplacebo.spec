@@ -1,6 +1,6 @@
 Name:           terra-libplacebo
 Version:        7.349.0
-Release:        1%?dist
+Release:        2%?dist
 Summary:        Reusable library for GPU-accelerated video/image rendering primitives
 
 License:        LGPLv2+
@@ -21,6 +21,9 @@ BuildRequires:  spirv-tools-devel
 BuildRequires:  vulkan-devel
 BuildRequires:  glslang-devel
 BuildRequires:  xxhash-devel
+# Conflict with upstream libplacebo
+Conflicts:      libplacebo
+
 
 
 %description
