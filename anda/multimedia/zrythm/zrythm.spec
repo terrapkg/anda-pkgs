@@ -58,7 +58,9 @@ BuildRequires: pkgconfig(fftw3)
 BuildRequires: pkgconfig(portaudio-2.0)
 BuildRequires: pkgconfig(reproc)
 BuildRequires: pkgconfig(rtmidi)
-#BuildRequires: pkgconfig(rtaudio)
+BuildRequires: pkgconfig(rtaudio)
+# make sure we are pulling in our ver
+BuildRequires: rtaudio-nightly
 BuildRequires: pkgconfig(rubberband)
 BuildRequires: pkgconfig(jack)
 BuildRequires: pkgconfig(json-glib-1.0)
@@ -75,20 +77,23 @@ BuildRequires: pkgconfig(vamp)
 BuildRequires: pkgconfig(soxr)
 BuildRequires: pkgconfig(zix-0)
 BuildRequires: pkgconfig(yyjson)
+BuildRequires: pkgconfig(epoxy)
+BuildRequires: libstdc++
+BuildRequires: libstdc++-devel
+BuildRequires: libstdc++-static
 BuildRequires: libxml2
 BuildRequires: jq-devel
 BuildRequires: help2man
 BuildRequires: texi2html
 BuildRequires: xdg-utils
 BuildRequires: meson
-BuildRequires: guile
-Requires:      carla
+BuildRequires: guile22
+BuildRequires: flex
 Requires:      ladspa
 Requires:      lilv
 Requires:      lv2
 Requires:      fftw
-Requires:      jackit
-Requires:      %{_lib}lsp-dsp-lib
+Requires:      liblsp-dsp
 
 # for building rtaudio
 BuildRequires: pkgconfig(libpulse-simple)
@@ -104,34 +109,9 @@ various plugin and file formats.
 %prep
 %autosetup -n %name-%v
 
-# alleviate requirement for carla-host-plugin
-# as of 2024-08-12, 2.6.0 doesn't even exist yet
-sed -i "/^\s*'carla-host-plugin', version: / s@>=2.6.0@>=2.5.0@" meson.build
-
-mkdir vendor tmproot
-cd vendor
-git clone https://github.com/thestk/rtaudio --depth 1 -b 6.0.1 -j8
-
-# we need to vendor this here (too new; not even in rawhide)
-pushd rtaudio
-#? https://src.fedoraproject.org/fork/neil/rpms/rtaudio/blob/rawhide/f/rtaudio.spec
-# Fix encoding issues
-for file in tests/teststops.cpp; do
-   sed 's|\r||' $file > $file.tmp
-   iconv -f ISO-8859-1 -t UTF8 $file.tmp > $file.tmp2
-   touch -r $file $file.tmp2
-   mv -f $file.tmp2 $file
-done
-export CFLAGS="%optflags -fPIC"
-autoreconf -fiv
-%configure --with-jack --with-alsa --with-pulse --enable-shared --disable-static --verbose
-%make_build
-make install
-popd
-
 
 %build
-CFLAGS=$(echo "$CFLAGS -fuse-ld=mold -Wno-incompatible-pointer-types -Wno-implicit-function-declaration" | sed -E "s@\b-Werror\b@@")
+CFLAGS=$(echo "$CFLAGS -fuse-ld=mold -Wno-incompatible-pointer-types" | sed -E "s@\b-Werror\b@@")
 CXXFLAGS=$(echo "$CFLAGS -fuse-ld=mold" | sed -E "s@\b-Werror\b@@")
 
 %meson \
@@ -151,16 +131,19 @@ CXXFLAGS=$(echo "$CFLAGS -fuse-ld=mold" | sed -E "s@\b-Werror\b@@")
 %files -f %name.lang
 %doc README.md
 %license COPYING
-%_bindir/%name*
+%_bindir/zrythm
+%_bindir/zrythm_valgrind
+%_bindir/zrythm_launch
+%_bindir/zrythm_gdb
 %_libdir/zrythm/carla/
 %_libdir/zrythm/lv2
 %_datadir/applications/org.zrythm.Zrythm.desktop
 %_datadir/fonts/%name
 %_datadir/glib-2.0/schemas/*.xml
-%_iconsdir/hicolor/scalable/apps/%name.svg
+%_iconsdir/hicolor/scalable/apps/org.zrythm.Zrythm.svg
 %_datadir/%name/
 %_datadir/mime/packages/org.zrythm.Zrythm-mime.xml
-%bash_completions_dir/zrythm
-%fish_completions_dir/zrythm
 %_datadir/metainfo/org.zrythm.Zrythm.appdata.xml
 %_mandir/man1/zrythm.1.*
+%bash_completions_dir/zrythm
+%fish_completions_dir/zrythm.fish
