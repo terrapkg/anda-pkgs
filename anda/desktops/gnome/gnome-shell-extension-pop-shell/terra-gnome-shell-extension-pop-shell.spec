@@ -1,14 +1,14 @@
 # from Fedora upstream
 %global extension   pop-shell
 %global uuid        %{extension}@system76.com
-%global commit      cfa0c55e84b7ce339e5ce83832f76fee17e99d51
+%global commit      e25621e2595eb5235ecb1a41167d1324a2b2a297
 %global shortcommit %{lua:print(macros.commit:sub(1,7))}
-%global commit_date 20240404
+%global commit_date 20241010
 %global ver         1.2.0
 
 Name:           terra-gnome-shell-extension-%{extension}
 Version:        %{ver}^%commit_date.%{shortcommit}
-Release:        1%?dist
+Release:        2%?dist
 Summary:        GNOME Shell extension for advanced tiling window management
 License:        GPL-3.0-only
 URL:            https://github.com/pop-os/shell
@@ -26,7 +26,7 @@ Patch0:         0001-Remove-schema-handling-from-transpile.sh.patch
 BuildRequires:  typescript >= 3.8
 BuildRequires:  make
 
-Requires:       (gnome-shell >= 45~ with gnome-shell < 46~)
+Requires:       gnome-shell = 47~
 Recommends:     gnome-extensions-app
 Recommends:     %{name}-shortcut-overrides = %{version}-%{release}
 Provides:       %{extension} = %{version}-%{release}

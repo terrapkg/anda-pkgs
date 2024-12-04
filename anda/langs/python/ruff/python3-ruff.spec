@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:			python3-ruff
-Version:		0.5.7
+Version:		0.8.1
 Release:		1%?dist
 Summary:		An extremely fast Python linter, written in Rust
 License:		MIT
@@ -33,10 +33,9 @@ rm -rf %{python3_sitelib}/ruff/__pycache__
 /usr/lib64/python*/site-packages/ruff-%{version}.dist-info/INSTALLER
 /usr/lib64/python*/site-packages/ruff-%{version}.dist-info/REQUESTED
 /usr/lib64/python*/site-packages/ruff-%{version}.dist-info/direct_url.json
-/usr/lib64/python*/site-packages/ruff-%{version}.dist-info/license_files/LICENSE
+/usr/lib64/python*/site-packages/ruff-%{version}.dist-info/licenses/LICENSE
 /usr/lib64/python*/site-packages/ruff/__init__.py
 /usr/lib64/python*/site-packages/ruff/__main__.py
-/usr/lib64/python*/site-packages/ruff/__pycache__/*.cpython-*.opt-1.pyc
 /usr/lib64/python*/site-packages/ruff/__pycache__/*.cpython-*.pyc
 /usr/bin/ruff
 

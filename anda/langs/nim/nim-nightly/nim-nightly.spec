@@ -1,8 +1,8 @@
 %global csrc_commit 561b417c65791cd8356b5f73620914ceff845d10
-%global commit d76ea4f32374a7677b18f0d0f1c07195b0e64d11
+%global commit 5340005869d513e5c6af06e5d963bcb77abb3fa3
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global ver 2.1.9
-%global commit_date 20240810
+%global ver 2.2.1
+%global commit_date 20241128
 %global debug_package %nil
 
 Name:			nim-nightly
@@ -123,6 +123,9 @@ cp -a %buildroot%_prefix/lib/nim/lib/*.h %buildroot%_includedir || true
 ln -s %_prefix/lib/nim %buildroot%_prefix/lib/nim/lib || true
 rm -rf %buildroot/nim || true
 rm %buildroot%_bindir/*.bat || true
+
+cp -r dist %buildroot%_prefix/lib/nim/
+ln -s %_prefix/lib/nim/dist %buildroot%_datadir/nim/dist
 
 
 %files

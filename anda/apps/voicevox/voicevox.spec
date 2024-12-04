@@ -6,14 +6,14 @@
 
 # do not perform compression in cpio
 %define _source_payload w0.ufdio
-%define _binary_payload w0.gzdio
+%define _binary_payload w19.zstdio
 
 # Exclude private libraries
 %global __requires_exclude libffmpeg.so
 %global __provides_exclude_from %{_datadir}/%{name}/.*\\.so
 
 Name:			voicevox
-Version:		0.20.0
+Version:		0.21.1
 Release:		1%?dist
 Summary:		Free Japanese text-to-speech editor
 License:		LGPL-3.0
