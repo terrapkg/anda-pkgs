@@ -1,4 +1,4 @@
-Name:                   msm-cros-efs-loader
+Name:                   terra-msm-cros-efs-loader
 Version:                1.0.2
 Release:                1%?dist
 Summary:                EFS loader for Qualcomm-based Chrome OS devices
@@ -9,6 +9,8 @@ Source1:                msm-cros-efs-loader.service
 Requires:               rmtfs crossystem
 BuildArch:              noarch
 Packager:               WeirdTreeThing <bradyn127@protonmail.com>
+Conflicts:              msm-cros-efs-loader
+Provides:               msm-cros-efs-loader
  
 %{?systemd_requires}
 BuildRequires:  systemd-rpm-macros
@@ -20,7 +22,7 @@ EFS loader for Qualcomm-based Chrome OS devices
 %autosetup -n msm-cros-efs-loader-v%{version}
  
 %install
-install -Dm755 %{name}.sh %{buildroot}/usr/bin/%{name}
+install -Dm755 msm-cros-efs-loader.sh %{buildroot}/usr/bin/msm-cros-efs-loader
 install -Dm644 %SOURCE1 %{buildroot}/%{_unitdir}/msm-cros-efs-loader.service
  
 %post
@@ -33,7 +35,7 @@ install -Dm644 %SOURCE1 %{buildroot}/%{_unitdir}/msm-cros-efs-loader.service
 %systemd_postun_with_restart 88-ultramarine-chromebook-default.preset
  
 %files
-%_bindir/%name
+%_bindir/msm-cros-efs-loader
 %{_unitdir}/msm-cros-efs-loader.service
  
 %changelog
