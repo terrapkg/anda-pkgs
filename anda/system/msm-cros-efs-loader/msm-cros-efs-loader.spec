@@ -10,6 +10,7 @@ Requires:               rmtfs crossystem
 BuildArch:              noarch
 Packager:               WeirdTreeThing <bradyn127@protonmail.com>
 Conflicts:              msm-cros-efs-loader
+Provides:               msm-cros-efs-loader
  
 %{?systemd_requires}
 BuildRequires:  systemd-rpm-macros
