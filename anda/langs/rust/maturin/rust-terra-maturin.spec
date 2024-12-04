@@ -10,7 +10,7 @@ License:        MIT OR Apache-2.0
 URL:            https://crates.io/crates/maturin
 Source:         %{crates_source}
 
-BuildRequires:  pkgconfig anda-srpm-macros cargo-rpm-macros >= 24
+BuildRequires:  pkgconfig anda-srpm-macros cargo-rpm-macros >= 24 mold
 Conflicts:      rust-maturin
 
 %global _description %{expand:
