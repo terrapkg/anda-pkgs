@@ -24,7 +24,7 @@ jobs:
         run: |
           dnf install -y 'dnf-command(config-manager)'
           dnf config-manager --set-enabled crb
-          dnf install -y https://dl.fedoraproject.org/pub/epel/${{ matrix.version }}/Everything/${{ matrix.arch }}/os/Packages/e/epel-release-${{ matrix.version }}-1.el${{ matrix.version }}_0.noarch.rpm
+          dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-${{ matrix.version }}.noarch.rpm
           sed -Ei "s@^#baseurl=.+@baseurl=https://dl.fedoraproject.org/pub/epel/\$releasever_major\${releasever_minor:+.\$releasever_minor}/Everything/\$basearch/os/@" /etc/yum.repos.d/epel.repo
           sed -Ei '/^metalink/ s/^/#/' /etc/yum.repos.d/epel.repo
           dnf install -y mock wget git-core openssl-devel cargo podman fuse-overlayfs rpm-build mock
