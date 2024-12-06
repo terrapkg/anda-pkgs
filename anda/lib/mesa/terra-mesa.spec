@@ -542,7 +542,7 @@ popd
 %{_includedir}/GL/internal/dri_interface.h
 %{_libdir}/pkgconfig/dri.pc
 %{_libdir}/libglapi.so
- 
+
 %files libEGL
 %{_datadir}/glvnd/egl_vendor.d/50_mesa.json
 %{_libdir}/libEGL_mesa.so.0*
@@ -550,11 +550,11 @@ popd
 %dir %{_includedir}/EGL
 %{_includedir}/EGL/eglext_angle.h
 %{_includedir}/EGL/eglmesaext.h
- 
+
 %files libglapi
 %{_libdir}/libglapi.so.0
 %{_libdir}/libglapi.so.0.*
- 
+
 %files libOSMesa
 %{_libdir}/libOSMesa.so.8*
 %files libOSMesa-devel
@@ -562,22 +562,23 @@ popd
 %{_includedir}/GL/osmesa.h
 %{_libdir}/libOSMesa.so
 %{_libdir}/pkgconfig/osmesa.pc
- 
+
 %files libgbm
+%{_libdir}/gbm/dri_gbm.so
 %{_libdir}/libgbm.so.1
 %{_libdir}/libgbm.so.1.*
 %files libgbm-devel
 %{_libdir}/libgbm.so
 %{_includedir}/gbm.h
 %{_libdir}/pkgconfig/gbm.pc
- 
+
 %if 0%{?with_xa}
 %files libxatracker
 %if 0%{?with_hardware}
 %{_libdir}/libxatracker.so.2
 %{_libdir}/libxatracker.so.2.*
 %endif
- 
+
 %files libxatracker-devel
 %if 0%{?with_hardware}
 %{_libdir}/libxatracker.so
@@ -587,35 +588,35 @@ popd
 %{_libdir}/pkgconfig/xatracker.pc
 %endif
 %endif
- 
+
 %if 0%{?with_teflon}
 %files libTeflon
 %{_libdir}/libteflon.so
 %endif
- 
+
 %if 0%{?with_opencl}
 %files libOpenCL
 %{_libdir}/libMesaOpenCL.so.*
 %{_libdir}/libRusticlOpenCL.so.*
 %{_sysconfdir}/OpenCL/vendors/mesa.icd
 %{_sysconfdir}/OpenCL/vendors/rusticl.icd
- 
+
 %files libOpenCL-devel
 %{_libdir}/libMesaOpenCL.so
 %{_libdir}/libRusticlOpenCL.so
 %endif
- 
+
 %if 0%{?with_nine}
 %files libd3d
 %dir %{_libdir}/d3d/
 %{_libdir}/d3d/*.so.*
- 
+
 %files libd3d-devel
 %{_libdir}/pkgconfig/d3d.pc
 %{_includedir}/d3dadapter/
 %{_libdir}/d3d/*.so
 %endif
- 
+
 %files dri-drivers
 %{_datadir}/drirc.d/00-mesa-defaults.conf
 %{_libdir}/libgallium-*.so
@@ -623,7 +624,7 @@ popd
 %{_libdir}/dri/libdril_dri.so
 %{_libdir}/dri/swrast_dri.so
 %{_libdir}/dri/virtio_gpu_dri.so
- 
+
 %if 0%{?with_hardware}
 %if 0%{?with_r300}
 %{_libdir}/dri/r300_dri.so
@@ -714,7 +715,7 @@ popd
 %if 0%{?with_vulkan_hw}
 %{_libdir}/dri/zink_dri.so
 %endif
- 
+
 %if 0%{?with_va}
 %files va-drivers
 %{_libdir}/dri/nouveau_drv_video.so
@@ -726,7 +727,7 @@ popd
 %endif
 %{_libdir}/dri/virtio_gpu_drv_video.so
 %endif
- 
+
 %if 0%{?with_vdpau}
 %files vdpau-drivers
 %dir %{_libdir}/vdpau
@@ -739,10 +740,12 @@ popd
 %endif
 %{_libdir}/vdpau/libvdpau_virtio_gpu.so.1*
 %endif
- 
+
 %files vulkan-drivers
 %{_libdir}/libvulkan_lvp.so
 %{_datadir}/vulkan/icd.d/lvp_icd.*.json
+%{_libdir}/libvulkan_virtio.so
+%{_datadir}/vulkan/icd.d/virtio_icd.*.json
 %{_libdir}/libVkLayer_MESA_device_select.so
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_MESA_device_select.json
 %if 0%{?with_vulkan_hw}
