@@ -1,15 +1,5 @@
 %global srcname mesa
 
-## START: Set by rpmautospec
-## (rpmautospec version 0.6.3)
-## RPMAUTOSPEC: autorelease, autochangelog
-%define autorelease(e:s:pb:n) %{?-p:0.}%{lua:
-    release_number = 2;
-    base_release_number = tonumber(rpm.expand("%{?-b*}%{!?-b:1}"));
-    print(release_number + base_release_number - 1);
-}%{?-e:.%{-e*}}%{?-s:.%{-s*}}%{!?-n:%{?dist}}
-## END: Set by rpmautospec
-
 %ifnarch s390x
 %global with_hardware 1
 %global with_radeonsi 1
@@ -21,11 +11,12 @@
 %global with_r300 1
 %global with_r600 1
 %global with_nine 1
-%global with_nvk %{with vulkan_hw}
-%global with_omx 1
+%if 0%{?with_vulkan_hw}
+%global with_nvk %{with_vulkan_hw}
+%endif
 %global with_opencl 1
 %endif
-%global base_vulkan ,amd
+%global base_vulkan %{?with_vulkan_hw:,amd}%{!?with_vulkan_hw:%{nil}}
 %endif
 
 %ifnarch %{ix86}
@@ -40,25 +31,27 @@
 %global with_iris   1
 %global with_xa     1
 %global with_intel_clc 1
-%global intel_platform_vulkan ,intel,intel_hasvk
+%global intel_platform_vulkan %{?with_vulkan_hw:,intel,intel_hasvk}%{!?with_vulkan_hw:%{nil}}
 %endif
 %ifarch x86_64
+%if !0%{?with_vulkan_hw}
 %global with_intel_vk_rt 1
+%endif
 %endif
 
 %ifarch aarch64 x86_64 %{ix86}
+%global with_kmsro     1
 %if !0%{?rhel}
 %global with_lima      1
 %global with_vc4       1
-%endif
 %global with_etnaviv   1
-%global with_freedreno 1
-%global with_kmsro     1
-%global with_panfrost  1
 %global with_tegra     1
+%endif
+%global with_freedreno 1
+%global with_panfrost  1
 %global with_v3d       1
 %global with_xa        1
-%global extra_platform_vulkan ,broadcom,freedreno,panfrost,imagination-experimental
+%global extra_platform_vulkan %{?with_vulkan_hw:,broadcom,freedreno,panfrost,imagination-experimental}%{!?with_vulkan_hw:%{nil}}
 %endif
 
 %if !0%{?rhel}
@@ -72,6 +65,7 @@
 %bcond_with valgrind
 %endif
 
+%global vulkan_drivers swrast,virtio%{?base_vulkan}%{?intel_platform_vulkan}%{?extra_platform_vulkan}%{?with_nvk:,nouveau}
 %global vulkan_drivers swrast%{?base_vulkan}%{?intel_platform_vulkan}%{?extra_platform_vulkan}%{?with_nvk:,nouveau}
 Name:           terra-%{srcname}
 Summary:        Mesa graphics libraries
@@ -744,8 +738,8 @@ popd
 %files vulkan-drivers
 %{_libdir}/libvulkan_lvp.so
 %{_datadir}/vulkan/icd.d/lvp_icd.*.json
-%{_libdir}/libvulkan_virtio.so
-%{_datadir}/vulkan/icd.d/virtio_icd.*.json
+%dnl %{_libdir}/libvulkan_virtio.so
+%dnl %{_datadir}/vulkan/icd.d/virtio_icd.*.json
 %{_libdir}/libVkLayer_MESA_device_select.so
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_MESA_device_select.json
 %if 0%{?with_vulkan_hw}
