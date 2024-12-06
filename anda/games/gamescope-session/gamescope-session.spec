@@ -1,8 +1,8 @@
 %define debug_package %nil
 
-%global commit a44507e4b0eb9809548be6b1650f2ef986eb27e3
+%global commit 4ad912c4a3c09c91551f21617981b878f7084058
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20241201
+%global commit_date 20241206
 
 Name:           gamescope-session
 Version:        %commit_date.%shortcommit
