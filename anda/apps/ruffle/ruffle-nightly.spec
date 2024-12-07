@@ -48,6 +48,7 @@ Packager:       madonuko <mado@fyralabs.com>
 cd desktop
 %cargo_install
 install -Dm644 packages/linux/rs.ruffle.Ruffle.svg %buildroot%_iconsdir/hicolor/scalable/apps/rs.ruffle.Ruffle.svg
+install -Dm644 -t %{buildroot}/usr/share/applications %{SOURCE1}
 install -Dm644 packages/linux/rs.ruffle.Ruffle.metainfo.xml %buildroot%_metainfodir/rs.ruffle.Ruffle.metainfo.xml
 
 %changelog
