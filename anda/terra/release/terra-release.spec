@@ -1,12 +1,12 @@
 Name:           terra-release
 Version:        42
-Release:        2
+Release:        3
 Summary:        Release package for Terra
 
 License:        MIT
 URL:            https://terra.fyralabs.com
 Source0:        terra.repo
-Source1:        terra-extra.repo
+Source1:        terra-extras.repo
 BuildArch:      noarch
 
 %dnl We probably shouldn't do this in Rawhide!
@@ -15,10 +15,12 @@ BuildArch:      noarch
 %description
 Release package for Terra, containing the Terra repository configuration.
 
-%package extra
+%package extras
 Summary: Release package for Terra Extra
+Obsoletes: terra-release-extra < 42-3
+Provides: terra-release-extra = %version-%release
 
-%description extra
+%description extras
 Release package for Terra Extra, which is a repository with packages that might cause
 conflict with Fedora.
 
@@ -33,8 +35,8 @@ install -Dpm644 -t %buildroot%_sysconfdir/yum.repos.d %SOURCE1
 %files
 %config(noreplace) %{_sysconfdir}/yum.repos.d/terra.repo
 
-%files extra
-%config(noreplace) %{_sysconfdir}/yum.repos.d/terra-extra.repo
+%files extras
+%config(noreplace) %{_sysconfdir}/yum.repos.d/terra-extras.repo
 
 %changelog
 * Fri Oct 25 2024 madonuko <mado@fyralabs.com> - 42-2

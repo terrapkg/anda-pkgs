@@ -34,7 +34,10 @@ jobs:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Run Update
-        run: anda update -vv --filters updbranch=1 --labels branch=${{ matrix.branch }}
+        run: |
+          nbranch="${{ matrix.branch }}"
+          [ "$nbranch" = 'frawhide' ] && nbranch='f42'
+          anda update -vv --filters updbranch=1 --labels branch=${{ matrix.branch }},nbranch=$nbranch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUST_BACKTRACE: full
