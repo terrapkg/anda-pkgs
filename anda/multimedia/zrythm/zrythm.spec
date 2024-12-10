@@ -2,7 +2,7 @@
 # Running this on a real computer will alter your system, because this
 # vendors `rtaudio` (and install it on your system) during build-time.
 
-%global v v1.0.0-rc.1
+%global v v1.0.0
 
 Name:           zrythm
 Version:        %(echo %v | sed 's@-@~@g' | sed 's@^v@@')
