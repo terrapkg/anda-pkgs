@@ -63,7 +63,9 @@ sed -e 's/"DEFAULT"/"PROFILE=SYSTEM"/g' -i tdnet/td/net/SslStream.cpp
 %install
 %cmake_install
 
+mv LICENSE_1_0.txt ..
 rm -rf *
+mv ../LICENSE_1_0.txt .
 
 %files
 %license LICENSE_1_0.txt
