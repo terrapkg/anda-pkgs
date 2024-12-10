@@ -14,7 +14,6 @@ Summary:        A Flash Player emulator written in Rust
 License:        Apache-2.0 OR MIT
 URL:            https://ruffle.rs/
 Source0:        https://github.com/ruffle-rs/ruffle/archive/refs/tags/nightly-%ver.tar.gz
-Source1:        rs.ruffle.Ruffle.desktop
 Patch0:         desktop_file_patch.diff
 Provides:       ruffle
 BuildRequires:  cargo-rpm-macros >= 24
