@@ -14,7 +14,7 @@ Summary:        A Flash Player emulator written in Rust
 License:        Apache-2.0 OR MIT
 URL:            https://ruffle.rs/
 Source0:        https://github.com/ruffle-rs/ruffle/archive/refs/tags/nightly-%ver.tar.gz
-Source1:        rs.ruffle.Ruffle.desktop
+Patch0:         desktop_file_patch.diff
 Provides:       ruffle
 BuildRequires:  cargo-rpm-macros >= 24
 BuildRequires:  anda-srpm-macros mold
@@ -38,7 +38,7 @@ Packager:       madonuko <mado@fyralabs.com>
 %_metainfodir/rs.ruffle.Ruffle.metainfo.xml
 
 %prep
-%autosetup -n ruffle-nightly-%ver
+%autosetup -n ruffle-nightly-%ver -p1
 %cargo_prep_online
 
 %build
@@ -48,7 +48,7 @@ Packager:       madonuko <mado@fyralabs.com>
 cd desktop
 %cargo_install
 install -Dm644 packages/linux/rs.ruffle.Ruffle.svg %buildroot%_iconsdir/hicolor/scalable/apps/rs.ruffle.Ruffle.svg
-install -Dm644 -t %{buildroot}/usr/share/applications %{SOURCE1}
+install -Dm644 packages/linux/rs.ruffle.Ruffle.desktop %buildroot%_datadir/applications/rs.ruffle.Ruffle.desktop
 install -Dm644 packages/linux/rs.ruffle.Ruffle.metainfo.xml %buildroot%_metainfodir/rs.ruffle.Ruffle.metainfo.xml
 
 %changelog
