@@ -43,7 +43,16 @@ Patch0:           0001-find-cmark-with-pkgconfig.patch
 BuildRequires:    cmake >= 3.15
 BuildRequires:    extra-cmake-modules
 BuildRequires:    gcc-c++
-BuildRequires:    java-21-openjdk-devel
+# JDKs less than the most recent release & LTS are no longer in the default
+# Fedora repositories
+# Make sure you have Adoptium's repositories enabled
+# https://fedoraproject.org/wiki/Changes/ThirdPartyLegacyJdks
+# https://adoptium.net/installation/linux/#_centosrhelfedora_instructions
+%if 0%{?fedora} > 41
+BuildRequires:    temurin-17-jdk
+%else
+BuildRequires:    java-17-openjdk-devel
+%endif
 BuildRequires:    desktop-file-utils
 BuildRequires:    libappstream-glib
 BuildRequires:    tomlplusplus-devel
@@ -77,8 +86,11 @@ Requires(postun): desktop-file-utils
 Requires:         qt%{qt_version}-qtimageformats
 Requires:         qt%{qt_version}-qtsvg
 Requires:         javapackages-filesystem
-Recommends:       java-21-openjdk
+# See note above
+%if 0%{?fedora} && 0%{?fedora} < 42
+Recommends:       java-17-openjdk
 Suggests:         java-1.8.0-openjdk
+%endif
 
 # xrandr needed for LWJGL [2.9.2, 3) https://github.com/LWJGL/lwjgl/issues/128
 Recommends:       xrandr
@@ -115,6 +127,9 @@ sed -i "s|\$ORIGIN/||" CMakeLists.txt
 %cmake \
   -DLauncher_QT_VERSION_MAJOR="%{qt_version}" \
   -DLauncher_BUILD_PLATFORM="%{build_platform}" \
+  %if 0%{?fedora} > 41
+  -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
+  %endif
   %if "%{msa_id}" != "default"
   -DLauncher_MSA_CLIENT_ID="%{msa_id}" \
   %endif

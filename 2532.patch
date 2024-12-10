@@ -1,0 +1,106 @@
+From 0552edee9de8da4f1513cb25bb75f396e79cb577 Mon Sep 17 00:00:00 2001
+From: seth <getchoo@tuta.io>
+Date: Thu, 28 Nov 2024 18:53:04 -0500
+Subject: [PATCH] prismlauncher{,-nightly}: use built-in java manager on f42
+ and above
+
+Adapted from
+https://pagure.io/prismlauncher/c/2fd310330c299f23b2b79eaf0ec8af1515300835
+
+Mainly due to
+https://fedoraproject.org/wiki/Changes/ThirdPartyLegacyJdks
+
+This also switches the JDK package used for building to one from the
+Adoptium repositories, as the launcher still requires `javac` with Java
+7 bytecode support
+---
+ .../prismlauncher-nightly.spec                    | 15 +++++++++++++++
+ anda/games/prismlauncher/prismlauncher.spec       | 15 +++++++++++++++
+ 2 files changed, 30 insertions(+)
+
+diff --git a/anda/games/prismlauncher-nightly/prismlauncher-nightly.spec b/anda/games/prismlauncher-nightly/prismlauncher-nightly.spec
+index e6998fa6a5..2e6b65d648 100644
+--- a/anda/games/prismlauncher-nightly/prismlauncher-nightly.spec
++++ b/anda/games/prismlauncher-nightly/prismlauncher-nightly.spec
+@@ -43,7 +43,16 @@ Patch0:           0001-find-cmark-with-pkgconfig.patch
+ BuildRequires:    cmake >= 3.15
+ BuildRequires:    extra-cmake-modules
+ BuildRequires:    gcc-c++
++# JDKs less than the most recent release & LTS are no longer in the default
++# Fedora repositories
++# Make sure you have Adoptium's repositories enabled
++# https://fedoraproject.org/wiki/Changes/ThirdPartyLegacyJdks
++# https://adoptium.net/installation/linux/#_centosrhelfedora_instructions
++%if 0%{?fedora} > 41
++BuildRequires:    temurin-17-jdk
++%else
+ BuildRequires:    java-17-openjdk-devel
++%endif
+ BuildRequires:    desktop-file-utils
+ BuildRequires:    libappstream-glib
+ BuildRequires:    tomlplusplus-devel
+@@ -78,8 +87,11 @@ Requires:         qt%{qt_version}-qtimageformats
+ Requires:         qt%{qt_version}-qtsvg
+ Requires:         javapackages-filesystem
+ Recommends:       java-21-openjdk
++# See note above
++%if 0%{?fedora} && 0%{?fedora} < 42
+ Recommends:       java-17-openjdk
+ Suggests:         java-1.8.0-openjdk
++%endif
+ 
+ # xrandr needed for LWJGL [2.9.2, 3) https://github.com/LWJGL/lwjgl/issues/128
+ Recommends:       xrandr
+@@ -116,6 +128,9 @@ sed -i "s|\$ORIGIN/||" CMakeLists.txt
+ %cmake \
+   -DLauncher_QT_VERSION_MAJOR="%{qt_version}" \
+   -DLauncher_BUILD_PLATFORM="%{build_platform}" \
++  %if 0%{?fedora} > 41
++  -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
++  %endif
+   %if "%{msa_id}" != "default"
+   -DLauncher_MSA_CLIENT_ID="%{msa_id}" \
+   %endif
+diff --git a/anda/games/prismlauncher/prismlauncher.spec b/anda/games/prismlauncher/prismlauncher.spec
+index f8adbcc8ea..eba0298819 100644
+--- a/anda/games/prismlauncher/prismlauncher.spec
++++ b/anda/games/prismlauncher/prismlauncher.spec
+@@ -35,7 +35,16 @@ Source0:          https://github.com/PrismLauncher/PrismLauncher/releases/downlo
+ BuildRequires:    cmake >= 3.15
+ BuildRequires:    extra-cmake-modules
+ BuildRequires:    gcc-c++
++# JDKs less than the most recent release & LTS are no longer in the default
++# Fedora repositories
++# Make sure you have Adoptium's repositories enabled
++# https://fedoraproject.org/wiki/Changes/ThirdPartyLegacyJdks
++# https://adoptium.net/installation/linux/#_centosrhelfedora_instructions
++%if 0%{?fedora} > 41
++BuildRequires:    temurin-17-jdk
++%else
+ BuildRequires:    java-17-openjdk-devel
++%endif
+ BuildRequires:    desktop-file-utils
+ BuildRequires:    libappstream-glib
+ BuildRequires:    cmake(ghc_filesystem)
+@@ -68,8 +77,11 @@ Requires:         qt%{qt_version}-qtimageformats
+ Requires:         qt%{qt_version}-qtsvg
+ Requires:         javapackages-filesystem
+ Recommends:       java-21-openjdk
++# See note above
++%if 0%{?fedora} && 0%{?fedora} < 42
+ Recommends:       java-17-openjdk
+ Suggests:         java-1.8.0-openjdk
++%endif
+ 
+ # xrandr needed for LWJGL [2.9.2, 3) https://github.com/LWJGL/lwjgl/issues/128
+ Recommends:       xrandr
+@@ -101,6 +113,9 @@ sed -i "s|\$ORIGIN/||" CMakeLists.txt
+ %cmake \
+   -DLauncher_QT_VERSION_MAJOR="%{qt_version}" \
+   -DLauncher_BUILD_PLATFORM="%{build_platform}" \
++  %if 0%{?fedora} > 41
++  -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
++  %endif
+   %if "%{msa_id}" != "default"
+   -DLauncher_MSA_CLIENT_ID="%{msa_id}" \
+   %endif
