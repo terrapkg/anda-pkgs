@@ -1,6 +1,6 @@
 project pkg {
-	rpm {
-		spec = "terra-mesa.spec"
+        rpm {
+		spec = "mesa.spec"
 	}
     labels {
         multilib = 1
