@@ -58,9 +58,9 @@ BuildRequires: pkgconfig(fftw3)
 BuildRequires: pkgconfig(portaudio-2.0)
 BuildRequires: pkgconfig(reproc)
 BuildRequires: pkgconfig(rtmidi)
-BuildRequires: pkgconfig(rtaudio)
+#BuildRequires: pkgconfig(rtaudio)
 # make sure we are pulling in our ver
-BuildRequires: rtaudio-nightly
+BuildRequires: rtaudio-nightly-devel
 BuildRequires: pkgconfig(rubberband)
 BuildRequires: pkgconfig(jack)
 BuildRequires: pkgconfig(json-glib-1.0)
