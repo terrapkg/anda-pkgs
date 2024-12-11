@@ -24,7 +24,7 @@ BuildRequires: boost-devel
 BuildRequires: (ffmpeg-free-devel or ffmpeg-devel)
 BuildRequires: ladspa-devel
 BuildRequires: graphviz-devel
-BuildRequires: pkgconfig(carla-host-plugin)
+BuildRequires: pkgconfig(carla-host-plugin) >= 2.6.0
 BuildRequires: pkgconfig(gtk4)
 BuildRequires: pkgconfig(gtksourceview-5)
 BuildRequires: pkgconfig(glib-2.0)
@@ -54,9 +54,7 @@ BuildRequires: pkgconfig(fftw3)
 BuildRequires: pkgconfig(portaudio-2.0)
 BuildRequires: pkgconfig(reproc)
 BuildRequires: pkgconfig(rtmidi)
-#BuildRequires: pkgconfig(rtaudio)
-# make sure we are pulling in our ver
-BuildRequires: rtaudio-nightly-devel
+BuildRequires: pkgconfig(rtaudio) >= 5.1.0
 BuildRequires: pkgconfig(rubberband)
 BuildRequires: pkgconfig(jack)
 BuildRequires: pkgconfig(json-glib-1.0)
