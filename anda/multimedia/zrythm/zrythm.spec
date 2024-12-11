@@ -1,7 +1,3 @@
-# WARN: YOU MUST RUN THIS INSIDE MOCK.
-# Running this on a real computer will alter your system, because this
-# vendors `rtaudio` (and install it on your system) during build-time.
-
 %global v v1.0.0
 
 Name:           zrythm
@@ -94,9 +90,6 @@ Requires:      lilv
 Requires:      lv2
 Requires:      fftw
 Requires:      liblsp-dsp
-
-# for building rtaudio
-BuildRequires: pkgconfig(libpulse-simple)
 
 %description
 Zrythm is a digital audio workstation designed to be
