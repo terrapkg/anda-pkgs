@@ -141,10 +141,10 @@ done
 %files libs
 %license COPYING
 %{_libdir}/libhdr10plus.so
-%{_libdir}/libx265.so.%{_so_version}
+%{_libdir}/libx265.so.*
 %ifarch x86_64 aarch64 ppc64 ppc64le
-%{_libdir}/libx265_main10.so.%{_so_version}
-%{_libdir}/libx265_main12.so.%{_so_version}
+%{_libdir}/libx265_main10.so.*
+%{_libdir}/libx265_main12.so.*
 %endif
 
 %files devel
