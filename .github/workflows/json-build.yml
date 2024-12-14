@@ -34,11 +34,13 @@ jobs:
 
       - name: Include custom build template instead of package default
         run: |
-          cp -v mock-configs/el${{ matrix.version }}.tpl /etc/mock/templates/
-          cp -v mock-configs/epel${{ matrix.version }}.tpl /etc/mock/templates/
+          cp -v mock-configs/terra-el.tpl /etc/mock/templates/
+          cp -v mock-configs/terra-el-dev.tpl /etc/mock/templates/
 
       - name: Build with Andaman
-        run: anda build ${{ matrix.pkg.pkg }} --package rpm -c mock-configs/terra-el${{ matrix.version }}+epel-${{ matrix.pkg.arch }}.cfg
+        run: |
+          dnf builddep -y `echo ${{ matrix.pkg.pkg }} | sed -E 's@/pkg$@/*.spec@'`
+          anda build ${{ matrix.pkg.pkg }} -rrpmbuild
 
       - name: Generating artifact name
         id: art
