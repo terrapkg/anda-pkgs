@@ -44,7 +44,7 @@ jobs:
       fail-fast: false
     runs-on: ${{ matrix.pkg.arch == 'aarch64' && 'ARM64' || matrix.pkg.labels['large'] && 'x86-64-lg' || 'ubuntu-latest' }}
     container:
-      image: ghcr.io/terrapkg/builder:f${{ matrix.version}}
+      image: ghcr.io/terrapkg/builder:f${{ matrix.version }}
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
@@ -55,6 +55,7 @@ jobs:
       - name: Checkout latest Mock configs
         uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           repository: terrapkg/mock-configs
           path: mock-configs
 
