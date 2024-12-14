@@ -3,10 +3,10 @@ name: Push comps updates
 on:
   push:
     branches:
+      - frawhide
+      - f41
       - f40
-      - f39
-      - f38
-      - f37
+      - el10
     paths:
       - comps.xml
   workflow_dispatch:
