@@ -1,12 +1,19 @@
-name: Nightly Update
+name: Update per branch
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "*/30 * * * *"
   workflow_dispatch:
 
 jobs:
   autoupdate:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        branch:
+          - frawhide
+          - f40
+          - f41
+          - el10
     container:
       image: ghcr.io/terrapkg/builder:frawhide
       options: --cap-add=SYS_ADMIN --privileged
@@ -14,6 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: ${{ matrix.branch }}
           fetch-depth: 0
           ssh-key: ${{ secrets.SSH_AUTHENTICATION_KEY }}
 
@@ -24,8 +32,11 @@ jobs:
           chmod 0700 ${{ runner.temp }}/signing_key
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      - name: Run Nightly Update
-        run: anda update -v --filters nightly=1
+      - name: Run Update
+        run: |
+          nbranch="${{ matrix.branch }}"
+          [ "$nbranch" = 'frawhide' ] && nbranch='f42'
+          anda update -vv --filters updbranch=1 --labels branch=${{ matrix.branch }},nbranch=$nbranch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUST_BACKTRACE: full
@@ -37,17 +48,7 @@ jobs:
             git config user.email "raboneko@fyralabs.com"
             git config gpg.format "ssh"
             git config user.signingkey "${{ runner.temp }}/signing_key"
-            msg="bump(nightly): $(git status | grep modified | sed -r 's@.+/([^/]+)/[^/]+\n?@\1 @g' | tr -d '\n')"
+            msg="bump(branch): $(git status | grep modified | sed -r 's@.+/([^/]+)/[^/]+\n?@\1 @g' | tr -d '\n')"
             git commit -S -a -m "$msg"
-            git format-patch HEAD^
-            copy_over () {
-              git checkout $1
-              git apply *.patch || true
-              git add anda
-              git commit -S -a -m "$msg"
-            }
-            copy_over f40 || true
-            copy_over f41 || true
-            copy_over el10 || true
             git push -u origin --all
           fi
