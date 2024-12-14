@@ -474,7 +474,7 @@ cp -pr doc/examples/{*.c,Makefile,README} _doc/examples/
 %endif
     || cat ffbuild/config.log
 
-%make_build V=1
+%make_build V=1 CFLAGS="$CFLAGS -Wno-incompatible-pointer-types"
 make documentation V=1
 make alltools V=1
 
