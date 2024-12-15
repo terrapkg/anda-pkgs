@@ -15,7 +15,7 @@ jobs:
   update-comps:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/terrapkg/builder:f40
+      image: ghcr.io/terrapkg/builder:frawhide
     steps:
       - uses: actions/checkout@v4
       - name: Push to subatomic
