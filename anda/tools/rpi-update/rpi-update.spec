@@ -15,7 +15,7 @@ Requires:       bash
 ExclusiveArch:  aarch64
 
 %description
-%Summary
+%summary
 
 %prep
 %autosetup -n rpi-update-%commit
