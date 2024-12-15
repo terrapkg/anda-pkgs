@@ -1,6 +1,6 @@
 Name:           terra-mock-configs
 Version:        1.3.0
-Release:        1%?dist
+Release:        2%?dist
 Epoch:          1
 Summary:        Mock configs for Terra repos
 
@@ -27,7 +27,7 @@ Obsoletes: anda-mock-configs < 3-2%{?dist}
 mkdir -p %{buildroot}%{_sysusersdir}
 mkdir -p %{buildroot}%{_sysconfdir}/mock/templates
 
-cp -v terra.tpl %{buildroot}%{_sysconfdir}/mock/templates/
+cp -v terra*.tpl %{buildroot}%{_sysconfdir}/mock/templates/
 cp -v *.cfg %{buildroot}%{_sysconfdir}/mock/
 
 %files
