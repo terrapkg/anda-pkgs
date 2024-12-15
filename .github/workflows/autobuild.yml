@@ -93,7 +93,7 @@ jobs:
           subatomic-cli upload --prune \
             --server https://subatomic.fyralabs.com \
             --token ${{ secrets.SUBATOMIC_TOKEN }} \
-            terra-el${{ matrix.version }} anda-build/rpm/rpms/*
+            terrael${{ matrix.version }} anda-build/rpm/rpms/*
 
       - name: Upload source packages to subatomic
         if: github.event_name == 'push'
@@ -101,7 +101,7 @@ jobs:
           subatomic-cli upload --prune \
             --server https://subatomic.fyralabs.com \
             --token ${{ secrets.SUBATOMIC_TOKEN }} \
-            terra-el${{ matrix.version }}-source anda-build/rpm/srpm/*
+            terrael${{ matrix.version }}-source anda-build/rpm/srpm/*
 
       - name: Notify Madoguchi (Success)
         if: success() && github.event_name == 'push'
