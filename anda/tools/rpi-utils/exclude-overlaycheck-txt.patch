@@ -1,0 +1,9 @@
+diff --git a/overlaycheck/CMakeLists.txt b/overlaycheck/CMakeLists.txt
+index 4b775dd..6c9b655 100644
+--- a/overlaycheck/CMakeLists.txt
++++ b/overlaycheck/CMakeLists.txt
+@@ -7,4 +7,3 @@ project(overlaycheck)
+ 
+ #add executables
+ install(PROGRAMS overlaycheck DESTINATION ${CMAKE_INSTALL_BINDIR})
+-install(FILES overlaycheck_exclusions.txt DESTINATION ${CMAKE_INSTALL_BINDIR})
