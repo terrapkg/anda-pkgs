@@ -160,6 +160,7 @@ Summary:        A tool to get VideoCore 'assert' or 'msg' logs with optional -f 
 %license LICENCE
 %{_bindir}/vcgencmd
 %{_mandir}/man1/vcgencmd.1.gz
+%{_datadir}/bash-completion/completions/vcgencmd
 
 %files vclog
 %doc vclog/README.md
