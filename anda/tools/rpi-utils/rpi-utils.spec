@@ -10,7 +10,6 @@ License:		BSD-3-Clause
 URL:			https://github.com/raspberrypi/utils
 Source0:		%{url}/archive/%{commit}.tar.gz
 Patch0:         dtoverlay-manpage.patch
-Patch1:         exclude-overlaycheck-txt.patch
 # BuildArch:      noarch
 BuildRequires:	cmake dtc libfdt-devel gcc-c++
 
