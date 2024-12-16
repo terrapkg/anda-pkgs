@@ -15,6 +15,18 @@ Patch0:         dtoverlay-manpage.patch
 # BuildArch:      noarch
 BuildRequires:	cmake dtc libfdt-devel gcc-c++
 
+Requires:       %{name}-dtmerge
+Requires:       %{name}-eeptools
+Requires:       %{name}-kdtc
+Requires:       %{name}-otpset
+Requires:       %{name}-overlaycheck
+Requires:       %{name}-ovmerge
+Requires:       %{name}-pinctrl
+Requires:       %{name}-piolib
+Requires:       %{name}-vcgencmd
+Requires:       %{name}-vclog
+Requires:       %{name}-vcmailbox
+
 %description
 %{summary}
 
