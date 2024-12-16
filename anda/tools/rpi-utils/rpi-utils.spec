@@ -9,6 +9,7 @@ Summary:		A collection of scripts and simple applications for Raspberry Pi devic
 License:		BSD-3-Clause
 URL:			https://github.com/raspberrypi/utils
 Source0:		%{url}/archive/%{commit}.tar.gz
+Patch0:         dtoverlay-manpage.patch
 # BuildArch:      noarch
 BuildRequires:	cmake dtc libfdt-devel gcc-c++
 
@@ -85,7 +86,7 @@ Summary:        A tool to get VideoCore 'assert' or 'msg' logs with optional -f 
 %{summary}.
 
 %prep
-%autosetup -n utils-%commit
+%autosetup -p1 -n utils-%commit
 
 %build
 %cmake
