@@ -103,10 +103,10 @@ Summary:        A tool to get VideoCore 'assert' or 'msg' logs with optional -f 
 %license LICENCE
 %{_bindir}/dt*
 # macros for compressing manpages?
-%{_mandir}/man1/dtmerge.1
-%{_mandir}/man1/dtoverlay.1
-%{_mandir}/man1/dtparam.1
-%{_mandir}/man2/dtoverlay.2
+%{_mandir}/man1/dtmerge.1.gz
+%{_mandir}/man1/dtoverlay.1.gz
+%{_mandir}/man1/dtparam.1.gz
+%{_mandir}/man2/dtoverlay.2.gz
 
 %files eeptools
 %doc eeptools/README.md
@@ -158,8 +158,7 @@ Summary:        A tool to get VideoCore 'assert' or 'msg' logs with optional -f 
 %files vcgencmd
 %license LICENCE
 %{_bindir}/vcgencmd
-# macros for compressing manpages?
-%{_mandir}/man1/vcgencmd.1
+%{_mandir}/man1/vcgencmd.1.gz
 
 %files vclog
 %doc vclog/README.md
@@ -169,10 +168,10 @@ Summary:        A tool to get VideoCore 'assert' or 'msg' logs with optional -f 
 %files vcmailbox
 %license LICENCE
 %{_bindir}/vcmailbox
-%{_mandir}/man1/vcmailbox.1
-%{_mandir}/man7/vcmailbox.7
-%{_mandir}/man7/raspiotp.7
-%{_mandir}/man7/raspirev.7
+%{_mandir}/man1/vcmailbox.1.gz
+%{_mandir}/man7/vcmailbox.7.gz
+%{_mandir}/man7/raspiotp.7.gz
+%{_mandir}/man7/raspirev.7.gz
 
 %changelog
 * Tue Dec 17 2024 sadlerm <sad_lerm@hotmail.com>
