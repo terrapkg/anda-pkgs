@@ -33,7 +33,7 @@ Summary:        A tool for compiling overlays with #includes, etc., as used in t
 %{summary}.
 
 %package        otpset
-Requires:       rpi-utils-otpset = %{version}
+Requires:       rpi-utils-vcmailbox = %{version}
 Summary:        A short script to help with reading and setting the customer OTP bits
 %description    otpset
 %{summary}.
