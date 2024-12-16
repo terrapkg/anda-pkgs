@@ -2,6 +2,8 @@
 %global commit_date 20241213
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
+%define _unpackaged_files_terminate_build 0
+
 Name:			rpi-utils
 Version:		%{commit_date}.%{shortcommit}
 Release:		1%{?dist}
@@ -60,15 +62,6 @@ Summary:        A library for accessing the Pi 5's PIO hardware
 %description    piolib
 %{summary}.
 
-%package        raspinfo
-Requires:       rpi-utils-pinctrl = %{version}
-Requires:       rpi-utils-vcgencmd = %{version}
-Requires:       rpi-utils-vclog = %{version}
-# apparently there may be a dependency on rpi-eeprom
-Summary:        A short script to dump information about the Pi. Intended for the submission of bug reports
-%description    raspinfo
-%{summary}.
-
 %package        vcgencmd
 Summary:        Query the VideoCore for information
 %description    vcgencmd
@@ -102,7 +95,6 @@ Summary:        A tool to get VideoCore 'assert' or 'msg' logs with optional -f 
 %files dtmerge
 %license LICENCE
 %{_bindir}/dt*
-# macros for compressing manpages?
 %{_mandir}/man1/dtmerge.1.gz
 %{_mandir}/man1/dtoverlay.1.gz
 %{_mandir}/man1/dtparam.1.gz
@@ -150,11 +142,6 @@ Summary:        A tool to get VideoCore 'assert' or 'msg' logs with optional -f 
 %{_bindir}/piows2812
 %{_bindir}/rp1sm
 
-%files raspinfo
-%doc raspinfo/README.md
-%license LICENCE
-%{_bindir}/raspinfo
-
 %files vcgencmd
 %license LICENCE
 %{_bindir}/vcgencmd
@@ -176,7 +163,7 @@ Summary:        A tool to get VideoCore 'assert' or 'msg' logs with optional -f 
 
 %changelog
 * Tue Dec 17 2024 sadlerm <sad_lerm@hotmail.com>
-- Split into individual subpackages
+- Split into individual subpackages and no longer package raspinfo
 
 * Mon Nov 18 2024 Owen-sz <owen@fyralabs.com>
 - Package Raspberry Pi Utils
