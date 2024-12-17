@@ -12,7 +12,7 @@ License:        MIT
 URL:            https://crates.io/crates/gping
 Source:         %{crates_source}
 
-BuildRequires:  anda-srpm-macros rust-packaging >= 21
+BuildRequires:  anda-srpm-macros rust-packaging >= 21 mold
 
 %global _description %{expand:
 Ping, but with a graph.}
