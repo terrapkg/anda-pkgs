@@ -8,7 +8,7 @@ Version:        %{commit_date}.git~%{shortcommit}
 Release:        1%{?dist}
 Summary:        A tiny system monitor for Linux
 
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            https://github.com/pondda/tmon
 Source0:        %{url}/archive/%{commit}.tar.gz
 
