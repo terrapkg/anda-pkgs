@@ -25,7 +25,7 @@ jobs:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Run Nightly Update
-        run: anda update -v --filters nightly=1
+        run: anda update --filters nightly=1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUST_BACKTRACE: full
