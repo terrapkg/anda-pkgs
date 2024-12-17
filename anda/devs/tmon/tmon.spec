@@ -15,7 +15,7 @@ Source0:        %{url}/archive/%{commit}.tar.gz
 Requires:       lm_sensors
 Conflicts:      kernel-tools
 
-Suggests:       nerd-fonts
+Recommends:     google-noto-color-emoji-fonts
 
 BuildRequires:  make gcc-c++ ncurses-devel
 
