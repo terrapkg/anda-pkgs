@@ -1,10 +1,10 @@
-%global commit dc5cd1490235f8c19424b3345a89727199c86df3
+%global commit f215a218d8145cb86d50fc7a8dd81563fff83955
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20241003
+%global commit_date 20241217
 
 Name:           fontviewer
 Version:        %{commit_date}.git~%{shortcommit}
-Release:        1%{?dist}
+Release:        1%?dist
 Summary:        View and install fonts
 
 License:        GPL-2.0
