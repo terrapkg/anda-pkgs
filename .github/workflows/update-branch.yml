@@ -36,7 +36,7 @@ jobs:
         run: |
           nbranch="${{ matrix.branch }}"
           [ "$nbranch" = 'frawhide' ] && nbranch='f42'
-          anda update -vv --filters updbranch=1 --labels branch=${{ matrix.branch }},nbranch=$nbranch
+          anda update --filters updbranch=1 --labels branch=${{ matrix.branch }},nbranch=$nbranch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUST_BACKTRACE: full
