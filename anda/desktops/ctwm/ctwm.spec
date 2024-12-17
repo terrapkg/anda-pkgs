@@ -3,11 +3,11 @@ Name: ctwm
 Version: 4.1.0
 Release: 1%?dist
 URL: https://ctwm.org
-BuildRequires: libx11-devel libjpg-devel libxt-devel libxext-devel libxmu-devel libxpm-devel cmake
-Source0: https://www.ctwm.org/dist/%{name}-%{version}.tar.gz
+BuildRequires: libjpeg-turbo-devel libX11-devel libXext-devel libXmu-devel libXpm-devel libXt-devel libXrandr-devel cmake gcc m4
+Source0: https://www.ctwm.org/dist/%{name}-%{version}.tar.xz
 Source1: %{name}.desktop
 License: MIT
-Requires: m4
+Requires: m4 
 # Derived from RPMSphere's packaging
 
 %description
@@ -22,7 +22,7 @@ CTWM is a window manager based on TWM (with virtual workspaces added.)
 
 %install
 %cmake_install
-%{__install} -Dm644 %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/xsessions/%{name}.desktop
+%{__install} -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/xsessions/%{name}.desktop
 
 %files
 %doc README.md CHANGES.md
