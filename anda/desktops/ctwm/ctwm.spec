@@ -11,7 +11,7 @@ Requires: m4
 # Derived from RPMSphere's packaging
 
 %description
-CTWM is a window manager based on TWM (with virtual workspaces added.)
+CTWM is a window manager based on TWM (with virtual workspaces added).
 
 %prep
 %setup -q
