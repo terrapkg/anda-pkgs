@@ -31,6 +31,7 @@ Packager:       madonuko <mado@fyralabs.com>
 License:        MIT
 URL:            %{gourl}
 Source:         %{gosource}
+BuildRequries:  anda-srpm-macros
 
 %description %{common_description}
 
