@@ -34,7 +34,7 @@ install -Dm644 %name.man %buildroot%_mandir/man1/%name.1
 %doc README.md
 %_bindir/mpvpaper
 %_bindir/mpvpaper-holder
-%_mandir/man1/mpvpaper.1%?ext_man
+%_mandir/man1/mpvpaper.1.gz
 
 %changelog
 * Fri Dec 20 2024 madonuko <mado@fyralabs.com> - 1.7-1
