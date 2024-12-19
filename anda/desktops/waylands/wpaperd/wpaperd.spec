@@ -108,7 +108,7 @@ install -Dpm644 -t %buildroot%zsh_completions_dir target/rpm/completions/_*
 %files doc
 %_mandir/man1/wpaperctl.1.gz
 %_mandir/man1/wpaperd.1.gz
-%_mandir/man5/wpaper-output.5.gz
+%_mandir/man5/wpaper-output.5
 
 %files bash-completion
 %bash_completions_dir/wpaperctl.bash
