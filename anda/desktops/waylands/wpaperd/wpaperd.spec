@@ -80,6 +80,7 @@ Zsh command line completion support for %{name}.
 scdoc < man/wpaperd-output.5.scd > target/rpm/man/wpaperd-output.5
 
 %install
+rm target/rpm/completions/*.ps1
 install -Dpm755 -t %buildroot%_bindir target/rpm/wpaperctl
 install -Dpm755 -t %buildroot%_bindir target/rpm/wpaperd
 install -Dpm644 -t %buildroot%_mandir/man1/ target/rpm/man/wpaperctl.1
