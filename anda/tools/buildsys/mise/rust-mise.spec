@@ -40,7 +40,7 @@ URL:            https://mise.jdx.dev/
 %license LICENSE.dependencies
 %doc README.md
 %{_bindir}/mise
-%_mandir/mise.1.gz
+%_mandir/man1/mise.1.gz
 
 
 %package -n %crate-bash-completion
