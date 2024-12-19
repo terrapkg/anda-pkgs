@@ -27,7 +27,7 @@ Name:           golang-github-savedra1-clipse
 Release:        %autorelease
 Summary:        Configurable TUI clipboard manager for Unix
 Provides:       clipse
-
+Packager:       madonuko <mado@fyralabs.com>
 License:        MIT
 URL:            %{gourl}
 Source:         %{gosource}
