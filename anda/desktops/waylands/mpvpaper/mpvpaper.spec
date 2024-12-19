@@ -12,6 +12,7 @@ BuildRequires:  ninja-build
 BuildRequires:  pkgconfig
 BuildRequires:  wayland-protocols-devel
 BuildRequires:  wlroots-devel
+BuildRequires:  gcc
 Requires:       mpv
 
 %description
