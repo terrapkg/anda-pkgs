@@ -47,7 +47,8 @@ Source:         %{gosource}
 
 %if %{without bootstrap}
 %build
-%go_build_online
+mkdir -p build/bin
+go build -ldflags="-linkmode=external" -o build/bin/%{name}
 %endif
 
 %install
