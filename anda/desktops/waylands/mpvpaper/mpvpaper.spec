@@ -8,7 +8,7 @@ URL:            https://github.com/GhostNaN/mpvpaper
 Source:         %url/archive/%version.tar.gz
 BuildRequires:  meson
 BuildRequires:  mpv-devel
-BuildRequires:  ninja
+BuildRequires:  ninja-build
 BuildRequires:  pkgconfig
 BuildRequires:  wayland-protocols-devel
 BuildRequires:  wlroots-devel
