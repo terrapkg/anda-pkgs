@@ -29,6 +29,9 @@ Summary:        Man pages for %name
 Recommends:     wpaperd
 Supplements:    wpaperd
 
+%description doc
+Man papes for %name.
+
 %package bash-completion
 Summary:        Bash completion for %name
 Requires:       %{name} = %{version}-%{release}
