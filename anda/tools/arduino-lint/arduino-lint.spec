@@ -1,7 +1,7 @@
 %define debug_package %nil
 
 Name:          arduino-lint
-Version:       1.2.1
+Version:       1.3.0
 Release:       1%?dist
 Summary:       Tool to check for problems with Arduino projects.
 License:       GPLv3
