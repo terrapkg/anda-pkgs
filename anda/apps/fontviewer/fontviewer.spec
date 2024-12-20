@@ -9,8 +9,7 @@ Summary:        View and install fonts
 
 License:        GPL-2.0
 URL:            https://github.com/chocolateimage/%{name}
-Source0:        %{url}/archive/%{commit}.tar.gz 
-Patch0:         fontviewer-meson.patch
+Source0:        %{url}/archive/%{commit}.tar.gz
 
 BuildRequires:  gcc-c++
 BuildRequires:  meson
@@ -36,9 +35,6 @@ A platform-agnostic GTK+ 3 alternative to GNOME's Font Viewer
 
 %install
 %meson_install
-
-install -m 0755 -vd %{buildroot}%{_datadir}/applications
-install -m 0644 -vp data/%{name}.desktop %{buildroot}%{_datadir}/applications/
 
 %files
 %license LICENSE
