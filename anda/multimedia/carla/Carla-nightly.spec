@@ -1,12 +1,12 @@
 %global pname   carla
-%global ver     2.5.9
-%global commit  be2f1056ab48c0ec6a3877a19597cb36a44f1e30
+%global ver     v2.5.9
+%global commit  17000e7fe99459b25a50094a8b00bdfa12f2bfbc
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20241103
+%global commit_date 20241205
 
 Name:           Carla-nightly
 Version:        %ver^%commit_date.git~%shortcommit
-Release:        1%{?dist}
+Release:        1%?dist
 Summary:        Audio plugin host
 
 # The entire source code is GPLv2+ except
