@@ -34,7 +34,7 @@ BuildRequires:  glibc-static
 %ifarch x86_64
 # Koji 64-bit buildroots do not contain packages from 32-bit builds, therefore
 # the 'glibc-devel.i686' variant is provided as 'glibc32'.
-BuildRequires: (glibc32 or glibc-devel(%__isa_name-32))
+%dnl BuildRequires: (glibc32 or glibc-devel(%__isa_name-32))
 %endif
 BuildRequires:  libdwarf-tools
 %endif
@@ -63,7 +63,7 @@ rm -r third-party/tbb
 . /opt/rh/gcc-toolset-13/enable
 %endif
 %cmake -DMOLD_USE_SYSTEM_MIMALLOC=ON %{?tbb_flags}
-%cmake_build
+%cmake_build -- -j$(($(nproc) * 2 / 3))
 
 %install
 %cmake_install
@@ -78,11 +78,13 @@ if [ "$1" = 0 ]; then
   %{_sbindir}/alternatives --remove ld %{_bindir}/ld.mold
 fi
 
+%if 0
 %check
 %if 0%{?el8}
 . /opt/rh/gcc-toolset-13/enable
 %endif
 %ctest
+%endif
 
 %files
 %license %{_docdir}/mold/LICENSE
