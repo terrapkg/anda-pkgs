@@ -29,7 +29,7 @@ Packager:       ShinyGil <rockgrub@protonmail.com>
 %_libdir/libpbcli.so
 
 %prep
-%autosetup -n pbcli-%goodver
+%autosetup -n pbcli-%version
 %cargo_prep_online
 
 %build
