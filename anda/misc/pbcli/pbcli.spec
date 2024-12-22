@@ -15,7 +15,6 @@ URL:            https://github.com/Mydayyy/pbcli
 Source0:        https://github.com/Mydayyy/pbcli/archive/refs/tags/%ver.tar.gz
 BuildRequires:  cargo-rpm-macros >= 24
 BuildRequires:  anda-srpm-macros mold
-BuildRequires:  rust2rpm
 BuildRequires:  perl-IPC-Cmd perl-ExtUtils-MM-Utils perl-FindBin perl-lib perl-File-Compare perl-File-Copy
 BuildRequires:  openssl-libs openssl-devel
 Packager:       ShinyGil <rockgrub@protonmail.com>
