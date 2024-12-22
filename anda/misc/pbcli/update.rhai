@@ -1,1 +1,1 @@
-rpm.version(gh("Mydayyy/pbcli"));
+rpm.version(crates("pbcli"));
