@@ -1,5 +1,3 @@
-%global ver v2.6.0
-%global goodver %(echo %ver | sed 's/v//g')
 %global __brp_mangle_shebangs %{nil}
 %bcond_without mold
 
