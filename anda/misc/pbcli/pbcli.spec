@@ -7,7 +7,7 @@
 pbcli is a command line client which allows to upload and download pastes from privatebin directly from the command line.}
 
 Name:           pbcli
-Version:        %goodver
+Version:        2.6.0
 Release:        1%?dist
 Summary:        A PrivateBin commandline upload and download utility
 License:        MIT
