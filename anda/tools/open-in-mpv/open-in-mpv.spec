@@ -24,10 +24,10 @@ The extension itself shares a lot of code with the one from the awesome iina, wh
 %autosetup -p1
 
 %build
-make build/linux/open-in-mpv
+make build/%{version}/linux/open-in-mpv
 
 %install
-install -Dm755 build/linux/open-in-mpv %{buildroot}%{_bindir}/open-in-mpv
+install -Dm755 build/%{version}/linux/open-in-mpv %{buildroot}%{_bindir}/open-in-mpv
 install -Dm644 scripts/open-in-mpv.desktop %{buildroot}%{_datarootdir}/applications/open-in-mpv.desktop
 
 %post
