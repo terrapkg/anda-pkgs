@@ -7,7 +7,7 @@
 Name:           yt-dlp-nightly
 Version:        %commit_date.git~%shortcommit
 Provides:       yt-dlp-nightly = %ver^%version
-Release:        1%?dist
+Release:        2%?dist
 Summary:        A command-line program to download videos from online video platforms
 
 License:        Unlicense
