@@ -5,5 +5,5 @@ import "andax/bump_extras.rhai" as bump;
 let ffmpeg_ver = get(`https://madoguchi.fyralabs.com/v4/terra${labels.branch}/packages/x265`).json().ver;
 open_file("anda/fusion/ffmpeg/VERSION_x265.txt", "w").write(ffmpeg_ver);
 
-let tesseract_ver = bump::bodhi("tesseract", 42);
+let tesseract_ver = bump::bodhi("tesseract", labels.branch.as_bodhi_ver());
 open_file("anda/fusion/ffmpeg/VERSION_tesseract.txt", "w").write(tesseract_ver);
