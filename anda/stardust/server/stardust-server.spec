@@ -1,3 +1,7 @@
+%global commit c830becbff8907809c87dc0949f9a0abd4d77ed6
+%global commit_date 20241102
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+# Exclude input files from mangling
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 
 Name:           stardust-xr-server
