@@ -14,7 +14,7 @@ This monorepo contains the package manifests for all packages in Terra.
 ## Installation
 
 ```bash
-sudo dnf install --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' --setopt='terra.gpgkey=https://repos.fyralabs.com/terra$releasever/key.asc' terra-release
+sudo dnf install --repofrompath "terra,https://repos.fyralabs.com/terra$(rpm -E %fedora)" --setopt="terra.gpgkey=https://repos.fyralabs.com/terra$(rpm -E %fedora)/key.asc" terra-release
 ```
 
 If you are using immutable/atomic editions of Fedora, run the following commands instead:
