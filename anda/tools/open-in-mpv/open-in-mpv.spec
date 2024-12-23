@@ -12,6 +12,7 @@ Source0:        https://github.com/Baldomo/open-in-mpv/archive/refs/tags/v%{vers
 ExclusiveArch:  %{golang_arches}
 
 BuildRequires:  go-rpm-macros
+BuildRequires:  anda-srpm-macros
 BuildRequires:  git
 BuildRequires:  elfutils
 
@@ -21,7 +22,7 @@ This is a simple web extension (for Chrome and Firefox) which helps open any vid
 The extension itself shares a lot of code with the one from the awesome iina, while the (bare) native binary is written in Go (this is a rewrite from C++).
 
 %prep
-%autosetup -p1
+%git_clone %{url} v%{version}
 
 %build
 make build/%{version}/linux/open-in-mpv
