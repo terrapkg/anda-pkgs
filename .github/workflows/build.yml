@@ -79,6 +79,7 @@ jobs:
           NAME=${{ matrix.pkg }}-${{ matrix.arch }}-${{ matrix.version }}
           x=${NAME//\//@}
           echo "name=$x" >> $GITHUB_OUTPUT
+          echo "labels=$(anda run andax/get_proj_label.rhai -l project=anda/${{ matrix.pkg }}anda.hcl)" >> $GITHUB_OUTPUT
 
       - uses: actions/upload-artifact@v4
         with:
@@ -93,14 +94,14 @@ jobs:
           subatomic-cli upload --prune \
             --server https://subatomic.fyralabs.com \
             --token ${{ secrets.SUBATOMIC_TOKEN }} \
-            terra${{ matrix.version }} anda-build/rpm/rpms/*
+            terra${{ matrix.version }}${{ fromJson(steps.art.outputs.labels)['extra'] && '-extras' }} anda-build/rpm/rpms/*
 
       - name: Upload source packages to subatomic
         run: |
           subatomic-cli upload --prune \
             --server https://subatomic.fyralabs.com \
             --token ${{ secrets.SUBATOMIC_TOKEN }} \
-            terra${{ matrix.version }}-source anda-build/rpm/srpm/*
+            terra${{ matrix.version }}${{ fromJson(steps.art.outputs.labels)['extra'] && '-extras' }}-source anda-build/rpm/srpm/*
 
       - name: Notify Madoguchi (Success)
         if: success()
