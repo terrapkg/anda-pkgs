@@ -480,6 +480,7 @@ export MESON_PACKAGE_CACHE_DIR="%{cargo_registry}/"
 %if 0%{?with_intel_clc}
   -Dintel-clc=enabled \
 %endif
+  -Dvideo-codecs=h264dec,h264enc,h265dec,h265enc,vc1dec,av1dec,av1enc,vp9dec \
   -Dintel-rt=%{?with_intel_vk_rt:enabled}%{!?with_intel_vk_rt:disabled} \
   -Dmicrosoft-clc=disabled \
   -Dllvm=enabled \
