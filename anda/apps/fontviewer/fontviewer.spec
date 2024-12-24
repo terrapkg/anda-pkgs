@@ -1,6 +1,6 @@
-%global commit e00d8ba9a3fbc074ceb3af145d1055daf8ecc22f
+%global commit 03864bcad5c751646404bbe14e489dd67c9d1582
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20241223
+%global commit_date 20241224
 
 Name:           fontviewer
 Version:        %{commit_date}.git~%{shortcommit}
