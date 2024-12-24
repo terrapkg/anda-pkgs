@@ -73,5 +73,5 @@ install -m 0755 -vp build/bin/cmd/walker.go %{buildroot}%{_bindir}/walker
 #gopkgfiles
 
 %changelog
-* Tue Dec 24 2024 madonuko <mado@fyralabs.com> - 6.0.1-1
+* Tue Dec 24 2024 madonuko <mado@fyralabs.com> - 0.11.2-1
 - Initial package
