@@ -1,4 +1,4 @@
-%define osuresver 2024.1219.1
+%define osuresver 2024.1224.0
 %global debug_package %{nil}
 %define __strip /bin/true
 
