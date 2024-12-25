@@ -28,14 +28,15 @@ BuildRequires:  systemd-rpm-macros
 %install
 install -Dm755 chromebook-usbc.service %buildroot%{_unitdir}/chromebook-usbc.service
 
+# These systemd services should be included in the preset file for Ultramarine Linux Chromebook images
 %post
-%systemd_post 88-ultramarine-chromebook-default.preset
+%systemd_post chromebook-usbc.service
 
 %preun
-%systemd_preun 88-ultramarine-chromebook-default.preset
+%systemd_preun chromebook-usbc.service
 
 %postun
-%systemd_postun_with_restart 88-ultramarine-chromebook-default.preset
+%systemd_postun_with_restart chromebook-usbc.service
 
 %files
 %doc README.md

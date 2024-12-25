@@ -48,6 +48,19 @@ install -D -m644 "target/_surface-dtx-userd" "%{buildroot}/usr/share/zsh/site-fu
 install -D -m644 "target/surface-dtx-daemon.fish" "%{buildroot}/usr/share/fish/vendor_completions.d/surface-dtx-daemon.fish"
 install -D -m644 "target/surface-dtx-userd.fish" "%{buildroot}/usr/share/fish/vendor_completions.d/surface-dtx-userd.fish"
 
+# These systemd services should be included in the preset file for Ultramarine Linux Surface images
+%post
+%systemd_post surface-dtx-daemon.service
+%systemd_post surface-dtx-userd.service
+
+%preun
+%systemd_preun surface-dtx-daemon.service
+%systemd_preun surface-dtx-userd.service
+
+%postun
+%systemd_postun_with_restart surface-dtx-daemon.service
+%systemd_postun_with_restart surface-dtx-userd.service
+
 %files
 %config /etc/dbus-1/system.d/org.surface.dtx.conf
 %config /etc/udev/rules.d/40-surface_dtx.rules
