@@ -7,7 +7,7 @@ Release:        1%{?dist}
 Summary:        Surface Detachment System (DTX) Daemon
 License:        MIT
 URL:            https://github.com/linux-surface/surface-dtx-daemon
-Source:         %url/archive/refs/tags/v%ver.tar.gz
+Source:         %url/archive/refs/tags/%ver.tar.gz
 BuildRequires:  rust cargo dbus-devel anda-srpm-macros cargo-rpm-macros mold
 Packager:       Owen Zimmerman <owen@fyralabs.com>
 
