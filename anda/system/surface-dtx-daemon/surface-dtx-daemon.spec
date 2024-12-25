@@ -1,5 +1,6 @@
 %global debug_package %{nil}
 %global ver v0.3.8-1
+%global ver2 %(echo %{ver} | sed 's/^v//')
 
 Name:           surface-dtx-daemon
 Version:        %(echo %ver | sed 's/-/~/g')
@@ -17,7 +18,7 @@ Linux User-Space Detachment System (DTX) Daemon for the Surface ACPI Driver
 lack of driver-support on the Surface Book 1. This may change in the future.
 
 %prep
-%autosetup -n %{name}-%{ver}
+%autosetup -n %{name}-%{ver2}
 %cargo_prep_online
 
 %build
