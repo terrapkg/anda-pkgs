@@ -58,7 +58,7 @@ install -D -m644 "target/surface-dtx-userd.fish" "%{buildroot}/usr/share/fish/ve
 %systemd_preun surface-dtx-userd.service
 
 %postun
-%systemd_user_post surface-dtx-daemon.service
+%systemd_postun_with_restart surface-dtx-daemon.service
 %systemd_user_post surface-dtx-userd.service
 
 %files
