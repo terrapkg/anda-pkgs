@@ -44,15 +44,12 @@ chmod +x %buildroot%{_bindir}/um-generate-cros-keymap
 # These systemd services should be included in the preset file for Ultramarine Linux Chromebook images
 %post
 %systemd_post cros-keyboard-map.service
-%systemd_post keyd.service
 
 %preun
 %systemd_preun cros-keyboard-map.service
-%systemd_preun keyd.service
 
 %postun
 %systemd_postun_with_restart cros-keyboard-map.service
-%systemd_postun_with_restart keyd.service
 
 %files
 %doc README.md
