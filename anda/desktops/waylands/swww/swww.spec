@@ -56,8 +56,9 @@ Zsh command-line completion support for %{name}.
 ./doc/gen.sh
 
 %install
-%cargo_install
-cd daemon && %cargo_install
+%{cargo_install} &
+(cd daemon && %{cargo_install} &)
+wait
 install -Dm644 -T completions/swww.bash %buildroot%bash_completions_dir/swww
 install -Dm644 -T completions/swww.fish %buildroot%fish_completions_dir/swww.fish
 install -Dm644 -T completions/_swww %buildroot%zsh_completions_dir/_swww
