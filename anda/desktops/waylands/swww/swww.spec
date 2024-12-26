@@ -71,6 +71,7 @@ install -Dm644 -t %buildroot%_mandir/man1 doc/generated/swww*1
 %_mandir/man1/%name-clear.1.gz
 %_mandir/man1/%name-daemon.1.gz
 %_mandir/man1/%name-img.1.gz
+%_mandir/man1/%name-init.1.gz
 %_mandir/man1/%name-kill.1.gz
 %_mandir/man1/%name-query.1.gz
 %_mandir/man1/%name-restore.1.gz
