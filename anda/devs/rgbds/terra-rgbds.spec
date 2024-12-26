@@ -52,7 +52,7 @@ It consists of:
 %{_mandir}/man7/rgbds.7.*
 %{_mandir}/man7/gbz80.7.*
 %license LICENSE
-%doc README.rst
+%doc README.md
 
 %changelog
 %autochangelog
