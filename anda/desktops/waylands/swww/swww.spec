@@ -57,7 +57,7 @@ Zsh command-line completion support for %{name}.
 
 %install
 %cargo_install
-install -Dm644 -T completions/swww.bash %buildroot%bash_completions_dir/completions/swww
+install -Dm644 -T completions/swww.bash %buildroot%bash_completions_dir/swww
 install -Dm644 -T completions/swww.fish %buildroot%fish_completions_dir/swww.fish
 install -Dm644 -T completions/_swww %buildroot%zsh_completions_dir/_swww
 install -Dm644 -t %buildroot%_mandir/man1 doc/generated/swww*1
