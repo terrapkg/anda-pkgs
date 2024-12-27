@@ -13,6 +13,7 @@ Source0:        https://github.com/ghostty-org/ghostty/archive/%commit/ghostty-%
 BuildRequires:  zig
 BuildRequires:  gtk4-devel libadwaita-devel
 Conflicts:      ghostty
+Provides:       ghostty-tip
 Packager:       ShinyGil <rockgrub@protonmail.com>
 
 %description
