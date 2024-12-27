@@ -61,10 +61,16 @@ Summary:        Ghostty shell integration
 Requires:       %{name}
 Supplements:    %{name}
 
+%description    shell-integration
+%summary.
+
 %package        terminfo
 Summary:        Ghostty terminfo
 Requires:       %{name}
 Supplements:    %{name}
+
+%description    terminfo
+%summary.
 
 %prep
 %autosetup -n ghostty-source -p1

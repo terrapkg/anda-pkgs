@@ -67,12 +67,15 @@ Summary:        Ghostty shell integration
 Requires:       %{name}
 Supplements:    %{name}
 
+%description    shell-integration
+%summary.
+
 %package        terminfo
 Summary:        Ghostty terminfo
 Requires:       %{name}
 Supplements:    %{name}
 
-%description    zsh-completion
+%description    terminfo
 %summary.
 
 %prep
