@@ -33,7 +33,7 @@ Requires:       %{name}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 
-%description    fish-completion
+%description    bash-completion
 %summary.
 
 %package        fish-completion
