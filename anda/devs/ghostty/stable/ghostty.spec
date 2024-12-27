@@ -21,6 +21,8 @@ BuildRequires:  gtk4-devel libadwaita-devel
 #BuildRequires:  pkgconfig(spirv-cross)
 #BuildRequires:  pkgconfig(simdutf)
 #BuildRequires:  pkgconfig(libxml-2.0)
+Requires:       %name-terminfo
+Suggests:       %name-shell-integration
 Conflicts:      ghostty-nightly
 Packager:       ShinyGil <rockgrub@protonmail.com>
 
@@ -54,6 +56,16 @@ Supplements:    (%{name} and zsh)
 %description    zsh-completion
 %summary.
 
+%package        shell-integration
+Summary:        Ghostty shell integration
+Requires:       %{name}
+Supplements:    %{name}
+
+%package        terminfo
+Summary:        Ghostty terminfo
+Requires:       %{name}
+Supplements:    %{name}
+
 %prep
 %autosetup -n ghostty-source -p1
 
@@ -78,9 +90,6 @@ zig build \
 %_datadir/vim/vimfiles/ftdetect/ghostty.vim
 %_datadir/vim/vimfiles/ftplugin/ghostty.vim
 %_datadir/vim/vimfiles/syntax/ghostty.vim
-%_datadir/terminfo/ghostty.termcap
-%_datadir/terminfo/ghostty.terminfo
-%_datadir/terminfo/g/ghostty
 %_datadir/terminfo/x/xterm-ghostty
 %_iconsdir/hicolor/16x16/apps/com.mitchellh.ghostty.png
 %_iconsdir/hicolor/16x16@2/apps/com.mitchellh.ghostty.png
@@ -102,6 +111,20 @@ zig build \
 
 %files zsh-completion
 %zsh_completions_dir/_ghostty
+
+%files shell-integration
+%_datadir/ghostty/shell-integration/bash/bash-preexec.sh
+%_datadir/ghostty/shell-integration/bash/ghostty.bash
+%_datadir/ghostty/shell-integration/elvish/lib/ghostty-integration.elv
+%_datadir/ghostty/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish
+%_datadir/ghostty/shell-integration/zsh/.zshenv
+%_datadir/ghostty/shell-integration/zsh/ghostty-integration
+
+%files terminfo
+%_datadir/terminfo/ghostty.termcap
+%_datadir/terminfo/ghostty.terminfo
+%_datadir/terminfo/g/ghostty
+%_datadir/terminfo/x/xterm-ghostty
 
 %changelog
 * Thu Dec 26 2024 ShinyGil <rockgrub@protonmail.com>
