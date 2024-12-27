@@ -8,7 +8,7 @@
 
 Name:           chromebook-usbc-fix
 Version:        %commit_date.%shortcommit
-Release:        1%?dist
+Release:        2%?dist
 
 License:        CCO
 Summary:        Fixes usbc on TigerLake and AlderLake Chromebooks

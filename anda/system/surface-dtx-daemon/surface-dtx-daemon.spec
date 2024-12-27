@@ -4,7 +4,7 @@
 
 Name:           surface-dtx-daemon
 Version:        %(echo %ver | sed 's/-/~/g')
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Surface Detachment System (DTX) Daemon
 License:        MIT
 URL:            https://github.com/linux-surface/surface-dtx-daemon

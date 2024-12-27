@@ -1,6 +1,6 @@
 Name:                   terra-msm-cros-efs-loader
 Version:                1.0.2
-Release:                1%?dist
+Release:                2%?dist
 Summary:                EFS loader for Qualcomm-based Chrome OS devices
 License:                GPL-3.0-or-later
 URL:                    https://gitlab.postmarketos.org/postmarketOS/msm-cros-efs-loader

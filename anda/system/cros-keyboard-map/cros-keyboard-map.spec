@@ -11,7 +11,7 @@
 
 Name:           cros-keyboard-map
 Version:        %commit_date.%tree_shortcommit.%um_shortcommit
-Release:        1%?dist
+Release:        2%?dist
 
 License:        BSD-3-Clause and GPLv3
 Summary:        Utility to generate keyd configurations for use on Chromebooks
