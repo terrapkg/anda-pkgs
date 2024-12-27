@@ -11,7 +11,7 @@
 
 Name:           cros-keyboard-map
 Version:        %commit_date.%tree_shortcommit.%um_shortcommit
-Release:        1%?dist
+Release:        2%?dist
 
 License:        BSD-3-Clause and GPLv3
 Summary:        Utility to generate keyd configurations for use on Chromebooks
@@ -41,14 +41,15 @@ mkdir -p %buildroot%{_unitdir}
 install -Dm644 cros-keyboard-map.service %{buildroot}%{_unitdir}/cros-keyboard-map.service
 chmod +x %buildroot%{_bindir}/um-generate-cros-keymap
 
+# These systemd services should be included in the preset file for Ultramarine Linux Chromebook images
 %post
-%systemd_post 88-ultramarine-chromebook-default.preset
+%systemd_post cros-keyboard-map.service
 
 %preun
-%systemd_preun 88-ultramarine-chromebook-default.preset
+%systemd_preun cros-keyboard-map.service
 
 %postun
-%systemd_postun_with_restart 88-ultramarine-chromebook-default.preset
+%systemd_postun_with_restart cros-keyboard-map.service
 
 %files
 %doc README.md
