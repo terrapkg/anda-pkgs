@@ -1,3 +1,5 @@
+%define debug_package %nil
+
 Name:          arduino-language-server
 Version:       0.7.6
 Release:       1%?dist
