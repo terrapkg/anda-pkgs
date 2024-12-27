@@ -61,7 +61,7 @@ Supplements:    (%{name} and zsh)
 %summary.
 
 %prep
-%autosetup -n ghostty-source -p1
+%autosetup -n ghostty-%commit -p1
 
 %build
 
