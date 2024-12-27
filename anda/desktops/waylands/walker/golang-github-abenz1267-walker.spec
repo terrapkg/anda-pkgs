@@ -10,7 +10,7 @@
 
 # https://github.com/abenz1267/walker
 %global goipath         github.com/abenz1267/walker
-Version:                0.11.2
+Version:                0.11.3
 
 %gometa -f
 
@@ -21,7 +21,7 @@ Multi-Purpose Launcher with a lot of features. Highly Customizable and fast.}
 %global godocs          README.md cmd/version.txt
 
 Name:           golang-github-abenz1267-walker
-Release:        %autorelease
+Release:        1%?dist
 Summary:        Multi-Purpose Launcher with a lot of features. Highly Customizable and fast
 
 License:        MIT
