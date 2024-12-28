@@ -10,6 +10,7 @@ Packager:       Cappy Ishihara <cappy@fyralabs.com>
 BuildRequires:  godot
 BuildRequires:  scons
 BuildRequires:  make
+BuildRequires:  cargo
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  gcc
