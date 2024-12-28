@@ -1,1 +1,0 @@
-rpm.version(gh("arduino/arduino-language-server"));
