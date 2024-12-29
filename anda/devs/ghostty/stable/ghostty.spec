@@ -29,11 +29,11 @@ Requires:       freetype
 Requires:       glib2
 Requires:       gtk4
 Requires:       harfbuzz
-Requires:       libadwaita
 Requires:       libpng
 Requires:       oniguruma
 Requires:       pixman
 Requires:       zlib-ng
+Suggests:       libadwaita
 Conflicts:      ghostty-nightly
 Packager:       ShinyGil <rockgrub@protonmail.com>
 
