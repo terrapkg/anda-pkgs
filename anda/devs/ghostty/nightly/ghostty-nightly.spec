@@ -1,42 +1,21 @@
-%global commit 5293fc9c2f19b7e01472de8c2ef08bef603b754a
+%global commit 579de8e491845b52e42d32a5dc3deaeb159ea4bc
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20241228
+%global commit_date 20241229
 
 Name:           ghostty-nightly
 Version:        %{commit_date}.%{shortcommit}
-Release:        1%?dist
+Release:        1%{?dist}
 Summary:        Fast, native, feature-rich terminal emulator pushing modern features. This is the Tip (nightly) build.
 License:        MIT
 URL:            https://ghostty.org/
 Source0:        https://github.com/ghostty-org/ghostty/archive/%{commit}/ghostty-%{commit}.tar.gz
-#Patch0:         pkgconfig-libadwaita-1.diff
-#Patch1:         use-pkg-config.diff
-Patch2:         no-strip.diff
-BuildRequires:  fontconfig-devel
-BuildRequires:  freetype-devel
-BuildRequires:  glib2-devel
+Patch0:         no-strip.diff
 BuildRequires:  gtk4-devel
-BuildRequires:  harfbuzz-devel
 BuildRequires:  libadwaita-devel
-BuildRequires:  libpng-devel
 BuildRequires:  ncurses
 BuildRequires:  ncurses-devel
-BuildRequires:  oniguruma-devel
 BuildRequires:  pandoc-cli
-BuildRequires:  pixman-devel
 BuildRequires:  zig
-BuildRequires:  zlib-ng-devel
-#BuildRequires:  pkg-config
-#BuildRequires:  pkgconfig(harfbuzz)
-#BuildRequires:  pkgconfig(fontconfig)
-#BuildRequires:  pkgconfig(libpng)
-#BuildRequires:  pkgconfig(zlib)
-#BuildRequires:  pkgconfig(oniguruma)
-#BuildRequires:  pkgconfig(glslang)
-# Not in Fedora
-#BuildRequires:  pkgconfig(spirv-cross)
-#BuildRequires:  pkgconfig(simdutf)
-#BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       %{name}-terminfo = %{version}-%{release}
 Requires:       %{name}-shell-integration = %{version}-%{release}
 Requires:       fontconfig

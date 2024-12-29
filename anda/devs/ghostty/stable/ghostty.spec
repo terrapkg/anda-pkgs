@@ -1,38 +1,17 @@
 Name:           ghostty
 Version:        1.0.0
-Release:        1%?dist
+Release:        1%{?dist}
 Summary:        Fast, native, feature-rich terminal emulator pushing modern features.
 License:        MIT
 URL:            https://ghostty.org/
 Source0:        https://release.files.ghostty.org/%{version}/ghostty-source.tar.gz
-#Patch0:         pkgconfig-libadwaita-1.diff
-#Patch1:         use-pkg-config.diff
-Patch2:         no-strip.diff
-BuildRequires:  fontconfig-devel
-BuildRequires:  freetype-devel
-BuildRequires:  glib2-devel
+Patch0:         no-strip.diff
 BuildRequires:  gtk4-devel
-BuildRequires:  harfbuzz-devel
 BuildRequires:  libadwaita-devel
-BuildRequires:  libpng-devel
 BuildRequires:  ncurses
 BuildRequires:  ncurses-devel
-BuildRequires:  oniguruma-devel
 BuildRequires:  pandoc-cli
-BuildRequires:  pixman-devel
 BuildRequires:  zig
-BuildRequires:  zlib-ng-devel
-#BuildRequires:  pkg-config
-#BuildRequires:  pkgconfig(harfbuzz)
-#BuildRequires:  pkgconfig(fontconfig)
-#BuildRequires:  pkgconfig(libpng)
-#BuildRequires:  pkgconfig(zlib)
-#BuildRequires:  pkgconfig(oniguruma)
-#BuildRequires:  pkgconfig(glslang)
-# Not in Fedora
-#BuildRequires:  pkgconfig(spirv-cross)
-#BuildRequires:  pkgconfig(simdutf)
-#BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       %{name}-terminfo = %{version}-%{release}
 Requires:       %{name}-shell-integration = %{version}-%{release}
 Requires:       fontconfig
