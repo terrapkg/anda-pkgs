@@ -17,6 +17,7 @@ BuildRequires:  freetype-devel
 BuildRequires:  glib2-devel
 BuildRequires:  gtk4-devel
 BuildRequires:  harfbuzz-devel
+BuildRequires:  libadwaita-devel
 BuildRequires:  libpng-devel
 BuildRequires:  ncurses
 BuildRequires:  ncurses-devel
