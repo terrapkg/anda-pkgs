@@ -62,12 +62,13 @@ jobs:
       - name: Set up git repository
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      - name: Include custom build template instead of package default
+      - name: Install Build Dependencies
         run: |
-          cp -v mock-configs/terra.tpl /etc/mock/templates/terra.tpl
+          dir=$(dirname ${{ matrix.pkg.pkg }})
+          dnf5 builddep -y ${dir}/*.spec
 
       - name: Build with Andaman
-        run: anda build ${{ matrix.pkg.pkg }} --package rpm -c mock-configs/terra-${{ matrix.version }}-${{ matrix.pkg.arch }}.cfg
+        run: anda build ${{ matrix.pkg.pkg }} -rrpmbuild
 
       - name: Build with Andaman (alternate arch)
         if: |
