@@ -1,19 +1,21 @@
-Name:           ghostty
-Version:        1.0.0
+%global commit c8950d376ab3be13fbd9a19317163075f4feddbc
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+%global commit_date 20241228
+
+Name:           ghostty-glfw-nightly
+Version:        %{commit_date}.%{shortcommit}
 Release:        1%?dist
-Summary:        Fast, native, feature-rich terminal emulator pushing modern features.
+Summary:        Fast, native, feature-rich terminal emulator pushing modern features. This is the Tip (nightly) build using the GLFW rendering library.
 License:        MIT
 URL:            https://ghostty.org/
-Source0:        https://release.files.ghostty.org/%{version}/ghostty-source.tar.gz
-#Patch0:         pkgconfig-libadwaita-1.diff
-#Patch1:         use-pkg-config.diff
-Patch2:         no-strip.diff
+Source0:        https://github.com/ghostty-org/ghostty/archive/%{commit}/ghostty-%{commit}.tar.gz
+#Patch0:         use-pkg-config.diff
+Patch1:         no-strip.diff
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype-devel
+BuildRequires:  glfw-devel
 BuildRequires:  glib2-devel
-BuildRequires:  gtk4-devel
 BuildRequires:  harfbuzz-devel
-BuildRequires:  libadwaita-devel
 BuildRequires:  libpng-devel
 BuildRequires:  ncurses
 BuildRequires:  ncurses-devel
@@ -33,71 +35,29 @@ BuildRequires:  zlib-ng-devel
 #BuildRequires:  pkgconfig(spirv-cross)
 #BuildRequires:  pkgconfig(simdutf)
 #BuildRequires:  pkgconfig(libxml-2.0)
-Requires:       %{name}-terminfo = %{version}-%{release}
-Requires:       %{name}-shell-integration = %{version}-%{release}
+Requires:       ghostty-nightly-terminfo = %{version}-%{release}
+Requires:       ghostty-nightly-shell-integration = %{version}-%{release}
 Requires:       fontconfig
 Requires:       freetype
 Requires:       glib2
-Requires:       gtk4
+Requires:       glfw
 Requires:       harfbuzz
 Requires:       libpng
 Requires:       oniguruma
 Requires:       pixman
 Requires:       zlib-ng
-Suggests:       libadwaita
+Conflicts:      ghostty
 Conflicts:      ghostty-nightly
 Conflicts:      ghostty-glfw
-Conflicts:      ghostty-glfw-nightly
+Provides:       ghostty-tip-glfw = %{version}-%{release}
+Provides:       ghostty-glfw-tip = %{version}-%{release}
 Packager:       ShinyGil <rockgrub@protonmail.com>
 
 %description
 👻 Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration.
 
-%package        bash-completion
-Summary:        Ghostty Bash completion
-Requires:       bash-completion
-Supplements:    (%{name} and bash-completion)
-Supplements:    (%{name}-glfw and bash-completion)
-
-%description    bash-completion
-%summary.
-
-%package        fish-completion
-Summary:        Ghostty Fish completion
-Requires:       fish
-Supplements:    (%{name} and fish)
-Supplements:    (%{name}-glfw and fish)
-
-%description    fish-completion
-%summary.
-
-%package        zsh-completion
-Summary:        Ghostty Zsh completion
-Requires:       zsh
-Supplements:    (%{name} and zsh)
-Supplements:    (%{name}-glfw and zsh)
-
-%description    zsh-completion
-%summary.
-
-%package        shell-integration
-Summary:        Ghostty shell integration
-Supplements:    %{name}
-Supplements:    %{name}-glfw
-
-%description    shell-integration
-%summary.
-
-%package        terminfo
-Summary:        Ghostty terminfo
-Supplements:    %{name}
-Supplements:    %{name}-glfw
-
-%description    terminfo
-%summary.
-
 %prep
-%autosetup -n ghostty-source -p1
+%autosetup -n ghostty-%{commit} -p1
 
 %build
 
@@ -107,7 +67,13 @@ zig build \
     -Doptimize=ReleaseFast --release=fast \
     --prefix %{buildroot}%{_prefix} --verbose \
     -Dpie=true \
+    -Dapp-runtime=glfw \
     -Demit-docs
+rm -rf %{buildroot}%{bash_completions_dir}/ghostty.bash \
+       %{buildroot}%{fish_completions_dir}/ghostty.fish \
+       %{buildroot}%{zsh_completions_dir}/_ghostty \
+       %{buildroot}%{_datadir}/ghostty/shell-integration \
+       %{buildroot}%{_datadir}/terminfo/*
 
 %files
 %doc README.md
@@ -135,29 +101,6 @@ zig build \
 %_mandir/man1/ghostty.1.gz
 %_mandir/man5/ghostty.5.gz
 
-%files bash-completion
-%bash_completions_dir/ghostty.bash
-
-%files fish-completion
-%fish_completions_dir/ghostty.fish
-
-%files zsh-completion
-%zsh_completions_dir/_ghostty
-
-%files shell-integration
-%_datadir/ghostty/shell-integration/bash/bash-preexec.sh
-%_datadir/ghostty/shell-integration/bash/ghostty.bash
-%_datadir/ghostty/shell-integration/elvish/lib/ghostty-integration.elv
-%_datadir/ghostty/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish
-%_datadir/ghostty/shell-integration/zsh/.zshenv
-%_datadir/ghostty/shell-integration/zsh/ghostty-integration
-
-%files terminfo
-%_datadir/terminfo/ghostty.termcap
-%_datadir/terminfo/ghostty.terminfo
-%_datadir/terminfo/g/ghostty
-%_datadir/terminfo/x/xterm-ghostty
-
 %changelog
-* Thu Dec 26 2024 ShinyGil <rockgrub@protonmail.com>
+* Sun Dec 29 2024 ShinyGil <rockgrub@protonmail.com>
 - Initial package

@@ -3,18 +3,28 @@
 %global commit_date 20241228
 
 Name:           ghostty-nightly
-Version:        %commit_date.%shortcommit
+Version:        %{commit_date}.%{shortcommit}
 Release:        1%?dist
-Summary:        A fast, native terminal emulator written in Zig; this is the Tip (nightly) build
+Summary:        Fast, native, feature-rich terminal emulator pushing modern features. This is the Tip (nightly) build.
 License:        MIT
 URL:            https://ghostty.org/
 Source0:        https://github.com/ghostty-org/ghostty/archive/%{commit}/ghostty-%{commit}.tar.gz
 #Patch0:         pkgconfig-libadwaita-1.diff
 #Patch1:         use-pkg-config.diff
 Patch2:         no-strip.diff
-BuildRequires:  zig
-BuildRequires:  gtk4-devel libadwaita-devel
+BuildRequires:  fontconfig-devel
+BuildRequires:  freetype-devel
+BuildRequires:  glib2-devel
+BuildRequires:  gtk4-devel
+BuildRequires:  harfbuzz-devel
+BuildRequires:  libpng-devel
+BuildRequires:  ncurses
+BuildRequires:  ncurses-devel
+BuildRequires:  oniguruma-devel
 BuildRequires:  pandoc-cli
+BuildRequires:  pixman-devel
+BuildRequires:  zig
+BuildRequires:  zlib-ng-devel
 #BuildRequires:  pkg-config
 #BuildRequires:  pkgconfig(harfbuzz)
 #BuildRequires:  pkgconfig(fontconfig)
@@ -39,6 +49,8 @@ Requires:       pixman
 Requires:       zlib-ng
 Suggests:       libadwaita
 Conflicts:      ghostty
+Conflicts:      ghostty-glfw
+Conflicts:      ghostty-glfw-nightly
 Provides:       ghostty-tip = %{version}-%{release}
 Packager:       ShinyGil <rockgrub@protonmail.com>
 
@@ -47,43 +59,43 @@ Packager:       ShinyGil <rockgrub@protonmail.com>
 
 %package        bash-completion
 Summary:        Ghostty Bash completion
-Requires:       %{name}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
+Supplements:    (ghostty-glfw-nightly and bash-completion)
 
 %description    bash-completion
 %summary.
 
 %package        fish-completion
 Summary:        Ghostty Fish completion
-Requires:       %{name}
 Requires:       fish
 Supplements:    (%{name} and fish)
+Supplements:    (ghostty-glfw-nightly and fish)
 
 %description    fish-completion
 %summary.
 
 %package        zsh-completion
 Summary:        Ghostty Zsh completion
-Requires:       %{name}
 Requires:       zsh
 Supplements:    (%{name} and zsh)
+Supplements:    (ghostty-glfw-nightly and zsh)
 
 %description    zsh-completion
 %summary.
 
 %package        shell-integration
 Summary:        Ghostty shell integration
-Requires:       %{name}
 Supplements:    %{name}
+Supplements:    ghostty-glfw-nightly
 
 %description    shell-integration
 %summary.
 
 %package        terminfo
 Summary:        Ghostty terminfo
-Requires:       %{name}
 Supplements:    %{name}
+Supplements:    ghostty-glfw-nightly
 
 %description    terminfo
 %summary.
