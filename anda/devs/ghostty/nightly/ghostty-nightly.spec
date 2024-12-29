@@ -1,7 +1,6 @@
-%global debug_package %{nil}
-%global commit a8e5eef11cc67f87f445626f9ca2993373774bf8
+%global commit 5293fc9c2f19b7e01472de8c2ef08bef603b754a
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20241226
+%global commit_date 20241228
 
 Name:           ghostty-nightly
 Version:        %commit_date.%shortcommit
@@ -9,12 +8,13 @@ Release:        1%?dist
 Summary:        A fast, native terminal emulator written in Zig; this is the Tip (nightly) build
 License:        MIT
 URL:            https://ghostty.org/
-Source0:        https://github.com/ghostty-org/ghostty/archive/%commit/ghostty-%commit.tar.gz
+Source0:        https://github.com/ghostty-org/ghostty/archive/%{commit}/ghostty-%{commit}.tar.gz
 #Patch0:         pkgconfig-libadwaita-1.diff
 #Patch1:         use-pkg-config.diff
 Patch2:         no-strip.diff
 BuildRequires:  zig
 BuildRequires:  gtk4-devel libadwaita-devel
+BuildRequires:  pandoc-cli
 #BuildRequires:  pkg-config
 #BuildRequires:  pkgconfig(harfbuzz)
 #BuildRequires:  pkgconfig(fontconfig)
@@ -26,10 +26,20 @@ BuildRequires:  gtk4-devel libadwaita-devel
 #BuildRequires:  pkgconfig(spirv-cross)
 #BuildRequires:  pkgconfig(simdutf)
 #BuildRequires:  pkgconfig(libxml-2.0)
-Requires:       %name-terminfo
-Suggests:       %name-shell-integration
+Requires:       %{name}-terminfo = %{version}-%{release}
+Requires:       %{name}-shell-integration = %{version}-%{release}
+Requires:       fontconfig
+Requires:       freetype
+Requires:       glib2
+Requires:       gtk4
+Requires:       harfbuzz
+Requires:       libadwaita
+Requires:       libpng
+Requires:       oniguruma
+Requires:       pixman
+Requires:       zlib-ng
 Conflicts:      ghostty
-Provides:       ghostty-tip
+Provides:       ghostty-tip = %{version}-%{release}
 Packager:       ShinyGil <rockgrub@protonmail.com>
 
 %description
@@ -79,14 +89,17 @@ Supplements:    %{name}
 %summary.
 
 %prep
-%autosetup -n ghostty-%commit -p1
+%autosetup -n ghostty-%{commit} -p1
 
 %build
 
 %install
 zig build \
+    --summary all \
     -Doptimize=ReleaseFast --release=fast \
-    --prefix %buildroot%_prefix --verbose
+    --prefix %{buildroot}%{_prefix} --verbose \
+    -Dpie=true \
+    -Demit-docs
 
 %files
 %doc README.md

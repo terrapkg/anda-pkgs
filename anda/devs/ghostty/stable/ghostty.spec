@@ -4,12 +4,13 @@ Release:        1%?dist
 Summary:        A fast, native terminal emulator written in Zig
 License:        MIT
 URL:            https://ghostty.org/
-Source0:        https://release.files.ghostty.org/%version/ghostty-source.tar.gz
+Source0:        https://release.files.ghostty.org/%{version}/ghostty-source.tar.gz
 #Patch0:         pkgconfig-libadwaita-1.diff
 #Patch1:         use-pkg-config.diff
 Patch2:         no-strip.diff
 BuildRequires:  zig
 BuildRequires:  gtk4-devel libadwaita-devel
+BuildRequires:  pandoc-cli
 #BuildRequires:  pkg-config
 #BuildRequires:  pkgconfig(harfbuzz)
 #BuildRequires:  pkgconfig(fontconfig)
@@ -21,8 +22,18 @@ BuildRequires:  gtk4-devel libadwaita-devel
 #BuildRequires:  pkgconfig(spirv-cross)
 #BuildRequires:  pkgconfig(simdutf)
 #BuildRequires:  pkgconfig(libxml-2.0)
-Requires:       %name-terminfo
-Suggests:       %name-shell-integration
+Requires:       %{name}-terminfo = %{version}-%{release}
+Requires:       %{name}-shell-integration = %{version}-%{release}
+Requires:       fontconfig
+Requires:       freetype
+Requires:       glib2
+Requires:       gtk4
+Requires:       harfbuzz
+Requires:       libadwaita
+Requires:       libpng
+Requires:       oniguruma
+Requires:       pixman
+Requires:       zlib-ng
 Conflicts:      ghostty-nightly
 Packager:       ShinyGil <rockgrub@protonmail.com>
 
@@ -79,8 +90,11 @@ Supplements:    %{name}
 
 %install
 zig build \
+    --summary all \
     -Doptimize=ReleaseFast --release=fast \
-    --prefix %buildroot%_prefix --verbose
+    --prefix %{buildroot}%{_prefix} --verbose \
+    -Dpie=true \
+    -Demit-docs
 
 %files
 %doc README.md
@@ -96,7 +110,6 @@ zig build \
 %_datadir/vim/vimfiles/ftdetect/ghostty.vim
 %_datadir/vim/vimfiles/ftplugin/ghostty.vim
 %_datadir/vim/vimfiles/syntax/ghostty.vim
-%_datadir/terminfo/x/xterm-ghostty
 %_iconsdir/hicolor/16x16/apps/com.mitchellh.ghostty.png
 %_iconsdir/hicolor/16x16@2/apps/com.mitchellh.ghostty.png
 %_iconsdir/hicolor/32x32/apps/com.mitchellh.ghostty.png
