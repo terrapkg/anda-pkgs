@@ -54,7 +54,7 @@ Provides:       ghostty-glfw-tip = %{version}-%{release}
 Packager:       ShinyGil <rockgrub@protonmail.com>
 
 %description
-👻 Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration.
+👻 Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration. Please note GLFW builds are intended for developer use, they may be buggy and lack features. Use at your own risk.
 
 %prep
 %autosetup -n ghostty-%{commit} -p1
