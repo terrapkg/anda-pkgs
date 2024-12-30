@@ -9,7 +9,7 @@
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 
 Name:           rust-terra-maturin
-Version:        1.8.0
+Version:        1.8.1
 Release:        1%?dist
 Summary:        Build and publish Rust crates as Python packages
 
