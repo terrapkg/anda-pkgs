@@ -1,6 +1,6 @@
-%global commit 5293fc9c2f19b7e01472de8c2ef08bef603b754a
+%global commit d5703a57e7d7bcf8dd9bd5711d9f351e5a43446b
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20241228
+%global commit_date 20241230
 
 Name:           ghostty-nightly
 Version:        %commit_date.%shortcommit
