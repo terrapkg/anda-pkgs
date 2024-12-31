@@ -4,8 +4,8 @@
 %global crate mise
 
 Name:           rust-mise
-Version:        2024.12.14
-Release:        %autorelease
+Version:        2024.12.24
+Release:        1%?dist
 Summary:        Front-end to your dev env
 Provides:       mise
 License:        MIT
