@@ -55,18 +55,24 @@ jobs:
       - name: Set up git repository
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
+      - name: CI Setup Script
+        run: |
+          dir=$(dirname ${{ matrix.pkg.pkg }})
+          if [ -f $dir/ci_setup.rhai ]; then
+            anda run $dir/ci_setup.rhai --labels script_path=$dir/ci_setup.rhai
+          fi
+
       - name: Install Build Dependencies
         run: |
           dir=$(dirname ${{ matrix.pkg.pkg }})
           dnf5 builddep -y ${dir}/*.spec
 
       - name: Build with Andaman
-        run: CI=1 anda build ${{ matrix.pkg.pkg }} -rrpmbuild
+        run: anda build ${{ matrix.pkg.pkg }} -rrpmbuild
 
       - name: Build with Andaman (alternate arch)
-        if: |
-          matrix.pkg.arch == 'x86_64' && matrix.pkg.labels['multilib']
-        run: CI=1 anda build ${{ matrix.pkg.pkg }} --package rpm -c mock-configs/terra-${{ matrix.version }}-i386.cfg
+        if: matrix.pkg.arch == 'x86_64' && matrix.pkg.labels['multilib']
+        run: anda build ${{ matrix.pkg.pkg }} --package rpm -c mock-configs/terra-${{ matrix.version }}-i386.cfg
 
       - name: Generating artifact name
         id: art

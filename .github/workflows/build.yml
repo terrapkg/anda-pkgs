@@ -60,8 +60,15 @@ jobs:
       - name: Set up git repository
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
+      - name: CI Setup Script
+        run: |
+          dir=${{ matrix.pkg }}
+          if [ -f $dir/ci_setup.rhai ]; then
+            anda run $dir/ci_setup.rhai --labels script_path=$dir/ci_setup.rhai
+          fi
+
       - name: Build with Andaman
-        run: CI=1 anda build -rrpmbuild anda/${{ matrix.pkg }}pkg
+        run: anda build -rrpmbuild anda/${{ matrix.pkg }}pkg
 
       - name: Generating artifact name
         id: art
