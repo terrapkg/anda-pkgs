@@ -68,7 +68,7 @@ install -Dm644 -t %buildroot%_mandir/man1 doc/generated/swww*1
 %doc CHANGELOG.md README.md
 %license LICENSE LICENSE.dependencies
 %_bindir/swww
-%_bindir/swww-daemon
+%dnl %_bindir/swww-daemon
 %_mandir/man1/%name-clear-cache.1.gz
 %_mandir/man1/%name-clear.1.gz
 %_mandir/man1/%name-daemon.1.gz
