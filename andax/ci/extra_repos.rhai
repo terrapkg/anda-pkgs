@@ -20,6 +20,7 @@ fn install(labels) {
 name=${filename}
 baseurl=${repo}
 enabled=1
+gpgcheck=0
 `);
     }
 }
