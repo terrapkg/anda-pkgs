@@ -57,21 +57,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Checkout latest Mock configs
-        uses: actions/checkout@v4
-        with:
-          repository: terrapkg/mock-configs
-          path: mock-configs
-
       - name: Set up git repository
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      - name: Include custom build template instead of package default
+      - name: CI Setup Script
         run: |
-          cp -v mock-configs/terra.tpl /etc/mock/templates/terra.tpl
+          dir=${{ matrix.pkg }}
+          if [ -f $dir/ci_setup.rhai ]; then
+            anda run $dir/ci_setup.rhai --labels script_path=$dir/ci_setup.rhai
+          fi
 
       - name: Build with Andaman
-        run: anda build anda/${{ matrix.pkg }}pkg --package rpm -c mock-configs/terra-${{ matrix.version }}-${{ matrix.arch }}.cfg
+        run: anda build -rrpmbuild anda/${{ matrix.pkg }}pkg
 
       - name: Generating artifact name
         id: art
