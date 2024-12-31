@@ -85,6 +85,7 @@ zig build \
     --summary all \
     -Doptimize=ReleaseFast --release=fast \
     --prefix %{buildroot}%{_prefix} --verbose \
+    -Dcpu=baseline \
     -Dpie=true \
     -Demit-docs
 
