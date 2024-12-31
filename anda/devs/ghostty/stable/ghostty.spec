@@ -1,27 +1,17 @@
 Name:           ghostty
-Version:        1.0.0
-Release:        1%?dist
-Summary:        A fast, native terminal emulator written in Zig
+Version:        1.0.1
+Release:        2%{?dist}
+Summary:        A fast, native terminal emulator written in Zig.
 License:        MIT
 URL:            https://ghostty.org/
 Source0:        https://release.files.ghostty.org/%{version}/ghostty-source.tar.gz
-#Patch0:         pkgconfig-libadwaita-1.diff
-#Patch1:         use-pkg-config.diff
-Patch2:         no-strip.diff
-BuildRequires:  zig
-BuildRequires:  gtk4-devel libadwaita-devel
+Patch0:         no-strip.diff
+BuildRequires:  gtk4-devel
+BuildRequires:  libadwaita-devel
+BuildRequires:  ncurses
+BuildRequires:  ncurses-devel
 BuildRequires:  pandoc-cli
-#BuildRequires:  pkg-config
-#BuildRequires:  pkgconfig(harfbuzz)
-#BuildRequires:  pkgconfig(fontconfig)
-#BuildRequires:  pkgconfig(libpng)
-#BuildRequires:  pkgconfig(zlib)
-#BuildRequires:  pkgconfig(oniguruma)
-#BuildRequires:  pkgconfig(glslang)
-# Not in Fedora
-#BuildRequires:  pkgconfig(spirv-cross)
-#BuildRequires:  pkgconfig(simdutf)
-#BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  zig
 Requires:       %{name}-terminfo = %{version}-%{release}
 Requires:       %{name}-shell-integration = %{version}-%{release}
 Requires:       fontconfig
@@ -42,7 +32,6 @@ Packager:       ShinyGil <rockgrub@protonmail.com>
 
 %package        bash-completion
 Summary:        Ghostty Bash completion
-Requires:       %{name}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 
@@ -51,7 +40,6 @@ Supplements:    (%{name} and bash-completion)
 
 %package        fish-completion
 Summary:        Ghostty Fish completion
-Requires:       %{name}
 Requires:       fish
 Supplements:    (%{name} and fish)
 
@@ -60,7 +48,6 @@ Supplements:    (%{name} and fish)
 
 %package        zsh-completion
 Summary:        Ghostty Zsh completion
-Requires:       %{name}
 Requires:       zsh
 Supplements:    (%{name} and zsh)
 
@@ -69,7 +56,6 @@ Supplements:    (%{name} and zsh)
 
 %package        shell-integration
 Summary:        Ghostty shell integration
-Requires:       %{name}
 Supplements:    %{name}
 
 %description    shell-integration
@@ -77,7 +63,6 @@ Supplements:    %{name}
 
 %package        terminfo
 Summary:        Ghostty terminfo
-Requires:       %{name}
 Supplements:    %{name}
 
 %description    terminfo
@@ -120,6 +105,7 @@ zig build \
 %_iconsdir/hicolor/256x256/apps/com.mitchellh.ghostty.png
 %_iconsdir/hicolor/256x256@2/apps/com.mitchellh.ghostty.png
 %_iconsdir/hicolor/512x512/apps/com.mitchellh.ghostty.png
+%_iconsdir/hicolor/1024x1024/apps/com.mitchellh.ghostty.png
 %_mandir/man1/ghostty.1.gz
 %_mandir/man5/ghostty.5.gz
 
@@ -149,3 +135,7 @@ zig build \
 %changelog
 * Thu Dec 26 2024 ShinyGil <rockgrub@protonmail.com>
 - Initial package
+* Tue Dec 31 2024 ShinyGil <rockgrub@protonmail.com>
+- Update to 1.0.1
+    * High CVE-2003-0063: Allows execution of arbitrary commands
+    * Medium CVE-2003-0070: Allows execution of arbitrary commands
