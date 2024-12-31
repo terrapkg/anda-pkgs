@@ -1,5 +1,5 @@
 Name:           ghostty
-Version:        1.0.0
+Version:        1.0.1
 Release:        1%?dist
 Summary:        A fast, native terminal emulator written in Zig
 License:        MIT
