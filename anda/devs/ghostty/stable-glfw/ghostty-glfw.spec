@@ -1,7 +1,7 @@
 Name:           ghostty-glfw
 Version:        1.0.0
 Release:        1%{?dist}
-Summary:        Fast, native, feature-rich terminal emulator pushing modern features. This version uses the GLFW rendering library.
+Summary:        A fast, native terminal emulator written in Zig; this version uses the GLFW rendering library.
 License:        MIT
 URL:            https://ghostty.org/
 Source0:        https://release.files.ghostty.org/%{version}/ghostty-source.tar.gz

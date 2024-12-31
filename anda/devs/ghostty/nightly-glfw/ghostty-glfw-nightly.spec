@@ -1,11 +1,11 @@
-%global commit 579de8e491845b52e42d32a5dc3deaeb159ea4bc
+%global commit 478fe3917c2882a1c321f9d1eec808b71698974d
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20241229
+%global commit_date 20241230
 
 Name:           ghostty-glfw-nightly
 Version:        %{commit_date}.%{shortcommit}
 Release:        1%{?dist}
-Summary:        Fast, native, feature-rich terminal emulator pushing modern features. This is the Tip (nightly) build using the GLFW rendering library.
+Summary:        A fast, native terminal emulator written in Zig; this is the Tip (nightly) build using the GLFW rendering library.
 License:        MIT
 URL:            https://ghostty.org/
 Source0:        https://github.com/ghostty-org/ghostty/archive/%{commit}/ghostty-%{commit}.tar.gz
