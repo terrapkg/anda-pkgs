@@ -3,19 +3,29 @@
 %global commit_date 20241230
 
 Name:           ghostty-nightly
-Version:        %{commit_date}.%{shortcommit}
-Release:        1%{?dist}
-Summary:        A fast, native terminal emulator written in Zig; this is the Tip (nightly) build.
+Version:        %commit_date.%shortcommit
+Release:        1%?dist
+Summary:        A fast, native terminal emulator written in Zig; this is the Tip (nightly) build
 License:        MIT
 URL:            https://ghostty.org/
 Source0:        https://github.com/ghostty-org/ghostty/archive/%{commit}/ghostty-%{commit}.tar.gz
-Patch0:         no-strip.diff
-BuildRequires:  gtk4-devel
-BuildRequires:  libadwaita-devel
-BuildRequires:  ncurses
-BuildRequires:  ncurses-devel
-BuildRequires:  pandoc-cli
+#Patch0:         pkgconfig-libadwaita-1.diff
+#Patch1:         use-pkg-config.diff
+Patch2:         no-strip.diff
 BuildRequires:  zig
+BuildRequires:  gtk4-devel libadwaita-devel
+BuildRequires:  pandoc-cli
+#BuildRequires:  pkg-config
+#BuildRequires:  pkgconfig(harfbuzz)
+#BuildRequires:  pkgconfig(fontconfig)
+#BuildRequires:  pkgconfig(libpng)
+#BuildRequires:  pkgconfig(zlib)
+#BuildRequires:  pkgconfig(oniguruma)
+#BuildRequires:  pkgconfig(glslang)
+# Not in Fedora
+#BuildRequires:  pkgconfig(spirv-cross)
+#BuildRequires:  pkgconfig(simdutf)
+#BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       %{name}-terminfo = %{version}-%{release}
 Requires:       %{name}-shell-integration = %{version}-%{release}
 Requires:       fontconfig
@@ -29,8 +39,6 @@ Requires:       pixman
 Requires:       zlib-ng
 Suggests:       libadwaita
 Conflicts:      ghostty
-Conflicts:      ghostty-glfw
-Conflicts:      ghostty-glfw-nightly
 Provides:       ghostty-tip = %{version}-%{release}
 Packager:       ShinyGil <rockgrub@protonmail.com>
 
@@ -39,43 +47,43 @@ Packager:       ShinyGil <rockgrub@protonmail.com>
 
 %package        bash-completion
 Summary:        Ghostty Bash completion
+Requires:       %{name}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
-Supplements:    (ghostty-glfw-nightly and bash-completion)
 
 %description    bash-completion
 %summary.
 
 %package        fish-completion
 Summary:        Ghostty Fish completion
+Requires:       %{name}
 Requires:       fish
 Supplements:    (%{name} and fish)
-Supplements:    (ghostty-glfw-nightly and fish)
 
 %description    fish-completion
 %summary.
 
 %package        zsh-completion
 Summary:        Ghostty Zsh completion
+Requires:       %{name}
 Requires:       zsh
 Supplements:    (%{name} and zsh)
-Supplements:    (ghostty-glfw-nightly and zsh)
 
 %description    zsh-completion
 %summary.
 
 %package        shell-integration
 Summary:        Ghostty shell integration
+Requires:       %{name}
 Supplements:    %{name}
-Supplements:    ghostty-glfw-nightly
 
 %description    shell-integration
 %summary.
 
 %package        terminfo
 Summary:        Ghostty terminfo
+Requires:       %{name}
 Supplements:    %{name}
-Supplements:    ghostty-glfw-nightly
 
 %description    terminfo
 %summary.
@@ -116,7 +124,6 @@ zig build \
 %_iconsdir/hicolor/256x256/apps/com.mitchellh.ghostty.png
 %_iconsdir/hicolor/256x256@2/apps/com.mitchellh.ghostty.png
 %_iconsdir/hicolor/512x512/apps/com.mitchellh.ghostty.png
-%_iconsdir/hicolor/1024x1024/apps/com.mitchellh.ghostty.png
 %_mandir/man1/ghostty.1.gz
 %_mandir/man5/ghostty.5.gz
 
