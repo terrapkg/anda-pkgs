@@ -80,10 +80,13 @@ Supplements:    %{name}
 %build
 
 %install
+DESTDIR="%{buildroot}" \
 zig build \
     --summary all \
-    -Doptimize=ReleaseFast --release=fast \
-    --prefix %{buildroot}%{_prefix} --verbose \
+    --release=fast \
+    --prefix "%{_prefix}" --prefix-lib-dir "%{_libdir}" \
+    --prefix-exe-dir "%{_bindir}" --prefix-include-dir "%{_includedir}" \
+    --verbose \
     -Dcpu=baseline \
     -Dpie=true \
     -Demit-docs
