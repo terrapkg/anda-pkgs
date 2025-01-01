@@ -148,9 +148,10 @@ zig build \
 %_datadir/terminfo/x/xterm-ghostty
 
 %changelog
-* Thu Dec 26 2024 ShinyGil <rockgrub@protonmail.com>
-- Initial package
 * Tue Dec 31 2024 ShinyGil <rockgrub@protonmail.com>
 - Update to 1.0.1
     * High CVE-2003-0063: Allows execution of arbitrary commands
     * Medium CVE-2003-0070: Allows execution of arbitrary commands
+
+* Thu Dec 26 2024 ShinyGil <rockgrub@protonmail.com>
+- Initial package
