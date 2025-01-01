@@ -1,3 +1,6 @@
+# Signing key from https://github.com/ghostty-org/ghostty/blob/main/PACKAGING.md
+%global public_key RWQlAjJC23149WL2sEpT/l0QKy7hMIFhYdQOFy0Z7z7PbneUgvlsnYcV
+
 Name:           ghostty
 Version:        1.0.1
 Release:        2%{?dist}
@@ -5,6 +8,7 @@ Summary:        A fast, native terminal emulator written in Zig.
 License:        MIT
 URL:            https://ghostty.org/
 Source0:        https://release.files.ghostty.org/%{version}/ghostty-%{version}.tar.gz
+Source1:        https://release.files.ghostty.org/%{version}/ghostty-%{version}.tar.gz.minisig
 Patch0:         no-strip.diff
 BuildRequires:  gtk4-devel
 BuildRequires:  libadwaita-devel
@@ -12,6 +16,7 @@ BuildRequires:  ncurses
 BuildRequires:  ncurses-devel
 BuildRequires:  pandoc-cli
 BuildRequires:  zig
+BuildRequires:  minisign
 Requires:       %{name}-terminfo = %{version}-%{release}
 Requires:       %{name}-shell-integration = %{version}-%{release}
 Requires:       fontconfig
@@ -69,7 +74,8 @@ Supplements:    %{name}
 %summary.
 
 %prep
-%autosetup -n ghostty-source -p1
+/usr/bin/minisign -V -m %{SOURCE0} -x %{SOURCE1} -P %{public_key}
+%autosetup -p1
 
 %build
 
