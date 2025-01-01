@@ -21,7 +21,7 @@ jobs:
       pkgs: ${{ steps.parsing.outputs.pkgs }}
       builder: ${{ inputs.custom_builder }}
       arch: ${{ steps.parsing.outputs.arch }}
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-22.04
     steps:
       - name: Parse Input
         id: parsing
@@ -47,7 +47,7 @@ jobs:
         version: ["rawhide"]
         arch: ${{ fromJson(needs.parse.outputs.arch) }}
       fail-fast: false
-    runs-on: ${{ matrix.arch == 'aarch64' && 'ARM64' || needs.parse.outputs.builder && needs.parse.outputs.builder || 'ubuntu-latest' }}
+    runs-on: ${{ matrix.arch == 'aarch64' && 'ARM64' || needs.parse.outputs.builder && needs.parse.outputs.builder || 'ubuntu-22.04' }}
     container:
       image: ghcr.io/terrapkg/builder:f${{ matrix.version }}
       options: --cap-add=SYS_ADMIN --privileged
