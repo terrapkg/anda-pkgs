@@ -4,7 +4,7 @@ Release:        2%{?dist}
 Summary:        A fast, native terminal emulator written in Zig.
 License:        MIT
 URL:            https://ghostty.org/
-Source0:        https://release.files.ghostty.org/%{version}/ghostty-source.tar.gz
+Source0:        https://release.files.ghostty.org/%{version}/ghostty-%{version}.tar.gz
 Patch0:         no-strip.diff
 BuildRequires:  gtk4-devel
 BuildRequires:  libadwaita-devel
