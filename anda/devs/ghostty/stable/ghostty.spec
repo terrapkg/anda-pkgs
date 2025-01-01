@@ -21,16 +21,17 @@ BuildRequires:  zig
 BuildRequires:  minisign
 Requires:       %{name}-terminfo = %{version}-%{release}
 Requires:       %{name}-shell-integration = %{version}-%{release}
-Requires:       fontconfig
-Requires:       freetype
-Requires:       glib2
-Requires:       gtk4
-Requires:       harfbuzz
-Requires:       libpng
-Requires:       oniguruma
-Requires:       pixman
-Requires:       zlib-ng
-Suggests:       libadwaita
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(oniguruma)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  libX11-devel
 Conflicts:      ghostty-nightly
 Packager:       ShinyGil <rockgrub@protonmail.com>
 
