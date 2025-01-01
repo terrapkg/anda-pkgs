@@ -2,6 +2,8 @@
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global commit_date 20250101
 
+%global cache_dir %{builddir}/zig-cache
+
 Name:           ghostty-nightly
 Version:        %{commit_date}.%{shortcommit}
 Release:        1%?dist
@@ -76,6 +78,9 @@ Supplements:    %{name}
 %prep
 %autosetup -n ghostty-%{commit} -p1
 
+# Download everything ahead of time so we can enable system integration mode
+ZIG_GLOBAL_CACHE_DIR="%{cache_dir}" ./nix/build-support/fetch-zig-cache.sh
+
 %build
 
 %install
@@ -83,6 +88,7 @@ DESTDIR="%{buildroot}" \
 zig build \
     --summary all \
     --release=fast \
+    --system "%{cache_dir}/p" \
     --prefix "%{_prefix}" --prefix-lib-dir "%{_libdir}" \
     --prefix-exe-dir "%{_bindir}" --prefix-include-dir "%{_includedir}" \
     --verbose \

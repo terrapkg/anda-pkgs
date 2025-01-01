@@ -1,6 +1,8 @@
 # Signing key from https://github.com/ghostty-org/ghostty/blob/main/PACKAGING.md
 %global public_key RWQlAjJC23149WL2sEpT/l0QKy7hMIFhYdQOFy0Z7z7PbneUgvlsnYcV
 
+%global cache_dir %{builddir}/zig-cache
+
 Name:           ghostty
 Version:        1.0.1
 Release:        2%{?dist}
@@ -77,6 +79,9 @@ Supplements:    %{name}
 /usr/bin/minisign -V -m %{SOURCE0} -x %{SOURCE1} -P %{public_key}
 %autosetup -p1
 
+# Download everything ahead of time so we can enable system integration mode
+ZIG_GLOBAL_CACHE_DIR="%{cache_dir}" ./nix/build-support/fetch-zig-cache.sh
+
 %build
 
 %install
@@ -84,6 +89,7 @@ DESTDIR="%{buildroot}" \
 zig build \
     --summary all \
     --release=fast \
+    --system "%{cache_dir}/p" \
     --prefix "%{_prefix}" --prefix-lib-dir "%{_libdir}" \
     --prefix-exe-dir "%{_bindir}" --prefix-include-dir "%{_includedir}" \
     --verbose \
