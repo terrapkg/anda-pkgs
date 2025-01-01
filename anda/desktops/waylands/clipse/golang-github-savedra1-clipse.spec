@@ -23,10 +23,11 @@ Configurable TUI clipboard manager for Unix.}
 %global godocs          CHANGELOG.md README.md examples resources/library.md\\\
                         resources/test_data/top_secret_credentials.txt
 
-Name:           golang-github-savedra1-clipse
-Release:        %autorelease
+Name:           clipse
+Release:        2%?dist
 Summary:        Configurable TUI clipboard manager for Unix
-Provides:       clipse
+Provides:       golang-github-savedra1-clipse = %version-%release
+Obsoletes:      golang-github-savedra1-clipse < 1.1.0-2
 Packager:       madonuko <mado@fyralabs.com>
 License:        MIT
 URL:            %{gourl}
