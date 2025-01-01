@@ -20,14 +20,15 @@ Multi-Purpose Launcher with a lot of features. Highly Customizable and fast.}
 %global golicenses      LICENSE
 %global godocs          README.md cmd/version.txt
 
-Name:           golang-github-abenz1267-walker
-Release:        1%?dist
+Name:           walker
+Release:        2%?dist
 Summary:        Multi-Purpose Launcher with a lot of features. Highly Customizable and fast
 
 License:        MIT
 URL:            %{gourl}
 Source:         %{gosource}
-Provides:       walker
+Provides:       golang-github-abenz1267-walker = %version-%release
+Obsoletes:      golang-github-abenz1267-walker < 0.11.4-2
 Packager:       madonuko <mado@fyralabs.com>
 Requires:       gtk4-layer-shell
 BuildRequires:  anda-srpm-macros

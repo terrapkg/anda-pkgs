@@ -22,10 +22,11 @@ Wayland clipboard manager with support for multimedia.}
 %global golicenses      LICENSE
 %global godocs          CHANGELOG.md readme.md version.txt
 
-Name:           golang-github-sentriz-cliphist
-Release:        %autorelease
+Name:           cliphist
+Release:        2%?dist
 Summary:        Wayland clipboard manager with support for multimedia
-Provides:       cliphist
+Provides:       golang-github-sentriz-cliphist = %version-%release
+Obsoletes:      golang-github-sentriz-cliphist < 0.6.1-2
 Packager:       madonuko <mado@fyralabs.com>
 License:        GPL-3.0-only
 URL:            %{gourl}
