@@ -56,7 +56,7 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: CI Setup Script
-        if: ${{ !matrix.pkg.labels["mock"] }}
+        if: ${{ !contains(matrix.pkg.labels, "mock") }}
         run: |
           dir=$(dirname ${{ matrix.pkg.pkg }})
           if [ -f $dir/ci_setup.rhai ]; then
@@ -64,7 +64,7 @@ jobs:
           fi
 
       - name: Install Build Dependencies
-        if: ${{ !matrix.pkg.labels["mock"] }}
+        if: ${{ !contains(matrix.pkg.labels, "mock") }}
         run: |
           dir=$(dirname ${{ matrix.pkg.pkg }})
           dnf5 builddep -y ${dir}/*.spec
