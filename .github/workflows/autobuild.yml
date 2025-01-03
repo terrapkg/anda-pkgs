@@ -105,4 +105,4 @@ jobs:
 
       - name: Notify Madoguchi
         if: ${{ ( success() || cancelled() || failure() ) && github.event_name == 'push' }}
-        run: ./.github/workflows/mg.sh ${{ ${{ (success()) && 'true' || 'false' }} ${{matrix.pkg.pkg}} ${{matrix.version}} ${{matrix.pkg.arch}} ${{github.run_id}} ${{secrets.MADOGUCHI_JWT}} $GITHUB_SHA
+        run: ./.github/workflows/mg.sh ${{ (success()) && 'true' || 'false' }} ${{matrix.pkg.pkg}} ${{matrix.version}} ${{matrix.pkg.arch}} ${{github.run_id}} ${{secrets.MADOGUCHI_JWT}} $GITHUB_SHA
