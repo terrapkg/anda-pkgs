@@ -6,7 +6,7 @@
 
 Name:           stardust-xr-gravity
 Version:        %commit_date.%shortcommit
-Release:        2%?dist
+Release:        1%?dist
 Summary:        Utility to launch apps and Stardust XR clients spatially.
 URL:            https://github.com/StardustXR/gravity
 Source0:        %url/archive/%commit/gravity-%commit.tar.gz

@@ -1,6 +1,6 @@
 Name:                   terra-msm-cros-efs-loader
 Version:                1.0.2
-Release:                1%?dist
+Release:                2%?dist
 Summary:                EFS loader for Qualcomm-based Chrome OS devices
 License:                GPL-3.0-or-later
 URL:                    https://gitlab.postmarketos.org/postmarketOS/msm-cros-efs-loader
@@ -24,15 +24,16 @@ EFS loader for Qualcomm-based Chrome OS devices
 %install
 install -Dm755 msm-cros-efs-loader.sh %{buildroot}/usr/bin/msm-cros-efs-loader
 install -Dm644 %SOURCE1 %{buildroot}/%{_unitdir}/msm-cros-efs-loader.service
- 
+
+# These systemd services should be included in the preset file for Ultramarine Linux sc7180 (ARM) Chromebook images
 %post
-%systemd_post 88-ultramarine-chromebook-default.preset
+%systemd_post msm-cros-efs-loader.service
 
 %preun
-%systemd_preun 88-ultramarine-chromebook-default.preset
+%systemd_preun msm-cros-efs-loader.service
 
 %postun
-%systemd_postun_with_restart 88-ultramarine-chromebook-default.preset
+%systemd_postun_with_restart msm-cros-efs-loader.service
  
 %files
 %_bindir/msm-cros-efs-loader
