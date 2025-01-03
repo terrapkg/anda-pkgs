@@ -36,7 +36,6 @@ Source40:       com.nvidia.driver.metainfo.xml
 Source41:       parse-supported-gpus.py
 Source42:       com.nvidia.driver.png
 
-Source99:       nvidia-generate-tarballs.sh
 
 %ifarch x86_64 aarch64
 BuildRequires:  libappstream-glib
