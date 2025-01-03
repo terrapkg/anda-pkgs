@@ -84,7 +84,7 @@ use the "self_update_crate" feature of the "%{crate}" crate.
 %ghost %{crate_instdir}/Cargo.toml
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n %{name}-%{version} -p1
 %cargo_prep_online
 
 %build
