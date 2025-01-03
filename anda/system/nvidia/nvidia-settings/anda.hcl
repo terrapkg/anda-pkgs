@@ -1,5 +1,5 @@
 project "pkg" {
     rpm {
-        spec = "nvidia-xconfig.spec"
+        spec = "nvidia-settings.spec"
     }
 }
