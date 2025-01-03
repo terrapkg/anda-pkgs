@@ -135,5 +135,5 @@ cd gamescope
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.*.json
 
 %changelog
-* Thu Jan 2 2024 Owen-sz <owen@fyralabs.com>
+* Thu Jan 2 2025 Owen-sz <owen@fyralabs.com>
 - Package gamescope, port from Bazzite
