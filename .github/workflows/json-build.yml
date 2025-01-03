@@ -73,6 +73,9 @@ jobs:
             --token ${{ secrets.SUBATOMIC_TOKEN }} \
             terra${{ matrix.version }}-source anda-build/rpm/srpm/*
 
-      - name: Notify Madoguchi
-        if: ( success() || cancelled() || failure() ) && github.event_name == 'push'
-        run: ./.github/workflows/mg.sh ${{ success() && 'true' || 'false' }} ${{matrix.pkg.pkg}} ${{matrix.version}} ${{matrix.pkg.arch}} ${{github.run_id}} ${{secrets.MADOGUCHI_JWT}} $GITHUB_SHA
+      - name: Notify Madoguchi (Success)
+        if: success() && github.event_name == 'push'
+        run: ./.github/workflows/mg.sh true ${{matrix.pkg.pkg}} ${{matrix.version}} ${{matrix.pkg.arch}} ${{github.run_id}} ${{secrets.MADOGUCHI_JWT}} $GITHUB_SHA
+      - name: Notify Madoguchi (Failure)
+        if: ( cancelled() || failure() ) && github.event_name == 'push'
+        run: ./.github/workflows/mg.sh false ${{matrix.pkg.pkg}} ${{matrix.version}} ${{matrix.pkg.arch}} ${{github.run_id}} ${{secrets.MADOGUCHI_JWT}} $GITHUB_SHA
