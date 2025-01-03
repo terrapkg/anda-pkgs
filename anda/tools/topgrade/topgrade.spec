@@ -1,3 +1,4 @@
+%global __brp_mangle_shebangs %{nil}
 %global crate topgrade
 
 Name:           topgrade
