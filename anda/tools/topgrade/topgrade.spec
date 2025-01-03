@@ -28,23 +28,23 @@ runs the appropriate commands to update them.
 %global _description %{expand:
 Upgrade all the things.}
 
-%package        rust-%name-devel
+%package     -n rust-%name-devel
 Summary:        %{summary}
 BuildArch:      noarch
 
-%description    rust-%name-devel %{_description}
+%description -n rust-%name-devel %{_description}
 
 This package contains library source intended for building other packages which
 use the "%{crate}" crate.
 
-%files          rust-%name-devel
-%license %{crate_instdir}/LICENSE
-%doc %{crate_instdir}/BREAKINGCHANGES.md
-%doc %{crate_instdir}/CODE_OF_CONDUCT.md
-%doc %{crate_instdir}/CONTRIBUTING.md
-%doc %{crate_instdir}/README.md
-%doc %{crate_instdir}/RELEASE_PROCEDURE.md
-%doc %{crate_instdir}/SECURITY.md
+%files       -n rust-%name-devel
+%dnl %license %{crate_instdir}/LICENSE
+%dnl %doc %{crate_instdir}/BREAKINGCHANGES.md
+%dnl %doc %{crate_instdir}/CODE_OF_CONDUCT.md
+%dnl %doc %{crate_instdir}/CONTRIBUTING.md
+%dnl %doc %{crate_instdir}/README.md
+%dnl %doc %{crate_instdir}/RELEASE_PROCEDURE.md
+%dnl %doc %{crate_instdir}/SECURITY.md
 %{crate_instdir}/
 
 %package     -n rust-%{name}+default-devel
