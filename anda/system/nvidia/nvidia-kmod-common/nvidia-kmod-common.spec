@@ -16,7 +16,7 @@ URL:            http://www.nvidia.com/object/unix.html
 
 BuildArch:      noarch
 
-Source0:        http://download.nvidia.com/XFree86/Linux-%{_arch}/%{version}/NVIDIA-Linux-%{_arch}-%{version}.run
+Source0:        http://download.nvidia.com/XFree86/Linux-x86_64/%{version}/NVIDIA-Linux-%{_arch}-%{version}.run
 Source17:       nvidia-boot-update
 Source18:       kernel.conf
 Source19:       nvidia-modeset.conf
