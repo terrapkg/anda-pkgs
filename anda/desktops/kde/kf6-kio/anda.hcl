@@ -1,8 +1,8 @@
 project pkg {
 	rpm {
-		spec = "xpadneo.spec"
+		spec = "kf6-kio.spec"
 	}
 	labels {
-		mock = 1
+		extra = 1
 	}
 }
