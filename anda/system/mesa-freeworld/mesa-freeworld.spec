@@ -71,9 +71,9 @@ algorithms and decoding only VC1 algorithm.
 
 Name:           %{srcname}-freeworld
 Summary:        Mesa graphics libraries
-%global ver 24.1.7
+%global ver 24.3.0
 Version:        %{lua:ver = string.gsub(rpm.expand("%{ver}"), "-", "~"); print(ver)}
-Release:        2%{?dist}
+Release:        1%{?dist}
 License:        MIT AND BSD-3-Clause AND SGI-B-2.0
 URL:            http://www.mesa3d.org
 
@@ -226,7 +226,6 @@ export RUSTFLAGS="%build_rustflags"
   -Ddri-drivers-path=%{_libdir}/dri-freeworld \
   -Dva-libs-path=%{_libdir}/dri-freeworld \
   -Dplatforms=x11,wayland \
-  -Ddri3=enabled \
   -Dosmesa=false \
 %if 0%{?with_hardware}
   -Dgallium-drivers=swrast,virgl,nouveau%{?with_r300:,r300}%{?with_crocus:,crocus}%{?with_i915:,i915}%{?with_iris:,iris}%{?with_vmware:,svga}%{?with_radeonsi:,radeonsi}%{?with_r600:,r600}%{?with_freedreno:,freedreno}%{?with_etnaviv:,etnaviv}%{?with_tegra:,tegra}%{?with_vc4:,vc4}%{?with_v3d:,v3d}%{?with_lima:,lima}%{?with_panfrost:,panfrost}%{?with_vulkan_hw:,zink} \
@@ -234,7 +233,6 @@ export RUSTFLAGS="%build_rustflags"
   -Dgallium-drivers=swrast,virgl \
 %endif
   -Dgallium-vdpau=%{?with_vdpau:enabled}%{!?with_vdpau:disabled} \
-  -Dgallium-omx=%{!?with_omx:bellagio}%{?with_omx:disabled} \
   -Dgallium-va=%{?with_va:enabled}%{!?with_va:disabled} \
   -Dgallium-xa=%{!?with_xa:enabled}%{?with_xa:disabled} \
   -Dgallium-nine=%{!?with_nine:true}%{?with_nine:false} \
@@ -325,7 +323,7 @@ rm -fr %{buildroot}%{_libdir}{,/dri-freeworld}/libVkLayer_MESA_device_select.so
 
 %if 0%{?with_va}
 %files -n %{srcname}-va-drivers-freeworld
-%{_libdir}/dri-freeworld/libgallium-%{version}.so
+%{_libdir}/dri-freeworld/libgallium-%{ver}.so
 %{_libdir}/dri-freeworld/nouveau_drv_video.so
 %if 0%{?with_r600}
 %{_libdir}/dri-freeworld/r600_drv_video.so
