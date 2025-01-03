@@ -1,1 +1,0 @@
-rpm.version(gh("topgrade-rs/topgrade"));
