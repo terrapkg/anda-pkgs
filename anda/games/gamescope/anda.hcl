@@ -1,8 +1,8 @@
 project pkg {
-    rpm {
-        spec = "terra-gamescope.spec"
-    }
-    labels {
-        multilib = 1
-    }
+	rpm {
+		spec = "gamescope.spec"
+	}
+	labels {
+		extra = 1
+	}
 }
