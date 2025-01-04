@@ -3,15 +3,6 @@
 %global __brp_ldconfig %{nil}
 %define _build_id_links none
 
-# We're gonna assume for now that we only build for
-# x86_64 + x86 and aarch64
-
-%ifarch x86_64 aarch64
-%global _target_cpu %{_arch}
-%else
-%global _target_cpu x86
-%endif
-
 # systemd 248+
 %if 0%{?rhel} == 8
 %global _systemd_util_dir %{_prefix}/lib/systemd
@@ -26,7 +17,9 @@ License:        NVIDIA License
 URL:            http://www.nvidia.com/object/unix.html
 ExclusiveArch:  %{ix86} x86_64 aarch64
 
-Source0:        http://download.nvidia.com/XFree86/Linux-%{_target_cpu}/%{version}/NVIDIA-Linux-%{_target_cpu}-%{version}.run
+Source0:        %{name}-%{version}-i386.tar.xz
+Source1:        %{name}-%{version}-x86_64.tar.xz
+Source2:        %{name}-%{version}-aarch64.tar.xz
 Source8:        70-nvidia-driver.preset
 Source9:        70-nvidia-driver-cuda.preset
 Source10:       10-nvidia.conf
@@ -36,6 +29,7 @@ Source40:       com.nvidia.driver.metainfo.xml
 Source41:       parse-supported-gpus.py
 Source42:       com.nvidia.driver.png
 
+Source99:       nvidia-generate-tarballs.sh
 
 %ifarch x86_64 aarch64
 BuildRequires:  libappstream-glib
@@ -166,35 +160,17 @@ The NVIDIA X.org X11 driver and associated components.
 %endif
  
 %prep
-sh %{SOURCE0} -x --target nvidia-driver-%{version}-%{_target_cpu}
-%setup -T -D -n nvidia-driver-%{version}-%{_target_cpu}
+%ifarch %{ix86}
+%setup -q -n %{name}-%{version}-i386
+%endif
 
-# Stuff not needed for packages:
-#   - Compiled from source
-#   - Interactive installer files
-#   - GLVND GL libraries
-#   - Internal development only libraries
-rm -fr \
-    nvidia-xconfig* \
-    nvidia-persistenced* \
-    nvidia-modprobe* \
-    libnvidia-gtk* libnvidia-wayland-client* nvidia-settings* \
-    libGLESv1_CM.so.* libGLESv2.so.* libGLdispatch.so.* libOpenGL.so.* libGLX.so.* libGL.so.1* libEGL.so.1* \
-    libnvidia-egl-wayland.so.* libnvidia-egl-gbm.so.* libnvidia-egl-xcb.so.* libnvidia-egl-xlib.so.* \
-    libOpenCL.so.1* \
-    libEGL.so.${VERSION} \
-    nvidia-installer* .manifest make* mk* tls_test* libglvnd_install_checker
+%ifarch x86_64
+%setup -q -T -b 1 -n %{name}-%{version}-x86_64
+%endif
 
-if [ "%{_arch}" == x86_64 ]; then
-    rm -fr \
-      32/libGLESv1_CM.so.* 32/libGLESv2.so.* 32/libGLdispatch.so.* 32/libOpenGL.so.* 32/libGLX.so.* 32/libGL.so.1* 32/libEGL.so.1* \
-      32/libOpenCL.so.1* \
-      32/libGL.so.${VERSION} 32/libEGL.so.${VERSION} \
-      32/libnvidia-egl-wayland.so.* 32/libnvidia-egl-gbm.so.* 32/libnvidia-egl-xcb.so.* 32/libnvidia-egl-xlib.so.*
-
-    cp -f *.json* 32/
-fi
-
+%ifarch aarch64
+%setup -q -T -b 2 -n %{name}-%{version}-aarch64
+%endif
 
 %ifarch x86_64
 %if 0%{?rhel} == 8
