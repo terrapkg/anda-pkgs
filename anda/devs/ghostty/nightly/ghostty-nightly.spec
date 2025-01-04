@@ -1,6 +1,6 @@
-%global commit ab9b14215c234f7dc364047cdb2a7d78eab0c9ac
+%global commit 1baf8928a0bd6ccc2f49e1e9478baab71d49a018
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20250103
+%global commit_date 20250104
 %global cache_dir %{builddir}/zig-cache
 
 Name:           ghostty-nightly
