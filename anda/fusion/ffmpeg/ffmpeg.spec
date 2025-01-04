@@ -287,13 +287,14 @@ and video, MPEG4, h263, ac3, asf, avi, real, mjpeg, and flash.
 This package contains development files for %{name}
 
 %if %{with libavcodec_freeworld}
-%package -n     libavcodec-freeworld
+%package -n     libavcodec
 Summary:        Freeworld libavcodec to complement the distro counterparts
 # Supplements doesn't work well yet - we can rely on comps for now
 #Supplements:    libavcodec-free >= %%{version}
 Conflicts: libavcodec-free < %{version}
+Obsoletes: libavcodec-freeworld
 
-%description -n libavcodec-freeworld
+%description -n libavcodec
 Freeworld libavcodec to complement the distro counterparts
 %endif
 
