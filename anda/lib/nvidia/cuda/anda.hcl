@@ -25,7 +25,7 @@ project = {
     "scripts" = null
     "labels" = {}
     "update" = null
-    "arches" = {"x86_64", "i686"}
+    "arches" = {"x86_64", "i386"}
   }
 }
 config = {
