@@ -71,6 +71,8 @@ Requires:      portaudio%{?_isa} >= 19-16
 
 ExcludeArch:   s390x
 
+Obseletes: audacity-freeworld < %{version}
+
 %description
 Audacity is a cross-platform multitrack audio editor. It allows you to
 record sounds directly or to import files in various formats. It features
