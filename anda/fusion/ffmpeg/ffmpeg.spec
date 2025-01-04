@@ -253,7 +253,7 @@ Conflicts:      libpostproc-free
 Conflicts:      libswresample-free
 Conflicts:      libswscale-free
 %{?_with_vmaf:Recommends:     vmaf-models}
-Provides: libavcodec-freeworld = %{version}-%{release}
+Provides: libavcodec = %{version}-%{release}
 
 %description    libs
 FFmpeg is a complete and free Internet live audio and video
@@ -537,7 +537,7 @@ cp -pa %{buildroot}%{_libdir}/libavcodec.so.* \
 %{_libdir}/lib*.so
 
 %if %{with libavcodec_freeworld}
-%files -n libavcodec-freeworld
+%files -n libavcodec
 %{_sysconfdir}/ld.so.conf.d/%{name}-%{_lib}.conf
 %{_libdir}/%{name}/libavcodec.so.*
 %endif
