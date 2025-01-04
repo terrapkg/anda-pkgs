@@ -1,5 +1,5 @@
 project pkg {
     rpm {
-		spec = "cuda.spec"
+	spec = "cuda.spec"
 	}
 }
