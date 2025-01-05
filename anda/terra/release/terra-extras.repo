@@ -25,4 +25,4 @@ gpgkey=https://repos.fyralabs.com/terra$releasever-extras-source/key.asc
 repo_gpgcheck=1
 enabled=0
 enabled_metadata=0
-priority=150
+priority=80
