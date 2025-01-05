@@ -1,0 +1,9 @@
+project pkg {
+   arches = ["x86_64", "i386"]
+    rpm {
+        spec = "gstreamer1-plugin-libav.spec"
+    }
+    labels {
+        extra = 1
+    }
+}
