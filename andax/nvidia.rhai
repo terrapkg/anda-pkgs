@@ -1,12 +1,14 @@
 // NVIDIA website parser module
 // This module is used to parse the NVIDIA website for the latest driver version
 
-
-fn nvidia_component_version(component) {
+fn nvidia_component_list() {
     let series = "12.6.3";
     let url = `https://developer.download.nvidia.com/compute/cuda/redist/redistrib_${series}.json`;
-    let json = get(url).json();
-    return json[component]["version"];
+    return get(url).json();
+}
+fn nvidia_component_version(component) {
+    let components = nvidia_component_list();
+    return components[component]["version"];
 }
 
 fn nvidia_driver_version() {
