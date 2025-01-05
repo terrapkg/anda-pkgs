@@ -13,6 +13,8 @@ Conflicts: %{realname}
 
 Source0: https://github.com/audacity/audacity/releases/download/Audacity-%{version}/audacity-sources-%{version}.tar.gz
 
+Obseletes: audacity-freeworld < %{version}
+
 # manual can be installed from the base Fedora Audacity package.
 
 BuildRequires: cmake
@@ -70,8 +72,6 @@ Recommends:    ffmpeg-libs
 Requires:      portaudio%{?_isa} >= 19-16
 
 ExcludeArch:   s390x
-
-Obseletes: audacity-freeworld < %{version}
 
 %description
 Audacity is a cross-platform multitrack audio editor. It allows you to
