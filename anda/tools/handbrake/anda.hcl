@@ -1,5 +1,8 @@
 project pkg {
 	rpm {
-		spec = "terra-HandBrake.spec"
+		spec = "HandBrake.spec"
+	}
+	labels {
+		extra = 1
 	}
 }

@@ -292,7 +292,7 @@ Summary:        Freeworld libavcodec to complement the distro counterparts
 # Supplements doesn't work well yet - we can rely on comps for now
 #Supplements:    libavcodec-free >= %%{version}
 Conflicts: libavcodec-free < %{version}
-Obsoletes: libavcodec-freeworld
+Obsoletes: libavcodec-freeworld < %{version}
 
 %description -n libavcodec
 Freeworld libavcodec to complement the distro counterparts
