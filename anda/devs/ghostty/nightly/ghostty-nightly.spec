@@ -1,17 +1,16 @@
-%global commit 94599102e9fb8247af08cbbbcb7ee25e3d31e1bd
+%global commit 0306c592a7dbaa394da481ab2219b3bcd2b8b48f
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20250102
+%global commit_date 20250105
 
 %global cache_dir %{builddir}/zig-cache
 
 Name:           ghostty-nightly
 Version:        %{commit_date}.%{shortcommit}
-Release:        1%{?dist}
+Release:        1%?dist
 Summary:        A fast, native terminal emulator written in Zig; this is the Tip (nightly) build.
 License:        MIT AND MPL-2.0 AND OFL-1.1
 URL:            https://ghostty.org/
 Source0:        https://github.com/ghostty-org/ghostty/archive/%{commit}/ghostty-%{commit}.tar.gz
-Patch0:         no-strip.diff
 BuildRequires:  gtk4-devel
 BuildRequires:  libadwaita-devel
 BuildRequires:  ncurses
@@ -94,6 +93,7 @@ zig build \
     --prefix-exe-dir "%{_bindir}" --prefix-include-dir "%{_includedir}" \
     --verbose \
     -Dcpu=baseline \
+    -Dstrip=false \
     -Dpie=true \
     -Demit-docs
 
@@ -150,8 +150,8 @@ zig build \
 %changelog
 * Tue Dec 31 2024 ShinyGil <rockgrub@protonmail.com>
 - Update to 20241231.3f7c3af
-    * High CVE-2003-0063: Allows execution of arbitrary commands
-    * Medium CVE-2003-0070: Allows execution of arbitrary commands
+ * High CVE-2003-0063: Allows execution of arbitrary commands
+ * Medium CVE-2003-0070: Allows execution of arbitrary commands
 
 * Thu Dec 26 2024 ShinyGil <rockgrub@protonmail.com>
 - Initial package
