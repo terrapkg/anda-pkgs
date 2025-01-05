@@ -45,56 +45,5 @@ install -m 0755 -p -D bin/nvdisasm %{buildroot}%{_bindir}/nvdisasm
 %{_bindir}/nvdisasm
 
 %changelog
-* Fri Dec 13 2024 Simone Caronni <negativo17@gmail.com> - 1:12.6.77-1
-- Update to 12.6.77.
-
-* Thu Sep 19 2024 Simone Caronni <negativo17@gmail.com> - 1:12.6.68-1
-- Update to 12.6.68.
-
-* Thu Jul 11 2024 Simone Caronni <negativo17@gmail.com> - 1:12.5.39-1
-- Update to 12.5.39.
-
-* Tue Mar 12 2024 Simone Caronni <negativo17@gmail.com> - 1:12.4.99-1
-- Update to 12.4.99.
-- Drop ppc64le.
-
-* Tue Nov 28 2023 Simone Caronni <negativo17@gmail.com> - 1:12.3.101-1
-- Update to 12.3.101.
-
-* Thu Sep 28 2023 Simone Caronni <negativo17@gmail.com> - 1:12.2.140-1
-- Update to 12.2.140.
-
-* Tue Jul 11 2023 Simone Caronni <negativo17@gmail.com> - 1:12.2.53-1
-- Update to 12.2.53.
-
-* Thu Jun 08 2023 Simone Caronni <negativo17@gmail.com> - 1:12.1.105-1
-- Update to 12.1.105.
-
-* Tue Apr 11 2023 Simone Caronni <negativo17@gmail.com> - 1:12.1.55-1
-- Update to 12.1.55.
-
-* Sat Feb 25 2023 Simone Caronni <negativo17@gmail.com> - 1:12.0.140-1
-- Update to 12.0.140.
-
-* Tue Dec 13 2022 Simone Caronni <negativo17@gmail.com> - 1:12.0.76-1
-- Update to 12.0.76.
-
-* Fri Nov 11 2022 Simone Caronni <negativo17@gmail.com> - 1:11.8.86-1
-- Update to 11.8.86.
-- Use aarch64 archive in place of sbsa.
-
-* Sun Sep 04 2022 Simone Caronni <negativo17@gmail.com> - 1:11.7.91-1
-- Update to 11.7.91.
-
-* Thu Jun 23 2022 Simone Caronni <negativo17@gmail.com> - 1:11.7.50-1
-- Update to 11.7.50.
-
-* Thu Mar 31 2022 Simone Caronni <negativo17@gmail.com> - 1:11.6.124-1
-- Update to 11.6.124 (CUDA 11.6.2).
-
-* Tue Mar 08 2022 Simone Caronni <negativo17@gmail.com> - 1:11.6.104-1
-- Update to 11.6.104 (CUDA 11.6.1).
-
-* Tue Jan 25 2022 Simone Caronni <negativo17@gmail.com> - 1:11.6.55-1
-- First build with the new tarball components.
+%autochangelog
 

@@ -101,58 +101,5 @@ sed -i \
 %{_libdir}/libcufftw_static.a
 
 %changelog
-* Fri Dec 13 2024 Simone Caronni <negativo17@gmail.com> - 2:11.3.0.4-1
-- Update to 11.3.0.4.
-
-* Thu Sep 19 2024 Simone Caronni <negativo17@gmail.com> - 2:11.2.6.59-1
-- Update to 11.2.6.59.
-
-* Thu Jul 11 2024 Simone Caronni <negativo17@gmail.com> - 2:11.2.3.61-1
-- Update to 11.2.3.61.
-
-* Tue Mar 12 2024 Simone Caronni <negativo17@gmail.com> - 2:11.2.0.44-1
-- Update to 11.2.0.44.
-
-* Tue Mar 12 2024 Simone Caronni <negativo17@gmail.com> - 2:11.0.12.1-2
-- Drop ppc64le.
-
-* Tue Nov 28 2023 Simone Caronni <negativo17@gmail.com> - 2:11.0.12.1-1
-- Update to 11.0.12.1.
-
-* Thu Sep 28 2023 Simone Caronni <negativo17@gmail.com> - 2:11.0.8.103-1
-- Update to 11.0.8.103.
-
-* Tue Jul 11 2023 Simone Caronni <negativo17@gmail.com> - 2:11.0.8.15-1
-- Update to 11.0.8.15.
-
-* Thu Jun 08 2023 Simone Caronni <negativo17@gmail.com> - 2:11.0.2.54-1
-- Update to 11.0.2.54.
-
-* Tue Apr 11 2023 Simone Caronni <negativo17@gmail.com> - 2:11.0.2.4-1
-- Update to 11.0.2.4.
-
-* Sat Feb 25 2023 Simone Caronni <negativo17@gmail.com> - 2:11.0.1.95-1
-- Update to 11.0.1.95.
-
-* Tue Dec 13 2022 Simone Caronni <negativo17@gmail.com> - 2:11.0.0.21-1
-- Update to 11.0.0.21.
-
-* Fri Nov 11 2022 Simone Caronni <negativo17@gmail.com> - 2:10.9.0.58-1
-- Update to 10.9.0.58.
-- Use aarch64 archive in place of sbsa.
-
-* Sun Sep 04 2022 Simone Caronni <negativo17@gmail.com> - 2:10.7.2.91-1
-- Update to 10.7.2.91.
-
-* Thu Jun 23 2022 Simone Caronni <negativo17@gmail.com> - 2:10.7.2.50-1
-- Update to 10.7.2.50.
-
-* Thu Mar 31 2022 Simone Caronni <negativo17@gmail.com> - 2:10.7.2.124-1
-- Update to 10.7.2.124 (CUDA 11.6.2).
-
-* Tue Mar 08 2022 Simone Caronni <negativo17@gmail.com> - 2:10.7.1.112-1
-- Update to 10.7.1.112 (CUDA 11.6.1).
-
-* Wed Jan 26 2022 Simone Caronni <negativo17@gmail.com> - 2:10.7.0.55-1
-- First build with the new tarball components.
+%autochangelog
 

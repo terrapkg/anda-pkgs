@@ -88,15 +88,5 @@ sed -i \
 %{_libdir}/libnvfatbin_static.a
 
 %changelog
-* Fri Dec 13 2024 Simone Caronni <negativo17@gmail.com> - 1:12.6.77-1
-- Update to 12.6.77.
-
-* Thu Sep 19 2024 Simone Caronni <negativo17@gmail.com> - 1:12.6.68-1
-- Update to 12.6.68.
-
-* Thu Jul 11 2024 Simone Caronni <negativo17@gmail.com> - 1:12.5.82-1
-- Update to 12.5.82.
-
-* Thu Mar 14 2024 Simone Caronni <negativo17@gmail.com> - 1:12.4.99-1
-- First build.
+%autochangelog
 

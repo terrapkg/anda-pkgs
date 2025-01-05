@@ -83,52 +83,5 @@ sed -i \
 %{_libdir}/libnvjpeg_static.a
 
 %changelog
-* Thu Sep 19 2024 Simone Caronni <negativo17@gmail.com> - 1:12.3.3.54-1
-- Update to 12.3.3.54.
-
-* Thu Jul 11 2024 Simone Caronni <negativo17@gmail.com> - 1:12.3.2.81-1
-- Update to 12.3.2.81.
-
-* Tue Mar 12 2024 Simone Caronni <negativo17@gmail.com> - 1:12.3.1.89-1
-- Update to 12.3.1.89.
-- Drop ppc64le.
-
-* Tue Nov 28 2023 Simone Caronni <negativo17@gmail.com> - 1:12.3.0.81-1
-- Update to 12.3.0.81.
-
-* Thu Sep 28 2023 Simone Caronni <negativo17@gmail.com> - 1:12.2.2.4-1
-- Update to 12.2.2.4.
-
-* Tue Jul 11 2023 Simone Caronni <negativo17@gmail.com> - 1:12.1.1.14-1
-- Update to 12.1.1.14.
-
-* Thu Jun 08 2023 Simone Caronni <negativo17@gmail.com> - 1:12.2.0.2-1
-- Update to 12.2.0.2.
-
-* Tue Apr 11 2023 Simone Caronni <negativo17@gmail.com> - 1:12.1.0.39-1
-- Update to 12.1.0.39.
-
-* Sat Feb 25 2023 Simone Caronni <negativo17@gmail.com> - 1:12.0.1.102-1
-- Update to 12.0.1.102.
-
-* Tue Dec 13 2022 Simone Caronni <negativo17@gmail.com> - 1:12.0.0.28-1
-- Update to 12.0.0.28.
-
-* Fri Nov 11 2022 Simone Caronni <negativo17@gmail.com> - 1:11.9.0.86-1
-- Update to 11.9.0.86.
-
-* Sun Sep 04 2022 Simone Caronni <negativo17@gmail.com> - 1:11.8.0.2-1
-- Update to 11.8.0.2.
-
-* Thu Jun 23 2022 Simone Caronni <negativo17@gmail.com> - 1:11.7.2.34-1
-- Update to 11.7.2.34.
-
-* Thu Mar 31 2022 Simone Caronni <negativo17@gmail.com> - 1:11.6.2.124-1
-- Update to 11.6.2.124 (CUDA 11.6.2).
-
-* Tue Mar 08 2022 Simone Caronni <negativo17@gmail.com> - 1:11.6.1.112-1
-- Update to 11.6.1.112 (CUDA 11.6.1).
-
-* Wed Jan 26 2022 Simone Caronni <negativo17@gmail.com> - 1:11.6.0.55-1
-- First build with the new tarball components.
+%autochangelog
 

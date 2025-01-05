@@ -8,7 +8,7 @@ Name:           libcudla
 Epoch:          1
 Version:        12.6.77
 Release:        1%{?dist}
-Summary:        NVIDIA CUDA Deep Learning Accelerator (DLA) engines (Jetson Xavier + Orin)
+Summary:        NVIDIA CUDA Deep Learning Accelerator (DLA) engines (Jetson Xavier and Orin)
 License:        CUDA Toolkit
 URL:            https://developer.nvidia.com/cuda-toolkit
 ExclusiveArch:  aarch64
@@ -17,8 +17,7 @@ Source0:        https://developer.download.nvidia.com/compute/cuda/redist/%{name
 Source1:        cudla.pc
 
 %description
-Low-level driver for the Deep Learning Accelerator (DLA) engine for Jetson
-Xavier + Orin boards.
+Low-level driver for the Deep Learning Accelerator (DLA) engine for Jetson Xavier and Orin boards.
 
 %package devel
 Summary:        Development files for CUDA Deep Learning Accelerator (DLA) engines
@@ -26,8 +25,7 @@ Requires:       %{name}%{_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 Conflicts:      %{name}-devel-%{major_package_version} < %{?epoch:%{epoch}:}%{version}
 
 %description devel
-This package provides development files for the CUDA Deep Learning Accelerator
-(DLA) engines.
+This package provides development files for the CUDA Deep Learning Accelerator (DLA) engines.
 
 %prep
 %autosetup -n %{name}-linux-aarch64-%{version}-archive
@@ -59,14 +57,4 @@ sed -i \
 %{_libdir}/pkgconfig/cudla.pc
 
 %changelog
-* Fri Dec 13 2024 Simone Caronni <negativo17@gmail.com> - 1:12.6.77-1
-- Update to 12.6.77.
-
-* Thu Sep 19 2024 Simone Caronni <negativo17@gmail.com> - 1:12.6.68-1
-- Update to 12.6.68.
-
-* Thu Jul 11 2024 Simone Caronni <negativo17@gmail.com> - 1:12.5.82-1
-- Update to 12.5.82.
-
-* Wed Mar 13 2024 Simone Caronni <negativo17@gmail.com> - 1:12.4.99-1
-- First build.
+%autochangelog

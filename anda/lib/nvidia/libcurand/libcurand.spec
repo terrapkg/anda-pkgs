@@ -99,56 +99,5 @@ sed -i \
 %{_libdir}/libcurand_static.a
 
 %changelog
-* Fri Dec 13 2024 Simone Caronni <negativo17@gmail.com> - 2:10.3.7.77-1
-- Update to 10.3.7.77.
-
-* Thu Sep 19 2024 Simone Caronni <negativo17@gmail.com> - 2:10.3.7.68-1
-- Update to 10.3.7.68.
-
-* Thu Jul 11 2024 Simone Caronni <negativo17@gmail.com> - 2:10.3.6.82-1
-- Update to 10.3.6.82.
-
-* Tue Mar 12 2024 Simone Caronni <negativo17@gmail.com> - 2:10.3.5.119-1
-- Update to 10.3.5.119.
-- Drop ppc64le.
-
-* Sat Jan 06 2024 Simone Caronni <negativo17@gmail.com> - 2:10.3.4.107-1
-- Update to 10.3.4.107.
-
-* Tue Nov 28 2023 Simone Caronni <negativo17@gmail.com> - 2:10.3.4.101-1
-- Update to 10.3.4.101.
-
-* Thu Sep 28 2023 Simone Caronni <negativo17@gmail.com> - 2:10.3.3.141-1
-- Update to 10.3.3.141.
-
-* Tue Jul 11 2023 Simone Caronni <negativo17@gmail.com> - 2:10.3.3.53-1
-- Update to 10.3.3.53.
-
-* Thu Jun 08 2023 Simone Caronni <negativo17@gmail.com> - 2:10.3.2.106-1
-- Update to 10.3.2.106.
-
-* Tue Apr 11 2023 Simone Caronni <negativo17@gmail.com> - 2:10.3.2.56-1
-- Update to 10.3.2.56.
-
-* Sat Feb 25 2023 Simone Caronni <negativo17@gmail.com> - 2:10.3.1.124-1
-- Update to 10.3.1.124.
-
-* Tue Dec 13 2022 Simone Caronni <negativo17@gmail.com> - 2:10.3.1.50-1
-- Update to 10.3.1.50.
-
-* Fri Nov 11 2022 Simone Caronni <negativo17@gmail.com> - 2:10.3.0.86-1
-- Update to 10.3.0.86.
-- Use aarch64 archive in place of sbsa.
-
-* Sun Sep 04 2022 Simone Caronni <negativo17@gmail.com> - 2:10.2.10.91-1
-- Update to 10.2.10.91.
-
-* Thu Jun 23 2022 Simone Caronni <negativo17@gmail.com> - 2:10.2.10.50-1
-- Update to 10.2.10.50.
-
-* Thu Mar 31 2022 Simone Caronni <negativo17@gmail.com> - 2:10.2.9.124-1
-- Update to 10.2.9.124 (CUDA 11.6.2).
-
-* Wed Jan 26 2022 Simone Caronni <negativo17@gmail.com> - 2:10.2.9.55-1
-- First build with the new tarball components.
+%autochangelog
 

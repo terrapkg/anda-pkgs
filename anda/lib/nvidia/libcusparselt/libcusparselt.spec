@@ -76,30 +76,4 @@ install -p -m0644 include/cusparseLt.h %{buildroot}%{_includedir}/
 %{_libdir}/libcusparseLt_static.a
 
 %changelog
-* Sat Mar 16 2024 Simone Caronni <negativo17@gmail.com> - 0.6.0.6-1
-- Update to 0.6.0.6.
-
-* Sat Jan 06 2024 Simone Caronni <negativo17@gmail.com> - 0.5.2.1-1
-- Update to 0.5.2.1.
-
-* Wed Nov 29 2023 Simone Caronni <negativo17@gmail.com> - 0.5.0.1-1
-- Update to 0.5.0.1.
-
-* Thu Sep 28 2023 Simone Caronni <negativo17@gmail.com> - 0.4.0.7-1
-- Update to 0.4.0.7.
-
-* Tue Apr 11 2023 Simone Caronni <negativo17@gmail.com> - 0.3.0.3-2
-- Fix symlinks.
-- Update SPEC file.
-
-* Fri Nov 11 2022 Simone Caronni <negativo17@gmail.com> - 0.3.0.3-1
-- Update to 0.3.0.3.
-
-* Wed Feb 02 2022 Simone Caronni <negativo17@gmail.com> - 0.2.0.1-2
-- Rename to libcusparselt.
-
-* Tue Nov 02 2021 Simone Caronni <negativo17@gmail.com> - 0.2.0.1-1
-- Update to 0.2.0.1.
-
-* Wed Jul 28 2021 Simone Caronni <negativo17@gmail.com> - 0.1.0.2-1
-- First build.
+%autochangelog
