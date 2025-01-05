@@ -7,5 +7,4 @@ project pkg {
 
         extra = 1
     }
-    arches = ["x86_64", "i386", "aarch64"]
 }
