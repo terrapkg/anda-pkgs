@@ -13,7 +13,7 @@ Conflicts: %{realname}
 
 Source0: https://github.com/audacity/audacity/releases/download/Audacity-%{version}/audacity-sources-%{version}.tar.gz
 
-Obseletes: audacity-freeworld < %{version}
+Obsoletes: audacity-freeworld < %{version}
 
 # manual can be installed from the base Fedora Audacity package.
 
