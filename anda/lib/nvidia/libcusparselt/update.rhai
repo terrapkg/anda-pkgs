@@ -1,3 +1,3 @@
 import "andax/nvidia.rhai" as nvidia;
 
-rpm.version(nvidia::nvidia_component_version("libcusparselt"));
+rpm.version(nvidia::nvidia_component_version("libcusparse"));
