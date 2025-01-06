@@ -1,5 +1,5 @@
 project pkg {
-   arches = ["x86_64", "i386"]
+   arches = ["x86_64"]
     rpm {
         spec = "broadcom-wl.spec"
     }

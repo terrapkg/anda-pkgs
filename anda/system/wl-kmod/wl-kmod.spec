@@ -7,7 +7,6 @@
 %endif
 %endif
 %global debug_package %{nil}
-%global AkmodsBuildRequires %{_bindir}/kmodtool, elfutils-libelf-devel
 
 Name:       wl-kmod
 Version:    6.30.223.271
@@ -48,9 +47,10 @@ Patch25:    wl-kmod-026_kernel_6.10_fix_empty_body_in_if_warning.patch
 Patch26:    wl-kmod-027_wpa_supplicant-2.11_add_max_scan_ie_len.patch
 Patch27:    wl-kmod-028_kernel_6.12_adaptation.patch
 ExclusiveArch:  i686 x86_64
-BuildRequires:  %{AkmodsBuildRequires}
+BuildRequires:  kmodtool
+BuildRequires:  elfutils-libelf-devel
 
-%{!?kernels:BuildRequires: gcc, elfutils-libelf-devel, buildsys-build-rpmfusion-kerneldevpkgs-%{?buildforkernels:%{buildforkernels}}%{!?buildforkernels:current}-%{_target_cpu} }
+%{!?kernels:BuildRequires: gcc, elfutils-libelf-devel}
 
 %{expand:%(kmodtool --target %{_target_cpu} --repo rpmfusion --kmodname %{name} --filterfile %{SOURCE11} %{?buildforkernels:--%{buildforkernels}} %{?kernels:--for-kernels "%{?kernels}"} 2>/dev/null) }
 
