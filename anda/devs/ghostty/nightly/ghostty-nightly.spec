@@ -6,9 +6,9 @@
 
 Name:           ghostty-nightly
 Version:        %{commit_date}.%{shortcommit}
-Release:        1%?dist
+Release:        1%{?dist}
 Summary:        A fast, native terminal emulator written in Zig; this is the Tip (nightly) build.
-License:        MIT AND MPL-2.0 AND OFL-1.1
+License:        MIT AND MPL-2.0 AND OFL-1.1 AND (WTFPL OR CC0-1.0) AND Apache-2.0
 URL:            https://ghostty.org/
 Source0:        https://github.com/ghostty-org/ghostty/archive/%{commit}/ghostty-%{commit}.tar.gz
 BuildRequires:  gtk4-devel
@@ -29,6 +29,7 @@ BuildRequires:  pkgconfig(oniguruma)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  libX11-devel
 Conflicts:      ghostty
 Provides:       ghostty-tip = %{version}-%{release}

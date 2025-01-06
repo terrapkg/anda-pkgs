@@ -5,9 +5,9 @@
 
 Name:           ghostty
 Version:        1.0.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        A fast, native terminal emulator written in Zig.
-License:        MIT AND MPL-2.0 AND OFL-1.1
+License:        MIT AND MPL-2.0 AND OFL-1.1 AND (WTFPL OR CC0-1.0) AND Apache-2.0
 URL:            https://ghostty.org/
 Source0:        https://release.files.ghostty.org/%{version}/ghostty-%{version}.tar.gz
 Source1:        https://release.files.ghostty.org/%{version}/ghostty-%{version}.tar.gz.minisig
@@ -31,6 +31,7 @@ BuildRequires:  pkgconfig(oniguruma)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  libX11-devel
 Conflicts:      ghostty-nightly
 Packager:       ShinyGil <rockgrub@protonmail.com>
@@ -152,8 +153,8 @@ zig build \
 %changelog
 * Tue Dec 31 2024 ShinyGil <rockgrub@protonmail.com>
 - Update to 1.0.1
-    * High CVE-2003-0063: Allows execution of arbitrary commands
-    * Medium CVE-2003-0070: Allows execution of arbitrary commands
+ * High CVE-2003-0063: Allows execution of arbitrary commands
+ * Medium CVE-2003-0070: Allows execution of arbitrary commands
 
 * Thu Dec 26 2024 ShinyGil <rockgrub@protonmail.com>
 - Initial package
