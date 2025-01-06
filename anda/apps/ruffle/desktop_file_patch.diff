@@ -1,6 +1,6 @@
 --- a/desktop/packages/linux/rs.ruffle.Ruffle.desktop
 +++ b/desktop/packages/linux/rs.ruffle.Ruffle.desktop
-@@ -47,7 +47,7 @@ Comment[zh_CN]=播放 Flash 游戏和动画
+@@ -54,7 +54,7 @@ Comment[zh_CN]=播放 Flash 游戏和动画
  Comment[zh_TW]=播放 Flash 遊戲和動畫
  Comment=Play Flash games & movies
  Icon=rs.ruffle.Ruffle
@@ -8,4 +8,4 @@
 +Exec=ruffle_desktop %u
  MimeType=application/x-shockwave-flash;application/vnd.adobe.flash.movie
  Categories=AudioVideo;Player;Graphics;Viewer;VectorGraphics;Game
- Keywords[ar]=الفلاش;swf;مشغل;محاكي;رَسْت
+ Keywords[ar]=الفلاش;swf;مشغل;محاكي
