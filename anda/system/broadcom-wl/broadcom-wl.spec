@@ -25,11 +25,10 @@ Source1:    https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/hybrid-v
 Source2:    https://docs.broadcom.com/docs-and-downloads/docs/linux_sta/README_6.30.223.271.txt
 Source3:    broadcom-wl-blacklist.conf
 Source4:    20-wl.conf
-Source5:    api
-Source6:    fedora.readme
-Source7:    com.broadcom.wireless.hybrid.driver.metainfo.xml
-Source8:    generate-modalias-metadata.py
-Source9:    90-broadcom-wl.conf
+Source5:    fedora.readme
+Source6:    com.broadcom.wireless.hybrid.driver.metainfo.xml
+Source7:    generate-modalias-metadata.py
+Source8:    90-broadcom-wl.conf
 BuildArch:  noarch
 Provides:   wl-kmod-common = %{?epoch}:%{version}
 Requires:   wl-kmod >= %{?epoch}:%{version}
@@ -45,7 +44,7 @@ Packaged Broadcom 802.11 Linux STA Driver for Wi-Fi for BCM4311-, BCM4312-, BCM4
 iconv -f iso8859-1 -t UTF8 lib/LICENSE.txt -o lib/LICENSE.txt
 sed -i 's/\r$//' lib/LICENSE.txt
 cp -p %{SOURCE2} .
-cp -p %{SOURCE6} .
+cp -p %{SOURCE5} .
 chmod 644 lib/LICENSE.txt README_6.30.223.271.txt fedora.readme
 
 %build
@@ -56,33 +55,24 @@ install    -m 0755 -d         %{buildroot}%{_modprobe_d}
 install -p -m 0644 %{SOURCE3} %{buildroot}%{_modprobe_d}/
 install    -m 0755 -d         %{buildroot}%{_dracut_conf_d}
 install -p -m 0644 %{SOURCE4} %{buildroot}%{_dracut_conf_d}/
-install    -m 0755 -d         %{buildroot}%{_sysconfdir}/akmods/akmod-wl/
-install -p -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/akmods/akmod-wl/
-%if 0%{?rhel} > 6 || 0%{?fedora} >= 25
 install    -m 0755 -d         %{buildroot}%{_nmlibdir_conf_d}/
-install -p -m 0644 %{SOURCE9} %{buildroot}%{_nmlibdir_conf_d}/
+install -p -m 0644 %{SOURCE8} %{buildroot}%{_nmlibdir_conf_d}/
 install    -m 0755 -d         %{buildroot}%{_metainfodir}/
-install -p -m 0644 %{SOURCE7} %{buildroot}%{_metainfodir}/
+install -p -m 0644 %{SOURCE6} %{buildroot}%{_metainfodir}/
 fn=%{buildroot}%{_metainfodir}/com.broadcom.wireless.hybrid.driver.metainfo.xml
 # appstream-util deletes all comments in the metainfo.xml file, so copyright must be saved and rewritten to the resulting file.
 copyright_string=$(grep Copyright ${fn})
-%if %{with python3}
-python3 %{SOURCE8} README_6.30.223.271.txt "SUPPORTED DEVICES" | xargs appstream-util add-provide ${fn} modalias
-%else
-python %{SOURCE8} README_6.30.223.271.txt "SUPPORTED DEVICES" | xargs appstream-util add-provide ${fn} modalias
-%endif
+python3 %{SOURCE7} README_6.30.223.271.txt "SUPPORTED DEVICES" | xargs appstream-util add-provide ${fn} modalias
 appstream-util validate-relax --nonet ${fn}
 grep -q Copyright ${fn} >/dev/null || sed -i "s%\(^<?xml.*$\)%\1\n${copyright_string}%" ${fn}
-%endif
 
 %files
 %doc README_6.30.223.271.txt fedora.readme
-%doc lib/LICENSE.txt
+%license lib/LICENSE.txt
 %{_metainfodir}/com.broadcom.wireless.hybrid.driver.metainfo.xml
 %config %{_nmlibdir_conf_d}/90-broadcom-wl.conf
 %config(noreplace) %{_modprobe_d}/broadcom-wl-blacklist.conf
 %config(noreplace) %{_dracut_conf_d}/20-wl.conf
-%config(noreplace) %{_sysconfdir}/akmods/akmod-wl/api
 
 %changelog
 %autochangelog
