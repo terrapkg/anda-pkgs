@@ -12,7 +12,7 @@ BuildRequires:  gcc
 BuildRequires:  glib2-devel >= 2.44
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
-BuildRequires:  gstreamer1-plugins-bad-devel >= %{version}
+BuildRequires:  gstreamer1-plugins-bad-freeworld-devel >= %{version}
 BuildRequires:  libvpx-devel
 BuildRequires:  meson >= 0.48.0
 BuildRequires:  pkgconfig(egl)
