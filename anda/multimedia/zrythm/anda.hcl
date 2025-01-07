@@ -3,6 +3,6 @@ project pkg {
         spec = "zrythm.spec"
     }
     labels {
-        extra = 1
+        subrepo = "extras"
     }
 }
