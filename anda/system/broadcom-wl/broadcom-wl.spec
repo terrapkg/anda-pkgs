@@ -1,17 +1,8 @@
-%if 0%{?rhel} > 6 || 0%{?fedora}
- %global        _modprobe_d         %{_prefix}/lib/modprobe.d
- %global        _dracut_conf_d      %{_prefix}/lib/dracut/dracut.conf.d
- %global        _nmlibdir_conf_d    %{_prefix}/lib/NetworkManager/conf.d
-%else #rhel <= 6
- %global        _modprobe_d         %{_sysconfdir}/modprobe.d
- %global        _dracut_conf_d      %{_sysconfdir}/dracut.conf.d
-%endif
+%global        _modprobe_d         %{_prefix}/lib/modprobe.d
+%global        _dracut_conf_d      %{_prefix}/lib/dracut/dracut.conf.d
+%global        _nmlibdir_conf_d    %{_prefix}/lib/NetworkManager/conf.d
+%bcond_without python3
 
-%if 0%{?rhel} > 7 || 0%{?fedora}
- %bcond_without python3
-%else
- %bcond_with python3
-%endif
 
 Name:       broadcom-wl
 Version:    6.30.223.271
