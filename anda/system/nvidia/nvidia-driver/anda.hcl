@@ -6,4 +6,7 @@ project "pkg" {
         pre_script = "nvidia-generate-tarballs.sh"
     }
     arches = ["x86_64", "aarch64", "i386"]
+    labels = {
+        subrepo = "nvidia"
+    }
 }
