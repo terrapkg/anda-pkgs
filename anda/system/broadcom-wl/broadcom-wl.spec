@@ -30,21 +30,12 @@ Source6:    fedora.readme
 Source7:    com.broadcom.wireless.hybrid.driver.metainfo.xml
 Source8:    generate-modalias-metadata.py
 Source9:    90-broadcom-wl.conf
-
 BuildArch:  noarch
 Provides:   wl-kmod-common = %{?epoch}:%{version}
 Requires:   wl-kmod >= %{?epoch}:%{version}
-
 ExcludeArch:    ppc ppc64
-
-%if 0%{?rhel} > 6 || 0%{?fedora} >= 25
-%if %{with python3}
 BuildRequires:    python3
-%else
-BuildRequires:    python
-%endif
 BuildRequires:    libappstream-glib
-%endif
 
 %description
 Packaged Broadcom 802.11 Linux STA Driver for Wi-Fi for BCM4311-, BCM4312-, BCM4313-, BCM4321-, BCM4322-, BCM43142-, BCM43224-, BCM43225-, BCM43227-, BCM43228-, BCM4331-, BCM4360, and -BCM4352-.
@@ -86,15 +77,9 @@ grep -q Copyright ${fn} >/dev/null || sed -i "s%\(^<?xml.*$\)%\1\n${copyright_st
 
 %files
 %doc README_6.30.223.271.txt fedora.readme
-%if 0%{?rhel} > 6 || 0%{?fedora} > 20
-%license lib/LICENSE.txt
-%else
 %doc lib/LICENSE.txt
-%endif
-%if 0%{?rhel} > 6 || 0%{?fedora} >= 25
 %{_metainfodir}/com.broadcom.wireless.hybrid.driver.metainfo.xml
 %config %{_nmlibdir_conf_d}/90-broadcom-wl.conf
-%endif
 %config(noreplace) %{_modprobe_d}/broadcom-wl-blacklist.conf
 %config(noreplace) %{_dracut_conf_d}/20-wl.conf
 %config(noreplace) %{_sysconfdir}/akmods/akmod-wl/api
