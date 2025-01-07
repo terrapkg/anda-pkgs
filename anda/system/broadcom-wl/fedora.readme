@@ -25,7 +25,7 @@ Please read comments in /etc/dracut.conf.d/20-wl.conf file in order to configure
 
 Edit the /etc/dracut.conf.d/20-wl.conf file and comment/uncomment the one line "add_drivers+=" directive depending on your needs.
 
-For examply by CLI with Nano:
+For example by CLI with Nano:
 sudo nano /etc/dracut.conf.d/20-wl.conf
 
 Ctrl+O will save the file, and Ctrl+X will quit Nano.
