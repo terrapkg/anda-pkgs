@@ -5,7 +5,6 @@ project pkg {
 	}
     labels {
 
-        extra = 1
+        subrepo = "mesa"
     }
-    arches = ["x86_64", "i386", "aarch64"]
 }
