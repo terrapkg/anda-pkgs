@@ -29,6 +29,7 @@ Name:           devpod
 Release:        %autorelease
 Summary:        Codespaces but open-source, client-only and unopinionated: Works with any IDE and lets you use any cloud, kubernetes or just localhost docker
 Provides:       golang-github-loft-sh-devpod
+BuildRequires:  anda-srpm-macros
 
 License:        MPL-2.0
 URL:            https://devpod.sh
