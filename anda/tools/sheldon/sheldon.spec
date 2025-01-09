@@ -14,6 +14,7 @@ Source:         %{crates_source}
 
 BuildRequires:  cargo-rpm-macros >= 24
 BuildRequires:  anda-srpm-macros
+BuildRequires:  pkgconfig(openssl)
 
 %global _description %{expand:
 Fast, configurable, shell plugin manager.}
