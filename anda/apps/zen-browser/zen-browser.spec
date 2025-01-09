@@ -65,9 +65,9 @@ BuildRequires:  pkgconfig(nspr)
 
 %prep
 %git_clone https://github.com/zen-browser/desktop %ver
-git config --global user.name "Raboneko"
-git config --global user.email "raboneko@fyralabs.com"
-git config --global --add safe.directory $(pwd)/..
+git config user.name "Raboneko"
+git config user.email "raboneko@fyralabs.com"
+git config --add safe.directory $(pwd)/..
 export MOZBUILD_STATE_PATH=$(pwd)/.mozbuild
 # I don't know why but it seems like we need to use this
 # or else it would use another python version
