@@ -57,7 +57,7 @@ Zsh command-line completion support for %{name}.
 
 %install
 %{cargo_install} &
-(cd daemon && %{cargo_install} &)
+cd daemon && %{cargo_install} &
 wait
 install -Dm644 -T completions/swww.bash %buildroot%bash_completions_dir/swww
 install -Dm644 -T completions/swww.fish %buildroot%fish_completions_dir/swww.fish
@@ -68,7 +68,7 @@ install -Dm644 -t %buildroot%_mandir/man1 doc/generated/swww*1
 %doc CHANGELOG.md README.md
 %license LICENSE LICENSE.dependencies
 %_bindir/swww
-%dnl %_bindir/swww-daemon
+%_bindir/swww-daemon
 %_mandir/man1/%name-clear-cache.1.gz
 %_mandir/man1/%name-clear.1.gz
 %_mandir/man1/%name-daemon.1.gz
