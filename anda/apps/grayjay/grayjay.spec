@@ -9,6 +9,7 @@ License:        SFL-1.1
 URL:            https://grayjay.app/desktop
 %dnl Source0:        https://github.com/futo-org/Grayjay.Desktop/archive/refs/tags/%version.tar.gz
 BuildRequires:  npm dotnet-host
+BuildRequires:  anda-srpm-macros
 BuildRequires:  desktop-file-utils
 
 %description
