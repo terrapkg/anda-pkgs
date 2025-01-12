@@ -19,6 +19,8 @@ Source:         https://src.fedoraproject.org/rpms/yt-dlp/raw/rawhide/f/yt-dlp.s
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
+BuildRequires:  python3dist(hatchling)
+BuildRequires:  python3dist(pip)
 
 %if %{with tests}
 # Needed for %%check
@@ -33,7 +35,6 @@ BuildRequires:  make
 Recommends:     /usr/bin/ffmpeg
 Recommends:     /usr/bin/ffprobe
 
-Provides:       yt-dlp
 Conflicts:      yt-dlp
 
 Suggests:       python3dist(keyring)
