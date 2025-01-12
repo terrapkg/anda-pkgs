@@ -3,4 +3,7 @@ project pkg {
         rpm {
 	    spec = "cuda-gcc.spec"
 	}
+    labels {
+        updbranch = 1
+    }
 }
