@@ -1,7 +1,7 @@
 #bcond_without tests
-%global commit 0b6b7742c2e7f2a1fcb0b54ef3dd484bab404b3f
+%global commit 8346b549150003df988538e54c9d8bc4de568979
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20241226
+%global commit_date 20250112
 %global ver 2024.12.23
 
 Name:           yt-dlp-nightly
@@ -19,6 +19,8 @@ Source:         https://src.fedoraproject.org/rpms/yt-dlp/raw/rawhide/f/yt-dlp.s
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
+BuildRequires:  python3dist(hatchling)
+BuildRequires:  python3dist(pip)
 
 %if %{with tests}
 # Needed for %%check
@@ -33,7 +35,6 @@ BuildRequires:  make
 Recommends:     /usr/bin/ffmpeg
 Recommends:     /usr/bin/ffprobe
 
-Provides:       yt-dlp
 Conflicts:      yt-dlp
 
 Suggests:       python3dist(keyring)
