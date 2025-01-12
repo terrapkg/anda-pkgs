@@ -3,7 +3,7 @@ CONTEXT=$(realpath $(dirname $0))
 set -e
 
 set_vars() {
-   export VERSION=${VERSION:?"VERSION not set"}
+   export VERSION=${VERSION:-"565.77"}
    export DL_SITE=${DL_SITE:-http://download.nvidia.com/XFree86}
    export TEMP_UNPACK=${ARCH}
    export PLATFORM=Linux-${ARCH}
