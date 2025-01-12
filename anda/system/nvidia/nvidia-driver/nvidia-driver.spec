@@ -17,9 +17,9 @@ License:        NVIDIA License
 URL:            http://www.nvidia.com/object/unix.html
 ExclusiveArch:  %{ix86} x86_64 aarch64
 
-Source0:        %{name}-%{version}-i386.tar.xz
-Source1:        %{name}-%{version}-x86_64.tar.xz
-Source2:        %{name}-%{version}-aarch64.tar.xz
+%dnl Source0:        %{name}-%{version}-i386.tar.xz
+%dnl Source1:        %{name}-%{version}-x86_64.tar.xz
+%dnl Source2:        %{name}-%{version}-aarch64.tar.xz
 Source8:        70-nvidia-driver.preset
 Source9:        70-nvidia-driver-cuda.preset
 Source10:       10-nvidia.conf
@@ -41,6 +41,9 @@ BuildRequires:  python3
 %endif
 BuildRequires:  systemd-rpm-macros
 %endif
+
+BuildRequires:  wget
+BuildRequires:  coreutils
 
 Requires:       nvidia-driver-libs%{?_isa} = %{?epoch:%{epoch}:}%{version}
 Requires:       nvidia-kmod-common = %{?epoch:%{epoch}:}%{version}
@@ -160,16 +163,37 @@ The NVIDIA X.org X11 driver and associated components.
 %endif
  
 %prep
+source %{SOURCE99}
+export VERSION=%{version}
+
 %ifarch %{ix86}
-%setup -q -n %{name}-%{version}-i386
+ARCH=x86_64
+set_vars
+run_file_get
+run_file_extract
+cleanup_folder
+create_tarball
+%setup -D -T -n %{name}-%{version}-i386
 %endif
 
 %ifarch x86_64
-%setup -q -T -b 1 -n %{name}-%{version}-x86_64
+export ARCH=x86_64
+set_vars
+run_file_get
+run_file_extract
+cleanup_folder
+create_tarball
+%setup -D -T -n %{name}-%{version}-x86_64
 %endif
 
 %ifarch aarch64
-%setup -q -T -b 2 -n %{name}-%{version}-aarch64
+export ARCH=aarch64
+set_vars
+run_file_get
+run_file_extract
+cleanup_folder
+create_tarball
+%setup -D -T -n %{name}-%{version}-aarch64
 %endif
 
 %ifarch x86_64

@@ -1,9 +1,14 @@
 #!/bin/sh
+# Slightly modified from negativo's tarball generator script
+
+# instead of generating tarballs, we just make this script export
+# the functions
+
 CONTEXT=$(realpath $(dirname $0))
 set -e
 
 set_vars() {
-   export VERSION=${VERSION:-"565.77"}
+   export VERSION=${VERSION:?"VERSION not set"}
    export DL_SITE=${DL_SITE:-http://download.nvidia.com/XFree86}
    export TEMP_UNPACK=${ARCH}
    export PLATFORM=Linux-${ARCH}
@@ -86,26 +91,27 @@ create_tarball() {
 
         printf "Creating tarball $tarball... "
 
-        XZ_OPT='-T0' tar --remove-files -cJf $tarball.tar.xz $tarball
+        # XZ_OPT='-T0' tar --remove-files -cJf $tarball.tar.xz $tarball
 
         printf "OK\n"
 
     done
 }
-pushd $CONTEXT
 
-ARCH=aarch64
-set_vars
-run_file_get
-run_file_extract
-cleanup_folder
-create_tarball
+# pushd $CONTEXT
 
-ARCH=x86_64
-set_vars
-run_file_get
-run_file_extract
-cleanup_folder
-create_tarball
+# ARCH=aarch64
+# set_vars
+# run_file_get
+# run_file_extract
+# cleanup_folder
+# create_tarball
 
-popd
+# ARCH=x86_64
+# set_vars
+# run_file_get
+# run_file_extract
+# cleanup_folder
+# create_tarball
+
+# popd
