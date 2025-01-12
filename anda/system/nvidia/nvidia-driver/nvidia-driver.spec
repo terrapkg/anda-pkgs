@@ -166,33 +166,29 @@ The NVIDIA X.org X11 driver and associated components.
 source %{SOURCE99}
 export VERSION=%{version}
 
+unpack() {
+  set_vars
+  run_file_get
+  run_file_extract
+  cleanup_folder
+  create_tarball
+}
+
 %ifarch %{ix86}
-ARCH=x86_64
-set_vars
-run_file_get
-run_file_extract
-cleanup_folder
-create_tarball
+export ARCH=x86_64
+unpack
 %setup -D -T -n %{name}-%{version}-i386
 %endif
 
 %ifarch x86_64
 export ARCH=x86_64
-set_vars
-run_file_get
-run_file_extract
-cleanup_folder
-create_tarball
+unpack
 %setup -D -T -n %{name}-%{version}-x86_64
 %endif
 
 %ifarch aarch64
 export ARCH=aarch64
-set_vars
-run_file_get
-run_file_extract
-cleanup_folder
-create_tarball
+unpack
 %setup -D -T -n %{name}-%{version}-aarch64
 %endif
 
