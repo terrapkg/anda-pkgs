@@ -1,6 +1,6 @@
 Name:           terra-release
 Version:        42
-Release:        3
+Release:        4
 Summary:        Release package for Terra
 
 License:        MIT
@@ -45,6 +45,9 @@ install -Dpm644 -t %buildroot%_sysconfdir/yum.repos.d %SOURCE3
 %config(noreplace) %{_sysconfdir}/yum.repos.d/terra-mesa.repo
 
 %changelog
+* Sun Jan 12 2025 Cappy Ishihara <cappy@cappuchino.xyz> - 42-4
+- Add NVIDIA and Mesa repository streams
+
 * Fri Oct 25 2024 madonuko <mado@fyralabs.com> - 42-2
 - Add terra-release-extra
 
