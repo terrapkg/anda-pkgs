@@ -27,11 +27,13 @@ Obsoletes: anda-mock-configs < 3-2%{?dist}
 mkdir -p %{buildroot}%{_sysusersdir}
 mkdir -p %{buildroot}%{_sysconfdir}/mock/templates
 
-cp -v terra.tpl %{buildroot}%{_sysconfdir}/mock/templates/
+cp -v terra*.tpl %{buildroot}%{_sysconfdir}/mock/templates/
 cp -v *.cfg %{buildroot}%{_sysconfdir}/mock/
 
 %files
 %config %{_sysconfdir}/mock/templates/terra.tpl
+%config %{_sysconfdir}/mock/templates/terra-el-dev.tpl
+%config %{_sysconfdir}/mock/templates/terra-el.tpl
 %config %{_sysconfdir}/mock/terra-*-x86_64.cfg
 %config %{_sysconfdir}/mock/terra-*-aarch64.cfg
 %config %{_sysconfdir}/mock/terra-*-i386.cfg
