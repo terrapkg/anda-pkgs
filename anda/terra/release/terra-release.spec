@@ -7,6 +7,8 @@ License:        MIT
 URL:            https://terra.fyralabs.com
 Source0:        terra.repo
 Source1:        terra-extras.repo
+Source2:        terra-nvidia.repo
+Source3:        terra-mesa.repo
 BuildArch:      noarch
 
 %dnl We probably shouldn't do this in Rawhide!
@@ -31,12 +33,16 @@ conflict with Fedora.
 %install
 install -D -p -m 0644 -t %{buildroot}%{_sysconfdir}/yum.repos.d %{SOURCE0}
 install -Dpm644 -t %buildroot%_sysconfdir/yum.repos.d %SOURCE1
+install -Dpm644 -t %buildroot%_sysconfdir/yum.repos.d %SOURCE2
+install -Dpm644 -t %buildroot%_sysconfdir/yum.repos.d %SOURCE3
 
 %files
 %config(noreplace) %{_sysconfdir}/yum.repos.d/terra.repo
 
 %files extras
 %config(noreplace) %{_sysconfdir}/yum.repos.d/terra-extras.repo
+%config(noreplace) %{_sysconfdir}/yum.repos.d/terra-nvidia.repo
+%config(noreplace) %{_sysconfdir}/yum.repos.d/terra-mesa.repo
 
 %changelog
 * Fri Oct 25 2024 madonuko <mado@fyralabs.com> - 42-2
