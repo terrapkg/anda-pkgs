@@ -186,6 +186,7 @@ use the "starship-battery" feature of the "%{crate}" crate.
 
 %prep
 %autosetup -n %{crate}-%{version} -p1
+sed -i '/\[dependencies.log\]/,+1s@^version = "0.4.24"$@version = "0.4.22"@' Cargo.toml
 %cargo_prep_online
 
 %build
