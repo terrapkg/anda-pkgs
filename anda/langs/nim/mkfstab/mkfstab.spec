@@ -15,7 +15,7 @@ An alternative to genfstab from Arch Linux. This is a dead simple but faster imp
 
 %build
 nimble setup -y
-nim c %nim_c src/%name
+%nim_c src/%name
 
 %install
 install -Dpm755 src/%name %buildroot%_bindir/%name
