@@ -1,5 +1,5 @@
 Name:           mkfstab
-Version:        0.1.2
+Version:        0.1.3
 Release:        1%?dist
 Summary:        An alternative to genfstab: generate output suitable for addition to /etc/fstab
 License:        MIT
