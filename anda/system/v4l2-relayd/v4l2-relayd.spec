@@ -4,7 +4,7 @@
 
 Name:           v4l2-relayd
 Summary:        Utils for relaying the video stream between two video devices
-Version:        
+Version:        %{commitdate}.%{shortcommit}
 Release:        1%?dist
 License:        GPL-2.0-only
 Source0:        https://gitlab.com/vicamo/v4l2-relayd//-/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
