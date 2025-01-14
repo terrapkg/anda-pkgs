@@ -40,13 +40,10 @@ Provides:       gstreamer1-svt-hevc%{?_isa} = %{?epoch}:%{version}-%{release}
 Obsoletes:      %{name}-free-libs < %{?epoch}:%{version}-%{release}
 Provides:       %{name}-free-libs = %{?epoch}:%{version}-%{release}
 Provides:       %{name}-free-libs%{?_isa} = %{?epoch}:%{version}-%{release}
-
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.62
-
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
-
 BuildRequires:  bzip2-devel
 BuildRequires:  check
 BuildRequires:  exempi-devel
@@ -65,7 +62,6 @@ BuildRequires:  orc-devel >= 0.4.17
 BuildRequires:  srt-devel
 BuildRequires:  vulkan-devel
 BuildRequires:  xvidcore-devel
-
 
 BuildRequires:  pkgconfig(aom)
 BuildRequires:  pkgconfig(avtp)
@@ -122,7 +118,6 @@ BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl) >= 7.55.0
 BuildRequires:  pkgconfig(libdca)
 BuildRequires:  pkgconfig(libdc1394-2) >= 2.2.5
-BuildRequires:  pkgconfig(libde265) >= 0.9
 BuildRequires:  pkgconfig(libdrm) >= 2.4.104
 BuildRequires:  pkgconfig(libexif) >= 0.6.16
 BuildRequires:  pkgconfig(libfreeaptx) >= 0.1.1
@@ -147,10 +142,8 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.8
 BuildRequires:  pkgconfig(lilv-0) >= 0.22
 BuildRequires:  pkgconfig(lrdf)
 BuildRequires:  pkgconfig(ltc) >= 1.1.4
-BuildRequires:  pkgconfig(mjpegtools) >= 2.0.0
 BuildRequires:  pkgconfig(nice) >= 0.1.20
 BuildRequires:  pkgconfig(neon) >= 0.27
-BuildRequires:  pkgconfig(neon) <= 0.33.99
 BuildRequires:  pkgconfig(nettle) >= 3.0
 BuildRequires:  pkgconfig(nice) >= 0.1.14
 BuildRequires:  pkgconfig(openal) >= 1.14

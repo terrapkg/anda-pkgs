@@ -1,4 +1,3 @@
-diff -Naur icamerasrc-9b2f7e3cec27d42a3bf01058b93ae22fed26cc9c.old/src/gstcameraformat.cpp icamerasrc-9b2f7e3cec27d42a3bf01058b93ae22fed26cc9c/src/gstcameraformat.cpp
 --- icamerasrc-9b2f7e3cec27d42a3bf01058b93ae22fed26cc9c.old/src/gstcameraformat.cpp	2024-04-11 05:02:03.000000000 +0200
 +++ icamerasrc-9b2f7e3cec27d42a3bf01058b93ae22fed26cc9c/src/gstcameraformat.cpp	2024-05-07 15:28:47.502046987 +0200
 @@ -159,11 +159,6 @@
@@ -13,7 +12,6 @@ diff -Naur icamerasrc-9b2f7e3cec27d42a3bf01058b93ae22fed26cc9c.old/src/gstcamera
              "format", G_TYPE_STRING, gst_video_format_to_string (GST_VIDEO_FORMAT_P010_10LE), (void *)NULL);
      }
      break;
-diff -Naur icamerasrc-9b2f7e3cec27d42a3bf01058b93ae22fed26cc9c.old/src/utils.cpp icamerasrc-9b2f7e3cec27d42a3bf01058b93ae22fed26cc9c/src/utils.cpp
 --- icamerasrc-9b2f7e3cec27d42a3bf01058b93ae22fed26cc9c.old/src/utils.cpp	2024-04-11 05:02:03.000000000 +0200
 +++ icamerasrc-9b2f7e3cec27d42a3bf01058b93ae22fed26cc9c/src/utils.cpp	2024-05-07 15:35:05.263520367 +0200
 @@ -61,8 +61,7 @@

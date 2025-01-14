@@ -1,10 +1,10 @@
 %global commit 0019b5d8af9d558aa7888218dfeeafef6104277a
-%global date 20241121
+%global date_date 20241121
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           gstreamer1-plugin-icamerasrc
 Summary:        GStreamer 1.0 Intel IPU6 camera plugin
-Version:        %{date}.%{shortcommit}
+Version:        %{commit_date}.%{shortcommit}
 Release:        1%{?dist}
 License:        LGPL-2.1-only
 Source0:        https://github.com/intel/icamerasrc/archive/%{commit}/icamerasrc-%{shortcommit}.tar.gz
