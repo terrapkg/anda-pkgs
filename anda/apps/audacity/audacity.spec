@@ -1,8 +1,8 @@
 %global __requires_exclude ^lib-.*.so            
 %global __provides_exclude ^lib-.*.so
 
-Name:    audacity-freeworld
-Version: Audacity.3.7.1
+Name:    audacity
+Version: 3.7.1
 Release: 1%?dist
 Summary: Multitrack audio editor
 License: GPLv2
@@ -12,6 +12,8 @@ URL:     https://www.audacityteam.org/
 Conflicts: %{realname}
 
 Source0: https://github.com/audacity/audacity/releases/download/Audacity-%{version}/audacity-sources-%{version}.tar.gz
+
+Obsoletes: audacity-freeworld < %{version}
 
 # manual can be installed from the base Fedora Audacity package.
 

@@ -1,6 +1,6 @@
 project pkg {
 	rpm {
-		spec = "HandBrake.spec"
+		spec = "audacity.spec"
 	}
 	labels {
 		extra = 1

@@ -16,11 +16,12 @@
 
 %global desktop_id fr.handbrake.ghb
 
-Name:           terra-HandBrake
+Name:           HandBrake
 Version:        1.6.1
 Release:        1%?dist
 Summary:        An open-source multiplatform video transcoder
 License:        GPL-2.0-or-later
+Obsoletes:      terra-%{name} < %{version}
 URL:            https://handbrake.fr/
 
 %if 0%{?tag:1}
@@ -125,6 +126,7 @@ This package contains the command line version of the program.
 Summary:        An open-source multiplatform video transcoder (GUI)
 Provides:       handbrake-gui = %version-%release
 Requires:       hicolor-icon-theme
+Obsoletes:      terra-%{name}-gui < %{version}
 # needed for reading encrypted DVDs
 %{?fedora:Recommends:     libdvdcss%_isa}
 # needed for live preview

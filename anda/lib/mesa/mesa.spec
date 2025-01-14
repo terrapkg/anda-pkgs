@@ -257,6 +257,7 @@ Recommends:     %{name}-va-drivers%{?_isa}
 Summary:        Mesa-based VA-API video acceleration drivers
 Requires:       %{name}-filesystem%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 Obsoletes:      %{name}-vaapi-drivers < 22.2.0-5
+Obsoletes:      %{name}-va-drivers-freeworld
 
 %description va-drivers
 %{summary}.
@@ -266,6 +267,7 @@ Obsoletes:      %{name}-vaapi-drivers < 22.2.0-5
 %package        vdpau-drivers
 Summary:        Mesa-based VDPAU drivers
 Requires:       %{name}-filesystem%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
+Obsoletes:      %{name}-vdpau-drivers-freeworld
 
 %description vdpau-drivers
 %{summary}.
