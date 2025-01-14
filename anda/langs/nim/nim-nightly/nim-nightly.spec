@@ -1,13 +1,13 @@
 %global csrc_commit 561b417c65791cd8356b5f73620914ceff845d10
-%global commit 21771765a2c1f1fc86d87ad6e032d4050d8a651b
+%global commit 7dfadb8b4e95d09981fbeb01d85b12f23946c3e7
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global ver 2.1.99
-%global commit_date 20240910
+%global ver 2.2.1
+%global commit_date 20241004
 %global debug_package %nil
 
 Name:			nim-nightly
 Version:		%ver^%commit_date.%shortcommit
-Release:		1%?dist
+Release:		3%?dist
 Summary:		Imperative, multi-paradigm, compiled programming language
 License:		MIT and BSD
 URL:			https://nim-lang.org
@@ -123,6 +123,10 @@ cp -a %buildroot%_prefix/lib/nim/lib/*.h %buildroot%_includedir || true
 ln -s %_prefix/lib/nim %buildroot%_prefix/lib/nim/lib || true
 rm -rf %buildroot/nim || true
 rm %buildroot%_bindir/*.bat || true
+
+cp -r dist %buildroot%_prefix/lib/nim/
+# cannot use `ln` here, possibly a nim bug
+cp -r %buildroot%_prefix/lib/nim/dist %buildroot%_datadir/nim/
 
 
 %files
