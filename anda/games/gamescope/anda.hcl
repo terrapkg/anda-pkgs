@@ -4,6 +4,7 @@ project pkg {
 		spec = "gamescope.spec"
 	}
 	labels {
+		mock = 1
 		subrepo = "extras"
 	}
 }
