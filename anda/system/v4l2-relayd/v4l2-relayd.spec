@@ -1,10 +1,10 @@
 %global commit 35a06d89747ff31fbaabf744b7dae585bfa86723
-%global commitdate 20220126
+%global commit_date 20220126
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           v4l2-relayd
 Summary:        Utils for relaying the video stream between two video devices
-Version:        %{commitdate}.%{shortcommit}
+Version:        %{commit_date}.%{shortcommit}
 Release:        1%?dist
 License:        GPL-2.0-only
 Source0:        https://gitlab.com/vicamo/v4l2-relayd//-/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
