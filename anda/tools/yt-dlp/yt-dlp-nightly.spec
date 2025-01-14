@@ -1,11 +1,12 @@
 #bcond_without tests
-%global commit e59c82a74cda5139eb3928c75b0bd45484dbe7f0
+%global commit a3c0321825110d7eb447a6e6f393cec2bade34f9
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20241001
-%global ver 2024.09.27
+%global commit_date 20250113
+%global ver 2025.01.12
 
 Name:           yt-dlp-nightly
-Version:        %ver^%commit_date.%shortcommit
+Version:        %commit_date.git~%shortcommit
+Provides:       yt-dlp-nightly = %ver^%version
 Release:        1%?dist
 Summary:        A command-line program to download videos from online video platforms
 
@@ -18,6 +19,8 @@ Source:         https://src.fedoraproject.org/rpms/yt-dlp/raw/rawhide/f/yt-dlp.s
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
+BuildRequires:  python3dist(hatchling)
+BuildRequires:  python3dist(pip)
 
 %if %{with tests}
 # Needed for %%check
@@ -32,7 +35,6 @@ BuildRequires:  make
 Recommends:     /usr/bin/ffmpeg
 Recommends:     /usr/bin/ffprobe
 
-Provides:       yt-dlp
 Conflicts:      yt-dlp
 
 Suggests:       python3dist(keyring)

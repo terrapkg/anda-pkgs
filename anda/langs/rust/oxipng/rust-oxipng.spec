@@ -6,7 +6,7 @@
 %global crate oxipng
 
 Name:           rust-oxipng
-Version:        9.1.2
+Version:        9.1.3
 Release:        %autorelease
 Summary:        Lossless PNG compression optimizer
 
@@ -16,7 +16,7 @@ Source:         %{crates_source}
 # Automatically generated patch to strip dependencies and normalize metadata
 Patch:          oxipng-fix-metadata-auto.diff
 
-BuildRequires:  anda-srpm-macros cargo-rpm-macros >= 24
+BuildRequires:  mold anda-srpm-macros cargo-rpm-macros >= 24
 
 %global _description %{expand:
 A lossless PNG compression optimizer.}
@@ -33,7 +33,7 @@ License:        # FIXME
 
 %files       -n %{crate}
 %license LICENSE
-#license LICENSE.dependencies
+%license LICENSE.dependencies
 %doc CHANGELOG.md
 %doc MANUAL.txt
 %doc README.md
@@ -145,8 +145,8 @@ use the "zopfli" feature of the "%{crate}" crate.
 
 %build
 %cargo_build
-#{cargo_license_summary}
-#{cargo_license} > LICENSE.dependencies
+%{cargo_license_summary_online}
+%{cargo_license_online} > LICENSE.dependencies
 
 %install
 %cargo_install

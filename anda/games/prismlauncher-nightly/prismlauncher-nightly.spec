@@ -1,11 +1,11 @@
 %global real_name prismlauncher
 %global nice_name PrismLauncher
 
-%global commit 44b4262f3ce037140cb6415cea27ed44bd03164d
+%global commit f4f1d5f0d7ef6f518843ac5ecfec3ed04ddfaf6e
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global libnbtplusplus_commit a5e8fd52b8bf4ab5d5bcc042b2a247867589985f
+%global libnbtplusplus_commit 23b955121b8217c1c348a9ed2483167a6f3ff4ad
 
-%global commit_date 20241002
+%global commit_date 20250109
 %global snapshot_info %{commit_date}.%{shortcommit}
 
 %bcond_without qt6
@@ -30,7 +30,7 @@ Name:             prismlauncher-nightly
 %else
 Name:             prismlauncher-qt5-nightly
 %endif
-Version:          9.0^%{snapshot_info}
+Version:          10.0^%{snapshot_info}
 Release:          1%?dist
 Summary:          Minecraft launcher with ability to manage multiple instances
 License:          GPL-3.0-only AND Apache-2.0 AND LGPL-3.0-only AND GPL-3.0-or-later AND GPL-2.0-or-later AND ISC AND OFL-1.1 AND LGPL-2.1-only AND MIT AND BSD-2-Clause-FreeBSD AND BSD-3-Clause AND LGPL-3.0-or-later
@@ -43,7 +43,16 @@ Patch0:           0001-find-cmark-with-pkgconfig.patch
 BuildRequires:    cmake >= 3.15
 BuildRequires:    extra-cmake-modules
 BuildRequires:    gcc-c++
+# JDKs less than the most recent release & LTS are no longer in the default
+# Fedora repositories
+# Make sure you have Adoptium's repositories enabled
+# https://fedoraproject.org/wiki/Changes/ThirdPartyLegacyJdks
+# https://adoptium.net/installation/linux/#_centosrhelfedora_instructions
+%if 0%{?fedora} > 41
+BuildRequires:    temurin-17-jdk
+%else
 BuildRequires:    java-17-openjdk-devel
+%endif
 BuildRequires:    desktop-file-utils
 BuildRequires:    libappstream-glib
 BuildRequires:    tomlplusplus-devel
@@ -77,9 +86,11 @@ Requires(postun): desktop-file-utils
 Requires:         qt%{qt_version}-qtimageformats
 Requires:         qt%{qt_version}-qtsvg
 Requires:         javapackages-filesystem
-Recommends:       java-21-openjdk
+# See note above
+%if 0%{?fedora} && 0%{?fedora} < 42
 Recommends:       java-17-openjdk
 Suggests:         java-1.8.0-openjdk
+%endif
 
 # xrandr needed for LWJGL [2.9.2, 3) https://github.com/LWJGL/lwjgl/issues/128
 Recommends:       xrandr
@@ -116,6 +127,9 @@ sed -i "s|\$ORIGIN/||" CMakeLists.txt
 %cmake \
   -DLauncher_QT_VERSION_MAJOR="%{qt_version}" \
   -DLauncher_BUILD_PLATFORM="%{build_platform}" \
+  %if 0%{?fedora} > 41
+  -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
+  %endif
   %if "%{msa_id}" != "default"
   -DLauncher_MSA_CLIENT_ID="%{msa_id}" \
   %endif
