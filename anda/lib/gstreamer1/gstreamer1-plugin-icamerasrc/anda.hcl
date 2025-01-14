@@ -1,6 +1,6 @@
 project pkg {
-  rpm {
   arches = ["x86_64"]
+  rpm {
     spec = "gstreamer1-plugin-icamerasrc.spec"
   }
   labels {
