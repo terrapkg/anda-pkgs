@@ -7,7 +7,7 @@
 
 Name:			nim-nightly
 Version:		%ver^%commit_date.%shortcommit
-Release:		3%?dist
+Release:		4%?dist
 Summary:		Imperative, multi-paradigm, compiled programming language
 License:		MIT and BSD
 URL:			https://nim-lang.org
