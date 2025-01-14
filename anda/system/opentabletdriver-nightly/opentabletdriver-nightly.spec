@@ -1,7 +1,7 @@
-%global commit 3d887e6cf638031d5ab762f95a24e1e8071ddd2b
+%global commit b39b5df3a945f4f3a9b98146eb4c0940c9d05188
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20240920
-%global ver v0.6.4.0
+%global commit_date 20250113
+%global ver 0.6.5.0
 
 # We aren't using Mono but RPM expected Mono
 %global __requires_exclude_from ^/usr/lib/opentabletdriver/.*$

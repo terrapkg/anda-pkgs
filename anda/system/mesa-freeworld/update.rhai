@@ -1,11 +1,3 @@
-if !labels.branch.starts_with("f") {
-    print(`mesa-freeworld: unsupported branch: ${labels.branch}`);
-    terminate();
-}
-let b = labels.branch;
-if b == "frawhide" {
-    b = "rawhide";
-}
-let spec = get(`https://src.fedoraproject.org/rpms/mesa/raw/${b}/f/mesa.spec`);
-let v = find(`(?m)^%global\s+ver\s+([\w\d.-]+)$`, spec, 1);
-rpm.global("ver", v);
+import "andax/bump_extras.rhai" as bump;
+
+rpm.global("ver", bump::bodhi("mesa", labels.branch.as_bodhi_ver()));

@@ -1,10 +1,10 @@
-%global commit 96787ed3139717ea6061f6e259e9fed3e483274a
-%global commit_date 20240821
+%global commit eca5e835cd3abee69984ce6312610644801457a9
+%global commit_date 20241230
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 # Exclude input files from mangling
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 
-Name:           stardust-gravity
+Name:           stardust-xr-gravity
 Version:        %commit_date.%shortcommit
 Release:        1%?dist
 Summary:        Utility to launch apps and Stardust XR clients spatially.
@@ -13,7 +13,7 @@ Source0:        %url/archive/%commit/gravity-%commit.tar.gz
 License:        MIT
 BuildRequires:  cargo cmake anda-srpm-macros cargo-rpm-macros mold  
 
-Provides:       gravity
+Provides:       stardust-gravity
 Packager:       Owen Zimmerman <owen@fyralabs.com>
 
 %description

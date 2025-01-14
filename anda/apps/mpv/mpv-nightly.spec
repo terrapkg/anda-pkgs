@@ -1,6 +1,6 @@
-%global commit 493cab7efc1d80bb780d6eacffb316e7f5313154
+%global commit ca211b5b8830a74fecae115ba18b62878348342c
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20241005
+%global commit_date 20250111
 %global ver 0.39.0
 
 Name:           mpv-nightly
@@ -42,6 +42,7 @@ BuildRequires:  pkgconfig(libavutil) >= 57.24.100
 BuildRequires:  pkgconfig(libbluray)
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libcdio_paranoia)
+BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.19

@@ -4,7 +4,7 @@
 # Exclude input files from mangling
 %global __brp_mangle_shebangs_exclude_from ^/usr/src/.*$
 
-Name:           stardust-atmosphere
+Name:           stardust-xr-atmosphere
 Version:        %commit_date.%shortcommit
 Release:        1%?dist
 Summary:        Environment, homespace, and setup client for Stardust XR.
@@ -13,7 +13,7 @@ Source0:        %url/archive/%commit/atmosphere-%commit.tar.gz
 License:        MIT
 BuildRequires:  cargo cmake anda-srpm-macros cargo-rpm-macros mold libudev-devel g++ libinput-devel libxkbcommon-x11-devel
 
-Provides:       atmosphere
+Provides:       atmosphere stardust-atmosphere
 Packager:       Owen Zimmerman <owen@fyralabs.com>
 
 %description

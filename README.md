@@ -1,7 +1,7 @@
 # Terra Sources
 
-[![Repository status](https://repology.org/badge/repository-big/terra_39.svg?header=Terra+39)](https://repology.org/repository/terra_39)
 [![Repository status](https://repology.org/badge/repository-big/terra_40.svg?header=Terra+40)](https://repology.org/repository/terra_40)
+[![Repository status](https://repology.org/badge/repository-big/terra_41.svg?header=Terra+41)](https://repology.org/repository/terra_41)
 [![Repository status](https://repology.org/badge/repository-big/terra_rawhide.svg?header=Terra+Rawhide)](https://repology.org/repository/terra_rawhide)
 
 Terra is a rolling-release Fedora repository for all the software you need.
@@ -14,7 +14,7 @@ This monorepo contains the package manifests for all packages in Terra.
 ## Installation
 
 ```bash
-sudo dnf install --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' --setopt='terra.gpgkey=https://repos.fyralabs.com/terra$releasever/key.asc' terra-release
+sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 ```
 
 If you are using immutable/atomic editions of Fedora, run the following commands instead:
