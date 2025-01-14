@@ -1,9 +1,9 @@
 %global forgeurl https://gitlab.com/ubports/development/core/lomiri-app-launch
-%global commit 47e7cc91371021b66b9a754faf0115bf6b0267bf
+%global commit 59b299a43db2443152b0dbe48d14bfc72d205e8b
 %forgemeta
 
 Name:           lomiri-app-launch
-Version:        0.1.10
+Version:        0.1.11
 Release:        1%?dist
 Summary:        Provides the Lomiri App Launch user space daemon
 License:        GPL-3.0

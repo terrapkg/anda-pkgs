@@ -1,6 +1,6 @@
-%global commit a3837a1e4ee06a183f32d4a622c2cdcd51f73fb8
+%global commit 5081e65570bb1b6b6bfa0b7e0383ec76bb4ed996
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20250107
+%global commit_date 20250114
 
 %global cache_dir %{builddir}/zig-cache
 
