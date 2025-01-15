@@ -3,7 +3,7 @@ project pkg {
     spec = "fdk-aac.spec"
   }
   labels {
-        extra = 1
+        subrepo = extras
         weekly = 1
     }
 }
