@@ -3,6 +3,7 @@ project pkg {
     rpm {
         spec = "x264.spec"
     }
-       labels = mock
+    labels { 
+        mock = 1
     }
 }
