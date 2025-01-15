@@ -3,4 +3,7 @@ project pkg {
     rpm {
         spec = "x265.spec"
     }
+    labels {
+        mock =1
+   }
 }
