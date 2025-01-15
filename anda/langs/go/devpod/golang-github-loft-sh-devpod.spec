@@ -12,7 +12,7 @@
 
 # https://github.com/loft-sh/devpod
 %global goipath         github.com/loft-sh/devpod
-Version:                0.6.7
+Version:                0.6.9
 
 %gometa -f
 
