@@ -6,7 +6,6 @@ License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/NVIDIA/nvidia-container-toolkit
 Source0:        https://github.com/NVIDIA/%{name}/archive/v%{version}/nvidia-container-toolkit-v%{version}.tar.gz
-BuildRequires:  anda-srpm-macros
 BuildRequires:  containers-common
 BuildRequires:  golang >= 1.16
 Requires:       libnvidia-container-tools
