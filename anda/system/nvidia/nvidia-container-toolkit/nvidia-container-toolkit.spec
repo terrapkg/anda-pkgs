@@ -36,7 +36,6 @@ go build -v \
 
 %install
 install -D -m 0755 bin/nvidia-ctk %{buildroot}%{_bindir}/nvidia-ctk
-install -D -m 0644 config/config.toml.opensuse-leap %{buildroot}%{_sysconfdir}/nvidia-container-runtime/config.toml
 install -D -m 0755 bin/nvidia-container-runtime-hook %{buildroot}%{_bindir}/nvidia-container-runtime-hook
 install -D -m 0755 bin/nvidia-container-runtime %{buildroot}%{_bindir}/nvidia-container-runtime
 
