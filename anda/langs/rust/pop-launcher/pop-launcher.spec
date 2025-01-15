@@ -21,7 +21,7 @@ Provides:       rust-%{crate} = 1.2.4
 ExclusiveArch:  %{rust_arches}
 
 BuildRequires:  rust-packaging >= 21
-BuildRequires:  external:crate:just
+BuildRequires:  just
 BuildRequires:  anda-srpm-macros
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig(xkbcommon)
