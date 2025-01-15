@@ -14,7 +14,7 @@ SourceLicense:  MIT
 License:        MIT
 
 URL:            https://elkowar.github.io/eww
-Source0:		https://github.com/elkowar/eww/archive/refs/tags/v%version.tar.gz
+Source0:		https://github.com/elkowar/eww/archive/refs/%commit.tar.gz
 
 BuildRequires:  cargo-rpm-macros >= 24
 BuildRequires:  anda-srpm-macros
@@ -46,9 +46,8 @@ RemovePathPostFixes: wayland
 %description wayland %{_description}
 
 %prep
-%autosetup -n eww-%{version} -p1
+%autosetup -n eww-%{commit} -p1
 %cargo_prep_online
-cargo update # `time` is out of date
 
 %build
 %{cargo_license_summary_online -n -f x11}
