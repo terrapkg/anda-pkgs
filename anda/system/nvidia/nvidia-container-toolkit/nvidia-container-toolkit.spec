@@ -58,7 +58,7 @@ fi
 %{_bindir}/nvidia-ctk
 %{_bindir}/nvidia-container-runtime
 %{_bindir}/nvidia-container-runtime-hook
-%{_sysconfdir}/nvidia-container-runtime
+%dir %{_sysconfdir}/nvidia-container-runtime
 %ghost %config(noreplace) %{_sysconfdir}/nvidia-container-runtime/config.toml
 
 %changelog
