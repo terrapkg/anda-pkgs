@@ -41,6 +41,7 @@ Source:         %{gosource}
 
 %prep
 %autosetup -n %name-%version
+rm go.sum
 %go_prep_online
 
 %dnl %if %{without bootstrap}
