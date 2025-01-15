@@ -59,7 +59,7 @@ fi
 %{_bindir}/nvidia-container-runtime
 %{_bindir}/nvidia-container-runtime-hook
 %{_sysconfdir}/nvidia-container-runtime
-%config(noreplace) %{_sysconfdir}/nvidia-container-runtime/config.toml
+%ghost %config(noreplace) %{_sysconfdir}/nvidia-container-runtime/config.toml
 
 %changelog
 %autochangelog
