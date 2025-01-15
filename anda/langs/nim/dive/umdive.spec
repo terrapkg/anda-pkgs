@@ -7,7 +7,7 @@ URL:            https://github.com/Ultramarine-Linux/dive
 Source0:		%url/archive/refs/tags/v%version.tar.gz
 Requires:       (%_bindir/chroot or %_sbindir/chroot)
 Requires:       %_bindir/mount
-BuildRequires:  anda-srpm-macros nim
+BuildRequires:  anda-srpm-macros nim mock
 Provides:       dive = %version-%release
 
 %description
@@ -15,10 +15,10 @@ Provides:       dive = %version-%release
 
 %prep
 %autosetup -n dive-%version
+%nim_prep
 
 %build
-nimble setup -y
-nim c %nim_c src/dive
+%nim_c src/dive
 
 %install
 install -Dpm755 src/dive %buildroot%_bindir/dive
