@@ -4,7 +4,6 @@ Release:		2%?dist
 Summary:		Key remapping daemon for linux
 URL:			https://github.com/rvaiya/keyd
 License:		MIT
-Suggests:		python3 python3-xlib
 BuildRequires:	gcc mold make kernel-headers systemd-rpm-macros anda-srpm-macros
 Packager:   madonuko <mado@fyralabs.com>
 
@@ -14,6 +13,9 @@ level input primitives (evdev, uinput).
 
 %prep
 %git_clone
+cat<<EOF > keyd.conf
+g keyd
+EOF
 
 %build
 %make_build PREFIX=%_prefix LDFLAGS="$LDFLAGS -fuse-ld=mold"
@@ -21,6 +23,9 @@ level input primitives (evdev, uinput).
 %install
 %make_install PREFIX=%_prefix LDFLAGS="$LDFLAGS -fuse-ld=mold"
 install -Dm644 keyd.service %buildroot%_unitdir/keyd.service
+install -Dm644 keyd.conf -t %buildroot%_sysusersdir
+install -Dm755 scripts/dump-xkb-config -t %buildroot%_datadir/keyd/
+install -Dm755 scripts/generate_xcompose -t %buildroot%_datadir/keyd/
 
 %post
 %systemd_post keyd.service
