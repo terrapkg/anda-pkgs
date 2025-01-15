@@ -32,7 +32,7 @@ Summary:        eww for x11
 Conflicts:      eww-wayland
 SourceLicense:  MIT
 License:        (0BSD OR MIT OR Apache-2.0) AND Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND (BSD-2-Clause OR Apache-2.0 OR MIT) AND BSD-3-Clause AND CC0-1.0 AND ISC AND LGPL-3.0-only AND MIT AND (MIT OR Apache-2.0) AND (MIT OR Zlib OR Apache-2.0) AND (Unlicense OR MIT)
-RemovePathPostFixes: x11
+RemovePathPostFixes: .x11
 
 %description x11 %{_description}
 
@@ -41,7 +41,7 @@ Summary:        eww for wayland
 Conflicts:      eww-x11
 SourceLicense:  MIT
 License:        (0BSD OR MIT OR Apache-2.0) AND Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND (BSD-2-Clause OR Apache-2.0 OR MIT) AND BSD-3-Clause AND CC0-1.0 AND ISC AND LGPL-3.0-only AND MIT AND (MIT OR Apache-2.0) AND (MIT OR Zlib OR Apache-2.0) AND (Unlicense OR MIT)
-RemovePathPostFixes: wayland
+RemovePathPostFixes: .wayland
 
 %description wayland %{_description}
 
