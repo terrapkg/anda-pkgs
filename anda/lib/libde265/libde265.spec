@@ -49,8 +49,6 @@ autoreconf -vif
 %install
 %make_install
 find %{buildroot} -name '*.la' -delete
-mv %{buildroot}%{_bindir}/dec265 %{buildroot}%{_bindir}/libde265-dec265
-mv %{buildroot}%{_bindir}/sherlock265 %{buildroot}%{_bindir}/libde265-sherlock265
 
 %{?ldconfig_scriptlets}
 
