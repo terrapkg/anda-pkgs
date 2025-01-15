@@ -9,6 +9,10 @@ Source0:        https://github.com/NVIDIA/%{name}/archive/v%{version}/nvidia-con
 BuildRequires:  containers-common
 BuildRequires:  golang >= 1.16
 Requires:       libnvidia-container-tools
+Supplements:    (nvidia-driver and moby-engine)
+Supplements:    (nvidia-driver and cri-o)
+Supplements:    (nvidia-driver and containerd)
+
 
 %description
 Build and run containers leveraging NVIDIA GPUs.
@@ -32,10 +36,22 @@ go build -v \
 
 %install
 install -D -m 0755 bin/nvidia-ctk %{buildroot}%{_bindir}/nvidia-ctk
-install -D -m 0644 oci-nvidia-hook.json %{buildroot}%{_datadir}/containers/oci/hooks.d/oci-nvidia-hook.json
 install -D -m 0644 config/config.toml.opensuse-leap %{buildroot}%{_sysconfdir}/nvidia-container-runtime/config.toml
 install -D -m 0755 bin/nvidia-container-runtime-hook %{buildroot}%{_bindir}/nvidia-container-runtime-hook
 install -D -m 0755 bin/nvidia-container-runtime %{buildroot}%{_bindir}/nvidia-container-runtime
+
+%post
+if rpm -q --quiet moby-engine; then
+    nvidia-ctk runtime configure --runtime=docker
+     systemctl restart docker || systemctl --user restart docker && nvidia-ctk config --set nvidia-container-cli.no-cgroups --in-place || :
+fi
+if rpm -q --quiet containerd; then
+   nvidia-ctk runtime configure --runtime=containerd
+    systemctl restart containerd || :
+if rpm -q --quiet cri-o; then
+    nvidia-ctk runtime configure --runtime=crio
+     systemctl restart crio || :
+fi
 
 %files
 %license LICENSE
@@ -43,7 +59,6 @@ install -D -m 0755 bin/nvidia-container-runtime %{buildroot}%{_bindir}/nvidia-co
 %{_bindir}/nvidia-ctk
 %{_bindir}/nvidia-container-runtime
 %{_bindir}/nvidia-container-runtime-hook
-%{_datadir}/containers/oci/hooks.d/oci-nvidia-hook.json
 %{_sysconfdir}/nvidia-container-runtime
 %config(noreplace) %{_sysconfdir}/nvidia-container-runtime/config.toml
 
