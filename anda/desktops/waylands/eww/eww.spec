@@ -74,8 +74,8 @@ install -Dpm755 target/rpm/eww.* -t %buildroot%_bindir
 %doc YUCK_MIGRATION.md
 
 %files x11
-%license LICENSE.dependencies.x11
-%{_bindir}/eww.x11
+%license LICENSE.dependencies.wayland
+%{_bindir}/eww.wayland
 
 %files wayland
 %license LICENSE.dependencies.x11
