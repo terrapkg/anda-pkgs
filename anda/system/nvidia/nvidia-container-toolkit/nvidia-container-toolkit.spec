@@ -38,6 +38,7 @@ go build -v \
 install -D -m 0755 bin/nvidia-ctk %{buildroot}%{_bindir}/nvidia-ctk
 install -D -m 0755 bin/nvidia-container-runtime-hook %{buildroot}%{_bindir}/nvidia-container-runtime-hook
 install -D -m 0755 bin/nvidia-container-runtime %{buildroot}%{_bindir}/nvidia-container-runtime
+mkdir -p %{buildroot}%{_sysconfdir}/nvidia-container-runtime
 
 %post
 if rpm -q --quiet moby-engine; then
