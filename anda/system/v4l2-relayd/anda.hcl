@@ -1,7 +1,6 @@
 project pkg {
-   arches = ["x86_64"]
   rpm {
-    spec = "ipu6-camera-bins.spec"
+    spec = "v4l2-relayd.spec"
   }
   labels {
         weekly = 1
