@@ -5,5 +5,6 @@ project pkg {
     }
     labels {
         subrepo = "extras"
+        mock = 1
     }
 }
