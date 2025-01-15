@@ -118,6 +118,7 @@ BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl) >= 7.55.0
 BuildRequires:  pkgconfig(libdca)
 BuildRequires:  pkgconfig(libdc1394-2) >= 2.2.5
+BuildRequires:  pkgconfig(libde265)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.104
 BuildRequires:  pkgconfig(libexif) >= 0.6.16
 BuildRequires:  pkgconfig(libfreeaptx) >= 0.1.1
