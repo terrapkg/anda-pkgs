@@ -2,7 +2,7 @@
 %global commit d83ff81695096fac8fa230b91a254c4287041173
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global ver 2.3.1
-%global commit_date 20250114
+%global commit_date 20250115
 %global debug_package %nil
 
 Name:			nim-nightly
@@ -125,7 +125,8 @@ rm -rf %buildroot/nim || true
 rm %buildroot%_bindir/*.bat || true
 
 cp -r dist %buildroot%_prefix/lib/nim/
-ln -s %_prefix/lib/nim/dist %buildroot%_datadir/nim/dist
+# cannot use `ln` here, possibly a nim bug
+cp -r %buildroot%_prefix/lib/nim/dist %buildroot%_datadir/nim/
 
 
 %files
