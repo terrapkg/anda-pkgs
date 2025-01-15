@@ -12,8 +12,8 @@ BuildRequires:  make
 BuildRequires:  help2man
 BuildRequires:  systemd-rpm-macros
 ### For Akmods package
-Provides:       %{name}-kmod-common = %{version}-%{release}
-Requires:       %{name}-kmod >= %{version}
+Provides:       kmod-%{name}-common = %{version}-%{release}
+Requires:       kmod-%{name} >= %{version}
 ### For compatibility with older names
 Provides:       %{name}-utils = %{version}-%{release}
 Obsoletes:      %{name}-utils < 0.12.5-2
