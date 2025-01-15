@@ -1,27 +1,26 @@
 Name:			keyd
 Version:		2.5.0
-Release:		1%?dist
+Release:		2%?dist
 Summary:		Key remapping daemon for linux
 URL:			https://github.com/rvaiya/keyd
 License:		MIT
 Suggests:		python3 python3-xlib
-BuildRequires:	gcc mold make kernel-headers systemd-rpm-macros git-core
+BuildRequires:	gcc mold make kernel-headers systemd-rpm-macros anda-srpm-macros
+Packager:   madonuko <mado@fyralabs.com>
 
 %description
 keyd provides a flexible system wide daemon which remaps keys using kernel
 level input primitives (evdev, uinput).
 
 %prep
-rm -rf ./*
-git clone --depth 1 -b v%version %url .
+%git_clone
 
 %build
-%make_build
+%make_build PREFIX=%_prefix LDFLAGS="$LDFLAGS -fuse-ld=mold"
 
 %install
-%make_install PREFIX=%_prefix
+%make_install PREFIX=%_prefix LDFLAGS="$LDFLAGS -fuse-ld=mold"
 install -Dm644 keyd.service %buildroot%_unitdir/keyd.service
-sed -i 's@local/@@g' %buildroot%_unitdir/keyd.service
 
 %post
 %systemd_post keyd.service
@@ -42,7 +41,3 @@ sed -i 's@local/@@g' %buildroot%_unitdir/keyd.service
 %_datadir/doc/keyd/
 %_mandir/man1/keyd-application-mapper.1.gz
 %_mandir/man1/keyd.1.gz
-
-%changelog
-* Tue May 23 2023 windowsboy111 <windowsboy111@fyralabs.com> - 2.4.3-1
-- Initial package
