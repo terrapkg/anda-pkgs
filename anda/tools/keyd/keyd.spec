@@ -45,5 +45,6 @@ install -Dm755 scripts/generate_xcompose -t %buildroot%_datadir/keyd/
 %_bindir/keyd-application-mapper
 %_datadir/keyd
 %_datadir/doc/keyd/
+%_sysusersdir/keyd.conf
 %_mandir/man1/keyd-application-mapper.1.gz
 %_mandir/man1/keyd.1.gz
