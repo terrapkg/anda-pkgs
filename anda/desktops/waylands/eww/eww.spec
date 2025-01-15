@@ -55,9 +55,11 @@ RemovePathPostFixes: wayland
 %{cargo_license_summary_online -n -f wayland}
 %{cargo_license_online -n -f wayland} > LICENSE.dependencies.wayland
 %cargo_build -n -f x11
-mv target/rpm/eww target/rpm/eww.x11
+mv target/rpm/eww   target/rpm/eww.x11
+mv target/rpm/eww.d target/rpm/eww.d.x11
 %cargo_build -n -f wayland
-mv target/rpm/eww target/rpm/eww.wayland
+mv target/rpm/eww   target/rpm/eww.wayland
+mv target/rpm/eww.d target/rpm/eww.d.wayland
 
 %install
 install -Dpm755 target/rpm/eww.* -t %buildroot%_bindir
@@ -74,12 +76,14 @@ install -Dpm755 target/rpm/eww.* -t %buildroot%_bindir
 %doc YUCK_MIGRATION.md
 
 %files x11
-%license LICENSE.dependencies.wayland
-%{_bindir}/eww.wayland
-
-%files wayland
 %license LICENSE.dependencies.x11
 %{_bindir}/eww.x11
+%{_bindir}/eww.d.x11
+
+%files wayland
+%license LICENSE.dependencies.wayland
+%{_bindir}/eww.wayland
+%{_bindir}/eww.d.wayland
 
 %changelog
 %autochangelog
