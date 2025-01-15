@@ -11,7 +11,7 @@
 Name:           %{prjname}
 Summary:        Utils for V4L2 loopback devices
 Version:        0.13.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPLv2+
 URL:            https://github.com/umlaeute/v4l2loopback
 Source0:        %{url}/archive/v%{version}/%{prjname}-%{version}.tar.gz
@@ -25,6 +25,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  kmodtool
 BuildRequires:  systemd-rpm-macros
 Requires:       kmod-v4l2loopback = %{version}-%{release}
+Provides:       %{name}-kmod-common = %{version}-%{release}
 # Required for  akmod-v4l2loopback
 Requires:       help2man
 ### For compatibility with older names
