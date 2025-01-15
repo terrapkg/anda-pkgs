@@ -12,7 +12,7 @@ keyd provides a flexible system wide daemon which remaps keys using kernel
 level input primitives (evdev, uinput).
 
 %prep
-%git_clone
+%git_clone %url v%version
 cat<<EOF > keyd.conf
 g keyd
 EOF
