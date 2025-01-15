@@ -14,7 +14,7 @@ SourceLicense:  MIT
 License:        MIT
 
 URL:            https://elkowar.github.io/eww
-Source0:		https://github.com/elkowar/eww/archive/refs/%commit.tar.gz
+Source0:		https://github.com/elkowar/eww/archive/%commit.tar.gz
 
 BuildRequires:  cargo-rpm-macros >= 24
 BuildRequires:  anda-srpm-macros
