@@ -1,12 +1,21 @@
 %global buildforkernels akmod
 %global debug_package %{nil}
-Name:           v4l2loopback
+
+%global commit 2c9b67072b15d903fecde67c7f269abeafee4c25
+%global commitdate 20230503
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+
+
+%global prjname v4l2loopback
+
+Name:           %{prjname}
 Summary:        Utils for V4L2 loopback devices
 Version:        0.13.2
 Release:        1%{?dist}
 License:        GPLv2+
 URL:            https://github.com/umlaeute/v4l2loopback
-Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}/%{prjname}-%{version}.tar.gz
+
 Source1:        modprobe-d-98-v4l2loopback.conf
 Source2:        modules-load-d-v4l2loopback.conf
 BuildRequires:  gcc
@@ -16,6 +25,8 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  kmodtool
 BuildRequires:  systemd-rpm-macros
 Requires:       kmod-v4l2loopback = %{version}-%{release}
+# Required for  akmod-v4l2loopback
+Requires:       help2man
 ### For compatibility with older names
 Provides:       %{name}-utils = %{version}-%{release}
 Obsoletes:      %{name}-utils < 0.12.5-2
@@ -40,24 +51,29 @@ kmodtool --target %{_target_cpu} --kmodname %{name} %{?buildforkernels:--%{build
 
 %autosetup -p1 -n %{name}-%{version}
 
-for kernel_version  in %{?kernel_versions} ; do
-  cp -a v4l2loopback-%{version} _kmod_build_${kernel_version%%___*}
-done
+# for kernel_version  in %{?kernel_versions} ; do
+#   cp -av ./* _kmod_build_${kernel_version%%___*}
+# done
 
 %build
-%{set_build_flags}
-%make_build utils
 
 for kernel_version  in %{?kernel_versions} ; do
-  make V=1 %{?_smp_mflags} -C ${kernel_version##*___} M=${PWD}/_kmod_build_${kernel_version%%___*} VERSION=v%{version} modules
+  make V=1 %{?_smp_mflags} M=${PWD}/_kmod_build_${kernel_version%%___*} VERSION=v%{version} v4l2loopback
 done
+
+%{set_build_flags}
+%make_build utils
 
 %install
 for kernel_version in %{?kernel_versions}; do
  mkdir -p %{buildroot}%{kmodinstdir_prefix}/${kernel_version%%___*}/%{kmodinstdir_postfix}/
- install -D -m 755 _kmod_build_${kernel_version%%___*}/v4l2loopback.ko %{buildroot}%{kmodinstdir_prefix}/${kernel_version%%___*}/%{kmodinstdir_postfix}/
+ install -D -m 755 v4l2loopback.ko %{buildroot}%{kmodinstdir_prefix}/${kernel_version%%___*}/%{kmodinstdir_postfix}/
  chmod a+x %{buildroot}%{kmodinstdir_prefix}/${kernel_version%%___*}/%{kmodinstdir_postfix}/*.ko
 done
+
+%{set_build_flags}
+%make_build utils
+
 %{?akmod_install}
 make V=1 %{?_smp_mflags} install-utils DESTDIR=%{buildroot} PREFIX=%{_prefix}
 make V=1 %{?_smp_mflags} install-man DESTDIR=%{buildroot} PREFIX=%{_prefix}
