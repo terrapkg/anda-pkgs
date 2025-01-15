@@ -4,7 +4,6 @@ project pkg {
         spec = "ffmpeg.spec"
     }
     labels {
-        updbranch = 1
         mock = 1
     }
 }
