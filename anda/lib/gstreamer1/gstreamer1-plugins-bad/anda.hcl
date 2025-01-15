@@ -4,6 +4,6 @@ project pkg {
         spec = "gstreamer1-plugins-bad.spec"
     }
   labels {
-        extra = 1
+        subrepo = "extras"
     }
 }

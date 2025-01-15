@@ -4,6 +4,6 @@ project pkg {
         spec = "gstreamer1-plugin-libav.spec"
     }
     labels {
-        extra = 1
+        subrepo = "extras"
     }
 }
