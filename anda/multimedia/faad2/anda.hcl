@@ -1,5 +1,4 @@
 project pkg {
-
     arches = ["x86_64", "aarch64", "i386"]
     rpm {
         spec = "faad2.spec"
@@ -7,3 +6,4 @@ project pkg {
     labels {
         mock = 1
    }
+}
