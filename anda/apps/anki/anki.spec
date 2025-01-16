@@ -78,12 +78,11 @@ chmod 755 %{buildroot}%{_bindir}/anki
 %{_bindir}/anki
 %{_datadir}/applications/anki.desktop
 %{_datadir}/pixmaps/anki.png
-%python3_sitelib/aqt/
-%python3_sitelib/aqt-%{version}.dist-info/
-%python3_sitelib/_aqt/
-%python3_sitelib/anki/
-%python3_sitelib/anki-%{version}.dist-info/
-
+%_libdir/python*/site-packages/aqt/
+%_libdir/python*/site-packages/aqt-%{version}.dist-info/
+%_libdir/python*/site-packages/_aqt/
+%_libdir/python*/site-packages/anki/
+%_libdir/python*/site-packages/anki-%{version}.dist-info/
 
 %changelog
 * Tue Jan 3 2023 madonuko <mado@fyralabs.com> - 2.1.60
