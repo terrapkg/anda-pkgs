@@ -3,6 +3,6 @@ project pkg {
 		spec = "python3-protobuf.spec"
 	}
         labels {
-        subrepo = extras
+        subrepo = "extras"
      }
 }
