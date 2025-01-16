@@ -89,4 +89,5 @@ cd build/linux
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 
+%changelog
 %autochangelog

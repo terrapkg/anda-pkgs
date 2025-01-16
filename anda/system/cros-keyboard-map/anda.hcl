@@ -1,5 +1,8 @@
 project pkg {
 	rpm {
-		spec = "decklink-devel.spec"
+		spec = "cros-keyboard-map.spec"
 	}
+  labels {
+    nightly = "1"
+  }
 }

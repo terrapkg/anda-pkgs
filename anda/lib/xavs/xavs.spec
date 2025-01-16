@@ -63,5 +63,4 @@ rm -f %{buildroot}%{_libdir}/*.a
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
-* Tue Aug 13 2024 Simone Caronni <negativo17@gmail.com> - 0.1.55-1
-- First build.
+%autochangelog

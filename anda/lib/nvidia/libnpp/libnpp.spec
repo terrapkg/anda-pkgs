@@ -148,5 +148,5 @@ sed -i \
 %{_libdir}/libnppisu_static.a
 %{_libdir}/libnppitc_static.a
 %{_libdir}/libnpps_static.a
-
+%changelog
 %autochangelog
