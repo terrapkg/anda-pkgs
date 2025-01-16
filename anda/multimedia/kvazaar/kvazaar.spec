@@ -62,4 +62,5 @@ rm -fr %{buildroot}%{_docdir}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 
+%changelog
 %autochangelog
