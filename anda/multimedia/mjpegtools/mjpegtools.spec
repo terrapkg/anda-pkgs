@@ -75,7 +75,7 @@ for f in docs/yuvfps.1 ; do
 done
 
 %build
-%ifarch aarch64
+%ifarch i386
 export CFLAGS="$CFLAGS -Wno-template-body"
 %endif
 
