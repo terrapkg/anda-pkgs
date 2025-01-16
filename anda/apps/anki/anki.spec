@@ -44,7 +44,7 @@ wait
 
 %build
 export RELEASE=2
-export PYTHONPATH=%_libdir/python3/dist-packages
+export PYTHONPATH=%python3_sitelib
 export PYTHON_BINARY=%__python3
 export PROTOC_BINARY=$(which protoc)
 export NODE_BINARY=$(which node)
@@ -78,11 +78,11 @@ chmod 755 %{buildroot}%{_bindir}/anki
 %{_bindir}/anki
 %{_datadir}/applications/anki.desktop
 %{_datadir}/pixmaps/anki.png
-%_libdir/python*/site-packages/aqt/
-%_libdir/python*/site-packages/aqt-%{version}.dist-info/
-%_libdir/python*/site-packages/_aqt/
-%_libdir/python*/site-packages/anki/
-%_libdir/python*/site-packages/anki-%{version}.dist-info/
+%python3_sitelib/aqt/
+%python3_sitelib/aqt-%{version}.dist-info/
+%python3_sitelib/_aqt/
+%python3_sitelib/anki/
+%python3_sitelib/anki-%{version}.dist-info/
 
 
 %changelog
