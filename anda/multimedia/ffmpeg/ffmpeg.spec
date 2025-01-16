@@ -78,7 +78,6 @@ BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(kvazaar) >= 0.8.1
 BuildRequires:  pkgconfig(lc3) >= 1.1.0
 BuildRequires:  pkgconfig(lcms2) >= 2.13
-BuildRequires:  pkgconfig(lcevc_dec) >= 2.0.0
 BuildRequires:  pkgconfig(libaribcaption) >= 1.1.1
 BuildRequires:  pkgconfig(libass) >= 0.11.0
 BuildRequires:  pkgconfig(libbluray)
@@ -459,7 +458,6 @@ This subpackage contains the headers for FFmpeg libswscale.
     --enable-libkvazaar \
     --enable-liblc3 \
     --disable-liblensfun \
-    --enable-liblcevc-dec \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libmysofa \
@@ -671,88 +669,4 @@ mv doc/*.html doc/html
 %{_libdir}/libswscale.so
 %{_mandir}/man3/libswscale.3*
 
-%changelog
-* Tue Dec 03 2024 Simone Caronni <negativo17@gmail.com> - 1:7.1-1
-- Update to 7.1.
-- Enable LC3, VVC and LCEVC support.
-
-* Tue Oct 01 2024 Simone Caronni <negativo17@gmail.com> - 1:7.0.2-4
-- Fix build with x265 4.0.
-- Momentarily disable xevd/e.
-
-* Thu Aug 29 2024 Simone Caronni <negativo17@gmail.com> - 1:7.0.2-3
-- Drop SVT-HEVC encoder.
-
-* Mon Aug 19 2024 Simone Caronni <negativo17@gmail.com> - 1:7.0.2-2
-- Enable xevd/e (MPEG-5 EVC).
-
-* Tue Aug 13 2024 Simone Caronni <negativo17@gmail.com> - 1:7.0.2-1
-- Update to 7.0.2.
-- Enable aribb24/aribcaption, dvdnav, libmysofa, librtmp, qrencode.
-- Trim changelog.
-
-* Tue Aug 13 2024 Simone Caronni <negativo17@gmail.com> - 1:6.1.2-1
-- Update to 6.1.2.
-- Re-enable CUDA on aarch64.
-
-* Sun Jun 16 2024 Simone Caronni <negativo17@gmail.com> - 1:6.1.1-9
-- Rebuild for updated dependencies.
-
-* Mon Jun 03 2024 Simone Caronni <negativo17@gmail.com> - 1:6.1.1-8
-- Update patches.
-
-* Mon Mar 25 2024 Simone Caronni <negativo17@gmail.com> - 1:6.1.1-7
-- NVCC + Glibc 2.38 on ARM is currently broken.
-
-* Sun Mar 24 2024 Simone Caronni <negativo17@gmail.com> - 1:6.1.1-6
-- Remove leftover patch.
-
-* Sun Mar 24 2024 Simone Caronni <negativo17@gmail.com> - 1:6.1.1-5
-- Disable glslang.
-
-* Sat Mar 23 2024 Simone Caronni <negativo17@gmail.com> - 1:6.1.1-4
-- Enable Nvidia CUDA, performance primitives, encoding/decoding also on aarch64.
-
-* Sat Mar 23 2024 Simone Caronni <negativo17@gmail.com> - 1:6.1.1-3
-- Enable drawtext.
-
-* Mon Jan 15 2024 Simone Caronni <negativo17@gmail.com> - 1:6.1.1-2
-- Add additional build options.
-
-* Sat Jan 13 2024 Simone Caronni <negativo17@gmail.com> - 1:6.1.1-1
-- Update to 6.1.1.
-
-* Tue Dec 12 2023 Simone Caronni <negativo17@gmail.com> - 1:6.0.1-2
-- Add Chromium patch from Fedora.
-
-* Tue Nov 21 2023 Simone Caronni <negativo17@gmail.com> - 1:6.0.1-1
-- Update to version 6.0.1.
-
-* Tue Oct 03 2023 Simone Caronni <negativo17@gmail.com> - 1:6.0-6
-- Momentarily disable pocketsphinx support for Fedora 39+
-- Rebase patches.
-
-* Thu Sep 07 2023 Simone Caronni <negativo17@gmail.com> - 1:6.0-5
-- Update Handbrake patches.
-
-* Tue Jun 06 2023 Simone Caronni <negativo17@gmail.com> - 1:6.0-4
-- Add HandBrake patches.
-
-* Fri Jun 02 2023 Simone Caronni <negativo17@gmail.com> - 1:6.0-3
-- Rebuild for updated dependencies.
-
-* Wed Mar 29 2023 Simone Caronni <negativo17@gmail.com> - 1:6.0-2
-- Adjust build flags.
-
-* Mon Mar 13 2023 Simone Caronni <negativo17@gmail.com> - 1:6.0-1
-- Update to 6.0.
-- Split out SPEC file per distribution.
-
-* Sat Mar 11 2023 Simone Caronni <negativo17@gmail.com> - 1:5.1.2-8
-- Rebuild for updated depdendencies.
-
-* Fri Feb 03 2023 Simone Caronni <negativo17@gmail.com> - 1:5.1.2-7
-- Rebuild for updated dependencies.
-
-* Thu Jan 05 2023 Simone Caronni <negativo17@gmail.com> - 1:5.1.2-6
-- Rebuild for updated dependencies.
+%autochangelog
