@@ -14,9 +14,9 @@ BuildRequires:  automake
 BuildRequires:  g++
 BuildRequires:  gcc
 BuildRequires:  gstreamer1-plugins-base-devel
+BuildRquires:   ipu6-camera-hal
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(gstreamer-va-1.0)
-BuildRequires:  pkgconfig(libcamhal)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libdrm_intel)
 BuildRequires:  pkgconfig(libva)
