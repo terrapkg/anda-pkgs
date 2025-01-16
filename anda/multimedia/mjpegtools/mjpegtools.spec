@@ -1,5 +1,6 @@
 %ifarch %ix86
 %global build_cflags %{__build_flags_lang_c} %{?_distro_extra_cflags} -Wno-template-body
+%global build_cxxflags %{__build_flags_lang_cxx} %{?_distro_extra_cxxflags} -Wno-template-body
 %endif
 
 Name:           mjpegtools
