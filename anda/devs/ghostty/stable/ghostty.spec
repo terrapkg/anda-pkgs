@@ -1,10 +1,16 @@
+# Signing key from https://github.com/ghostty-org/ghostty/blob/main/PACKAGING.md
+%global public_key RWQlAjJC23149WL2sEpT/l0QKy7hMIFhYdQOFy0Z7z7PbneUgvlsnYcV
+
+%global cache_dir %{builddir}/zig-cache
+
 Name:           ghostty
 Version:        1.0.1
-Release:        2%{?dist}
+Release:        5%{?dist}
 Summary:        A fast, native terminal emulator written in Zig.
-License:        MIT
+License:        MIT AND MPL-2.0 AND OFL-1.1 AND (WTFPL OR CC0-1.0) AND Apache-2.0
 URL:            https://ghostty.org/
-Source0:        https://release.files.ghostty.org/%{version}/ghostty-source.tar.gz
+Source0:        https://release.files.ghostty.org/%{version}/ghostty-%{version}.tar.gz
+Source1:        https://release.files.ghostty.org/%{version}/ghostty-%{version}.tar.gz.minisig
 Patch0:         no-strip.diff
 BuildRequires:  gtk4-devel
 BuildRequires:  libadwaita-devel
@@ -12,18 +18,20 @@ BuildRequires:  ncurses
 BuildRequires:  ncurses-devel
 BuildRequires:  pandoc-cli
 BuildRequires:  zig
+BuildRequires:  minisign
 Requires:       %{name}-terminfo = %{version}-%{release}
 Requires:       %{name}-shell-integration = %{version}-%{release}
-Requires:       fontconfig
-Requires:       freetype
-Requires:       glib2
-Requires:       gtk4
-Requires:       harfbuzz
-Requires:       libpng
-Requires:       oniguruma
-Requires:       pixman
-Requires:       zlib-ng
-Suggests:       libadwaita
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(oniguruma)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  libX11-devel
 Conflicts:      ghostty-nightly
 Packager:       ShinyGil <rockgrub@protonmail.com>
 
@@ -69,15 +77,24 @@ Supplements:    %{name}
 %summary.
 
 %prep
-%autosetup -n ghostty-source -p1
+/usr/bin/minisign -V -m %{SOURCE0} -x %{SOURCE1} -P %{public_key}
+%autosetup -p1
+
+# Download everything ahead of time so we can enable system integration mode
+ZIG_GLOBAL_CACHE_DIR="%{cache_dir}" ./nix/build-support/fetch-zig-cache.sh
 
 %build
 
 %install
+DESTDIR="%{buildroot}" \
 zig build \
     --summary all \
-    -Doptimize=ReleaseFast --release=fast \
-    --prefix %{buildroot}%{_prefix} --verbose \
+    --release=fast \
+    --system "%{cache_dir}/p" \
+    --prefix "%{_prefix}" --prefix-lib-dir "%{_libdir}" \
+    --prefix-exe-dir "%{_bindir}" --prefix-include-dir "%{_includedir}" \
+    --verbose \
+    -Dversion-string=%{version} \
     -Dcpu=baseline \
     -Dpie=true \
     -Demit-docs
@@ -133,9 +150,10 @@ zig build \
 %_datadir/terminfo/x/xterm-ghostty
 
 %changelog
-* Thu Dec 26 2024 ShinyGil <rockgrub@protonmail.com>
-- Initial package
 * Tue Dec 31 2024 ShinyGil <rockgrub@protonmail.com>
 - Update to 1.0.1
-    * High CVE-2003-0063: Allows execution of arbitrary commands
-    * Medium CVE-2003-0070: Allows execution of arbitrary commands
+ * High CVE-2003-0063: Allows execution of arbitrary commands
+ * Medium CVE-2003-0070: Allows execution of arbitrary commands
+
+* Thu Dec 26 2024 ShinyGil <rockgrub@protonmail.com>
+- Initial package

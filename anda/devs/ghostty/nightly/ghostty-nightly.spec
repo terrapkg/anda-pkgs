@@ -1,15 +1,16 @@
-%global commit 3f7c3afaf947280bd2852626ff4599c02d9fb07e
+%global commit ff9414d9ea7b16a375d41cde8f6f193de7e5db72
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20241228
+%global commit_date 20250116
+
+%global cache_dir %{builddir}/zig-cache
 
 Name:           ghostty-nightly
 Version:        %{commit_date}.%{shortcommit}
 Release:        2%{?dist}
 Summary:        A fast, native terminal emulator written in Zig; this is the Tip (nightly) build.
-License:        MIT
+License:        MIT AND MPL-2.0 AND OFL-1.1 AND (WTFPL OR CC0-1.0) AND Apache-2.0
 URL:            https://ghostty.org/
 Source0:        https://github.com/ghostty-org/ghostty/archive/%{commit}/ghostty-%{commit}.tar.gz
-Patch0:         no-strip.diff
 BuildRequires:  gtk4-devel
 BuildRequires:  libadwaita-devel
 BuildRequires:  ncurses
@@ -18,16 +19,17 @@ BuildRequires:  pandoc-cli
 BuildRequires:  zig
 Requires:       %{name}-terminfo = %{version}-%{release}
 Requires:       %{name}-shell-integration = %{version}-%{release}
-Requires:       fontconfig
-Requires:       freetype
-Requires:       glib2
-Requires:       gtk4
-Requires:       harfbuzz
-Requires:       libpng
-Requires:       oniguruma
-Requires:       pixman
-Requires:       zlib-ng
-Suggests:       libadwaita
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(oniguruma)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  libX11-devel
 Conflicts:      ghostty
 Provides:       ghostty-tip = %{version}-%{release}
 Packager:       ShinyGil <rockgrub@protonmail.com>
@@ -76,14 +78,22 @@ Supplements:    %{name}
 %prep
 %autosetup -n ghostty-%{commit} -p1
 
+# Download everything ahead of time so we can enable system integration mode
+ZIG_GLOBAL_CACHE_DIR="%{cache_dir}" ./nix/build-support/fetch-zig-cache.sh
+
 %build
 
 %install
+DESTDIR="%{buildroot}" \
 zig build \
     --summary all \
-    -Doptimize=ReleaseFast --release=fast \
-    --prefix %{buildroot}%{_prefix} --verbose \
+    --release=fast \
+    --system "%{cache_dir}/p" \
+    --prefix "%{_prefix}" --prefix-lib-dir "%{_libdir}" \
+    --prefix-exe-dir "%{_bindir}" --prefix-include-dir "%{_includedir}" \
+    --verbose \
     -Dcpu=baseline \
+    -Dstrip=false \
     -Dpie=true \
     -Demit-docs
 
@@ -95,9 +105,12 @@ zig build \
 %_datadir/bat/syntaxes/ghostty.sublime-syntax
 %_datadir/ghostty/
 %_datadir/kio/servicemenus/com.mitchellh.ghostty.desktop
+%_datadir/nautilus-python/extensions/com.mitchellh.ghostty.py
+%_datadir/nvim/site/compiler/ghostty.vim
 %_datadir/nvim/site/ftdetect/ghostty.vim
 %_datadir/nvim/site/ftplugin/ghostty.vim
 %_datadir/nvim/site/syntax/ghostty.vim
+%_datadir/vim/vimfiles/compiler/ghostty.vim
 %_datadir/vim/vimfiles/ftdetect/ghostty.vim
 %_datadir/vim/vimfiles/ftplugin/ghostty.vim
 %_datadir/vim/vimfiles/syntax/ghostty.vim
@@ -138,9 +151,10 @@ zig build \
 %_datadir/terminfo/x/xterm-ghostty
 
 %changelog
-* Thu Dec 26 2024 ShinyGil <rockgrub@protonmail.com>
-- Initial package
 * Tue Dec 31 2024 ShinyGil <rockgrub@protonmail.com>
 - Update to 20241231.3f7c3af
-    * High CVE-2003-0063: Allows execution of arbitrary commands
-    * Medium CVE-2003-0070: Allows execution of arbitrary commands
+ * High CVE-2003-0063: Allows execution of arbitrary commands
+ * Medium CVE-2003-0070: Allows execution of arbitrary commands
+
+* Thu Dec 26 2024 ShinyGil <rockgrub@protonmail.com>
+- Initial package
