@@ -1,5 +1,5 @@
-%global commit 0019b5d8af9d558aa7888218dfeeafef6104277a
-%global commit_date 20241121
+%global commit ee8526451ca1bb4957702de2f46138b63151f34c
+%global commit_date 20241129
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           gstreamer1-plugin-icamerasrc
@@ -7,6 +7,7 @@ Summary:        GStreamer 1.0 Intel IPU6 camera plugin
 Version:        %{commit_date}.%{shortcommit}
 Release:        1%{?dist}
 License:        LGPL-2.1-only
+URL:            https://github.com/intel/icamerasrc/tree/icamerasrc_slim_api
 Source0:        https://github.com/intel/icamerasrc/archive/%{commit}/icamerasrc-%{shortcommit}.tar.gz
 Patch0:         %{name}-videoformat.patch
 BuildRequires:  autoconf
@@ -14,9 +15,9 @@ BuildRequires:  automake
 BuildRequires:  g++
 BuildRequires:  gcc
 BuildRequires:  gstreamer1-plugins-base-devel
-BuildRequires:  ipu6-camera-hal-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(gstreamer-va-1.0)
+BuildRequires:  pkgconfig(libcamhal)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libdrm_intel)
 BuildRequires:  pkgconfig(libva)
@@ -25,6 +26,7 @@ BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(gstreamer-controller-1.0) >= 1.0.0
 ExclusiveArch:  x86_64
+AutoProv:       no
 
 %description
 This package provides the GStreamer plugin for the Intel IPU6 MIPI camera.
