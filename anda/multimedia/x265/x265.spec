@@ -1,3 +1,5 @@
+%global build_cxxflags %{__build_flags_lang_cxx} %{?_distro_extra_cxxflags} -include %_includedir/c++/14/cstdint
+
 # Use old cmake macro
 %global __cmake_in_source_build 1
 
