@@ -15,6 +15,6 @@ diff -Naur uavs3d-7b1dd734c926a23f8134b42dbfaac4d22cd6ba1d.old/source/CMakeLists
  add_library(${LIBNAME} ${DIR_UAVS3D_SRC} ${UAVS3D_ASM_FILES})
 +set_target_properties(${LIBNAME} PROPERTIES VERSION 1.2.0)
 +set_target_properties(${LIBNAME} PROPERTIES SOVERSION 1)
- 
+
  if (NOT MSVC)
      target_link_libraries(${LIBNAME} m)

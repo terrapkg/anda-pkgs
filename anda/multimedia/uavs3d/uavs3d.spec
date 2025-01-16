@@ -65,4 +65,5 @@ install -p -m 755 -D %{__cmake_builddir}/uavs3dec %{buildroot}%{_bindir}/uavs3de
 %{_libdir}/libuavs3d.so
 %{_libdir}/pkgconfig/%{name}.pc
 
+%changelog
 %autochangelog
