@@ -1,8 +1,8 @@
 %global csrc_commit 561b417c65791cd8356b5f73620914ceff845d10
-%global commit d83ff81695096fac8fa230b91a254c4287041173
+%global commit 8d0e853e0afc7d0c4830cb7e03dec88c5c814aef
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global ver 2.3.1
-%global commit_date 20250114
+%global commit_date 20250116
 %global debug_package %nil
 
 Name:			nim-nightly
@@ -125,7 +125,8 @@ rm -rf %buildroot/nim || true
 rm %buildroot%_bindir/*.bat || true
 
 cp -r dist %buildroot%_prefix/lib/nim/
-ln -s %_prefix/lib/nim/dist %buildroot%_datadir/nim/dist
+# cannot use `ln` here, possibly a nim bug
+cp -r %buildroot%_prefix/lib/nim/dist %buildroot%_datadir/nim/
 
 
 %files
