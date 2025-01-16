@@ -14,7 +14,7 @@ BuildRequires:  automake
 BuildRequires:  g++
 BuildRequires:  gcc
 BuildRequires:  gstreamer1-plugins-base-devel
-BuildRequires:  ipu6-camera-hal
+BuildRequires:  ipu6-camera-hal-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(gstreamer-va-1.0)
 BuildRequires:  pkgconfig(libdrm)
@@ -46,7 +46,7 @@ autoreconf -vif
 %build
 export CHROME_SLIM_CAMHAL=ON
 export STRIP_VIRTUAL_CHANNEL_CAMHAL=ON
-%configure --enable-gstdrmformat
+%configure --enable-gstdrmformat --with-haladaptor
 %make_build
 
 %install
