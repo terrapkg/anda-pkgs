@@ -1,3 +1,7 @@
+%ifarch %ix86
+%global build_cflags %{__build_flags_lang_c} %{?_distro_extra_cflags} -Wno-template-body
+%endif
+
 Name:           mjpegtools
 Version:        2.2.1
 Release:        1%{?dist}
@@ -75,10 +79,6 @@ for f in docs/yuvfps.1 ; do
 done
 
 %build
-%ifarch %ix86
-export CFLAGS="$CFLAGS -Wno-template-body"
-%endif
-
 autoreconf -vif
 %configure \
   --disable-static \
