@@ -40,8 +40,6 @@ applications that use %{name}.
 %autosetup -n %{name}-%{commit0}
 %else
 %autosetup -p1 -n %{name}-%{commit0}
-%endif
-%ifarch x86_64 aarch64
 sed -i '/libdir/ s/"lib"/"%{_lib}"/' source/CMakeLists.txt
 %endif
 
