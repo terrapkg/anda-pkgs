@@ -25,6 +25,8 @@ BuildRequires:  ghc-unliftio-devel
 
 BuildRequires:  systemd-rpm-macros
 
+Packager:       sadlerm <sad_lerm@hotmail.com>
+
 %description
 The Onion of Keyboard Management Tools, available on GNU/Linux, Windows, and MacOS!
 
