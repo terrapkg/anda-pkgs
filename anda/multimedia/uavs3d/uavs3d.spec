@@ -39,7 +39,8 @@ applications that use %{name}.
 %ifarch %ix86
    %setup -n %{name}-%{commit0}
 %else
-   %autosetup -p1 -n %{name}-%{commit0}
+   %setup -n %{name}-%{commit0}
+   %patch %{PATCH0} -p1
    sed -i '/libdir/ s/"lib"/"%{_lib}"/' source/CMakeLists.txt
 %endif
 
