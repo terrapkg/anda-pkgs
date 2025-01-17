@@ -11,6 +11,9 @@ URL:        https://github.com/uavs3/uavs3d
 
 Source0:    https://github.com/uavs3/uavs3d/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 Patch0:     %{name}-soname.patch
+%ifarch %ix86
+Patch1:     i686-build-fix.patch
+%endif
 
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
@@ -37,7 +40,7 @@ applications that use %{name}.
 
 %prep
 %autosetup -n %{name}-%{commit0} -p1
-%ifarch x86_64 aarch64
+%ifnarch %ix86
    sed -i '/libdir/ s/"lib"/"%{_lib}"/' source/CMakeLists.txt
 %endif
 
