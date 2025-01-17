@@ -42,6 +42,9 @@ sed -i '/libdir/ s/"lib"/"%{_lib}"/' source/CMakeLists.txt
 %endif
 
 %build
+%ifarch %ix86
+export CMAKE_CXX_FLAGS=-m32
+%endif
 %cmake \
     -DCMAKE_SKIP_INSTALL_RPATH:BOOL=YES \
     -DCMAKE_SKIP_RPATH:BOOL=YES \
@@ -50,6 +53,9 @@ sed -i '/libdir/ s/"lib"/"%{_lib}"/' source/CMakeLists.txt
 %cmake_build
 
 %install
+%ifarch %ix86
+export CMAKE_CXX_FLAGS=-m32
+%endif
 %cmake_install
 install -p -m 755 -D %{__cmake_builddir}/uavs3dec %{buildroot}%{_bindir}/uavs3dec
 
