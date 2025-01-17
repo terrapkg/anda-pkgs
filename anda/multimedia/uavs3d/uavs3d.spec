@@ -37,10 +37,11 @@ applications that use %{name}.
 
 %prep
 %ifarch %ix86
-%autosetup -n %{name}-%{commit0}
-%else
-%autosetup -p1 -n %{name}-%{commit0}
-sed -i '/libdir/ s/"lib"/"%{_lib}"/' source/CMakeLists.txt
+   %autosetup -n %{name}-%{commit0}
+%endif
+%ifarch x86_64 aarch64
+   %autosetup -p1 -n %{name}-%{commit0}
+   sed -i '/libdir/ s/"lib"/"%{_lib}"/' source/CMakeLists.txt
 %endif
 
 %build
