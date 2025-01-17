@@ -37,7 +37,9 @@ applications that use %{name}.
 
 %prep
 %autosetup -p1 -n %{name}-%{commit0}
+%ifarch x86_64 aarch64
 sed -i '/libdir/ s/"lib"/"%{_lib}"/' source/CMakeLists.txt
+%endif
 
 %build
 %cmake \
