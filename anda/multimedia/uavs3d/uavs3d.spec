@@ -36,7 +36,11 @@ The %{name}-devel package contains libraries and header files for developing
 applications that use %{name}.
 
 %prep
+%ifarch %ix86
+%autosetup -n %{name}-%{commit0}
+%else
 %autosetup -p1 -n %{name}-%{commit0}
+%endif
 %ifarch x86_64 aarch64
 sed -i '/libdir/ s/"lib"/"%{_lib}"/' source/CMakeLists.txt
 %endif
