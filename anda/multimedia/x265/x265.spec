@@ -1,3 +1,5 @@
+%global build_cxxflags %{__build_flags_lang_cxx} %{?_distro_extra_cxxflags} -include %_includedir/c++/*/cstdint
+
 # Use old cmake macro
 %global __cmake_in_source_build 1
 
@@ -24,6 +26,7 @@ Patch2:     https://raw.githubusercontent.com/terrapkg/pkg-x265/%terrasrc_commit
 Patch3:     https://bitbucket.org/harlancc/x265_git/commits/8454caf458c5f5d20cce711ff8ea8de55ec1ae50/raw#/x265-sei-length-crash-fix.patch
 
 BuildRequires:  gcc-c++
+BuildRequires:  libstdc++-devel
 BuildRequires:  git
 BuildRequires:  cmake
 %{?el7:BuildRequires: epel-rpm-macros}
