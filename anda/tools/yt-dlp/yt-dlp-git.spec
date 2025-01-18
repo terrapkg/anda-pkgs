@@ -1,18 +1,13 @@
 #bcond_without tests
-%global commit 164368610456e2d96b279f8b120dea08f7b1d74f
-%global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global commit_date 20250117
-%global ver 2025.01.15
 
-Name:           yt-dlp-nightly
-Version:        %commit_date.git~%shortcommit
-Provides:       yt-dlp-nightly = %ver^%version
+Name:           yt-dlp-git
+Version:        2025.01.16.024033
 Release:        1%?dist
 Summary:        A command-line program to download videos from online video platforms
 
 License:        Unlicense
 URL:            https://github.com/yt-dlp/yt-dlp
-Source:         %url/archive/%commit.tar.gz
+Source:         %url-master-builds/archive/%version.tar.gz
 # License of the specfile
 Source:         https://src.fedoraproject.org/rpms/yt-dlp/raw/rawhide/f/yt-dlp.spec.license
 
@@ -39,12 +34,16 @@ Conflicts:      yt-dlp
 
 Suggests:       python3dist(keyring)
 
+Provides:       yt-dlp-nightly = 1:0-1?%dist
+
+Obsoletes:      yt-dlp-nightly < 0:20250117.git~1643686-2?%dist
+
 %global _description %{expand:
 yt-dlp is a command-line program to download videos from many different online
 video platforms, such as youtube.com. The project is a fork of youtube-dl with
 additional features and fixes.}
 
-%description %{_description}
+%description %{_description}. This package is built from the yt-dlp master branch.
 
 %package bash-completion
 Summary:        Bash completion for yt-dlp
