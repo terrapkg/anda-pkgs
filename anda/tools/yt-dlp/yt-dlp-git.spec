@@ -7,7 +7,6 @@ Summary:        A command-line program to download videos from online video plat
 
 License:        Unlicense
 URL:            https://github.com/yt-dlp/yt-dlp
-Source:         %url-master-builds/archive/%version.tar.gz
 # License of the specfile
 Source:         https://src.fedoraproject.org/rpms/yt-dlp/raw/rawhide/f/yt-dlp.spec.license
 
@@ -25,6 +24,8 @@ BuildRequires:  %{py3_dist pytest}
 # Needed for docs
 BuildRequires:  pandoc
 BuildRequires:  make
+
+BuildRequires:  anda-srpm-macros
 
 # ffmpeg-free is now available in Fedora.
 Recommends:     /usr/bin/ffmpeg
@@ -82,12 +83,15 @@ Conflicts:      yt-dlp-fish-completion
 Fish command line completion support for %{name}.
 
 %prep
-%autosetup -n yt-dlp-%commit
+%git_clone %{url} master
 
 # Remove unnecessary shebangs
 find -type f ! -executable -name '*.py' -print -exec sed -i -e '1{\@^#!.*@d}' '{}' +
 # Relax version constraints
 sed -i 's@"\(requests\|urllib3\|websockets\)>=.*"@"\1"@' pyproject.toml
+
+# Update version number
+%{python3} devscripts/update-version.py %{version} -c master -r yt-dlp/yt-dlp-master-builds
 
 %generate_buildrequires
 %pyproject_buildrequires -r
