@@ -4,7 +4,7 @@
 
 Name:           envision-nightly
 Version:        %commit_date.%shortcommit
-Release:        1%?dist
+Release:        2%?dist
 Summary:        UI for building, configuring and running Monado, the open source OpenXR runtime
 License:        AGPL-3.0-or-later
 URL:            https://gitlab.com/gabmus/envision/
@@ -23,6 +23,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  glib2-devel
 BuildRequires:  git-core
 Recommends:     android-tools
+Conflicts:      envision
 
 %description
 %summary.
