@@ -1,5 +1,5 @@
 project pkg {
-    arches = ["x86_64"]
+    arches = ["i386"]
 	rpm {
 		spec = "steam.spec"
 	}
