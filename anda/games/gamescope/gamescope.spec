@@ -6,7 +6,7 @@
 %global gamescope_commit d3174928d47f7e353e7daca63cf882d65660cc7c 
 %define short_commit %(echo %{gamescope_commit} | cut -c1-8)
 
-Name:           gamescope
+Name:           terra-gamescope
 #Version:        100.%{gamescope_tag}
 Version:        104.%{short_commit}
 Release:        1%?dist
