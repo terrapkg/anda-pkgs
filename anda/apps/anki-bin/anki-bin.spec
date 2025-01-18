@@ -11,7 +11,8 @@ URL:			https://apps.ankiweb.net/
 BuildRequires:	python3-pip rpm_macro(fdupes) cargo
 Requires:		python3-sqlalchemy python3-simplejson python3-matplotlib python3-decorator python3-markdown python3-orjson
 Requires:		python3-requests python3-pygame python3-beautifulsoup4 python3-httplib2 python3-pyaudio python3-jsonschema
-Requires:		python3-flask-cors python3-protobuf python3-requests python3-waitress python3-pyqt6-webengine python3-send2trash
+Requires:		python3-flask-cors python3-requests python3-waitress python3-pyqt6-webengine python3-send2trash
+Requires:               python3-protobuf >= 4.21
 Requires:       libxcrypt-compat hicolor-icon-theme sox mpv 
 ExclusiveArch:	x86_64
 Conflicts:		anki
