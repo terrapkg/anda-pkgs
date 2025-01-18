@@ -2,7 +2,7 @@
 %global commit_date 20250113
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
-Name:           envision
+Name:           envision-nightly
 Version:        %commit_date.%shortcommit
 Release:        1%?dist
 Summary:        UI for building, configuring and running Monado, the open source OpenXR runtime
