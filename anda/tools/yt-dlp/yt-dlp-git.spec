@@ -34,9 +34,9 @@ Conflicts:      yt-dlp
 
 Suggests:       python3dist(keyring)
 
-Provides:       yt-dlp-nightly = 1:0-1?%dist
+Provides:       yt-dlp-nightly = 1:0-1%?dist
 
-Obsoletes:      yt-dlp-nightly < 0:20250117.git~1643686-2?%dist
+Obsoletes:      yt-dlp-nightly < 0:20250117.git~1643686-2%?dist
 
 %global _description %{expand:
 yt-dlp is a command-line program to download videos from many different online
