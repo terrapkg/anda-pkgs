@@ -2,31 +2,31 @@
 %global aurl https://files.pythonhosted.org/packages/58/6e/9f2d4853a83e57cea48ccae3bc2d887bf7c0550042185e156bab23f524bf/anki-24.11-cp39-abi3-manylinux_2_31_aarch64.whl
 %global qurl https://files.pythonhosted.org/packages/40/3c/b70ef91f1dad8248332971c0cbb2922277512789cadc33cb16233e360a56/aqt-24.11-py3-none-any.whl
 
-Name:			      anki-bin
-Version:		    24.11
-Release:		    1%?dist
-Summary:		    Flashcard program for using space repetition learning (Installed with wheel)
-License:		    AGPL-3.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT AND BSD-3-Clause AND CC-BY-SA-3.0 AND CC-BY-3.0 AND Apache-2.0 AND CC-BY-2.5
-URL:			      https://apps.ankiweb.net/
+Name:			anki-bin
+Version:		24.11
+Release:		1%?dist
+Summary:		Flashcard program for using space repetition learning (Installed with wheel)
+License:		AGPL-3.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT AND BSD-3-Clause AND CC-BY-SA-3.0 AND CC-BY-3.0 AND Apache-2.0 AND CC-BY-2.5
+URL:			https://apps.ankiweb.net/
 BuildRequires:	python3-pip rpm_macro(fdupes) cargo
-Requires:		    python3-sqlalchemy python3-simplejson python3-matplotlib python3-decorator python3-markdown python3-orjson
-Requires:		    python3-requests python3-pygame python3-beautifulsoup4 python3-httplib2 python3-pyaudio python3-jsonschema
-Requires:		    python3-flask-cors python3-protobuf python3-requests python3-waitress python3-pyqt6-webengine python3-send2trash
-Requires:       libxcrypt-compat hicolor-icon-theme sox 
+Requires:		python3-sqlalchemy python3-simplejson python3-matplotlib python3-decorator python3-markdown python3-orjson
+Requires:		python3-requests python3-pygame python3-beautifulsoup4 python3-httplib2 python3-pyaudio python3-jsonschema
+Requires:		python3-flask-cors python3-protobuf python3-requests python3-waitress python3-pyqt6-webengine python3-send2trash
+Requires:       libxcrypt-compat hicolor-icon-theme sox
 Requires:       (mpv or mpv-nightly)
 ExclusiveArch:	x86_64
-Conflicts:		  anki
+Conflicts:		anki
 %ifarch x86_64
-Source0:		    %xurl
+Source0:		%xurl
 %elifarch aarch64
 Source0:        %aurl
 %endif
-Source1:		    %qurl
-Source2:		    https://raw.githubusercontent.com/ankitects/anki/%{version}/qt/runanki.py
-Source3:		    https://raw.githubusercontent.com/ankitects/anki/%{version}/qt/bundle/lin/anki.desktop
-Source4:		    https://raw.githubusercontent.com/ankitects/anki/%{version}/qt/bundle/lin/anki.png
-Source5:		    https://raw.githubusercontent.com/ankitects/anki/%{version}/LICENSE
-Source6:		    https://raw.githubusercontent.com/ankitects/anki/%{version}/README.md
+Source1:		%qurl
+Source2:		https://raw.githubusercontent.com/ankitects/anki/%{version}/qt/runanki.py
+Source3:		https://raw.githubusercontent.com/ankitects/anki/%{version}/qt/bundle/lin/anki.desktop
+Source4:	    https://raw.githubusercontent.com/ankitects/anki/%{version}/qt/bundle/lin/anki.png
+Source5:		https://raw.githubusercontent.com/ankitects/anki/%{version}/LICENSE
+Source6:		https://raw.githubusercontent.com/ankitects/anki/%{version}/README.md
 
 %description
 Anki is a program designed to help you remember facts (such as words and
