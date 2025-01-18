@@ -10,7 +10,7 @@
 
 # https://github.com/abenz1267/walker
 %global goipath         github.com/abenz1267/walker
-Version:                0.12.2
+Version:                0.12.3
 
 %gometa -f
 
