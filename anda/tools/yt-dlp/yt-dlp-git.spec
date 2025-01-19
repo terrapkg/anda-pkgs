@@ -3,7 +3,7 @@
 
 Name:           yt-dlp-git
 Version:        2025.01.19.131752
-Release:        1%?dist
+Release:        2%?dist
 Summary:        A command-line program to download videos from online video platforms
 
 License:        Unlicense
