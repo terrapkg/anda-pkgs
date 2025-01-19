@@ -34,3 +34,6 @@ cp -r usr %buildroot/
 %_userunitdir/gamescope-session-plus@.service
 %_datadir/gamescope-session-plus/device-quirks
 %_datadir/gamescope-session-plus/gamescope-session-plus
+
+%changelog
+%autochangelog
