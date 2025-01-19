@@ -54,7 +54,7 @@ Supplements:    (%{name} and bash-completion)
 
 Conflicts:      yt-dlp-bash-completion
 Provides:       %{oldpkgname}-bash-completion = 1:0-1%?dist
-Obsoletes:      %{oldpkgname} < 0:20250117.git~1643686-2%?dist
+Obsoletes:      %{oldpkgname}-bash-completion < 0:20250117.git~1643686-2%?dist
 
 %description bash-completion
 Bash command line completion support for %{name}.
