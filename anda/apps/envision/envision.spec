@@ -24,7 +24,7 @@ BuildRequires:  glib2-devel
 BuildRequires:  git-core
 Recommends:     android-tools
 Conflicts:      envision
-Obsoletes:      envision = 20250113.18e5670
+Obsoletes:      (envision < 20250114 with envision > 20230000)
 
 %description
 %summary.
