@@ -1,7 +1,7 @@
 #bcond_without tests
 
 Name:           yt-dlp-git
-Version:        2025.01.19.230139
+Version:        2025.01.20.065338
 Release:        1%?dist
 Summary:        A command-line program to download videos from online video platforms
 
