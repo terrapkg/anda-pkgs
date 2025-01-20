@@ -5,8 +5,9 @@
 #global gamescope_tag 3.15.11
 %global gamescope_commit d3174928d47f7e353e7daca63cf882d65660cc7c 
 %define short_commit %(echo %{gamescope_commit} | cut -c1-8)
+%global realname gamescope
 
-Name:           gamescope
+Name:           terra-%{realname}
 #Version:        100.%{gamescope_tag}
 Version:        104.%{short_commit}
 Release:        1%?dist
@@ -82,23 +83,34 @@ BuildRequires:  git
 # libliftoff hasn't bumped soname, but API/ABI has changed for 0.2.0 release
 Requires:       libliftoff%{?_isa} >= %{libliftoff_minver}
 Requires:       xorg-x11-server-Xwayland
-Requires:       gamescope-libs = %{version}-%{release}
-Requires:       gamescope-libs(x86-32) = %{version}-%{release}
+Requires:       %{realname} = %{version}-%{release}
 Recommends:     mesa-dri-drivers
 Recommends:     mesa-vulkan-drivers
 
 %description
-%{name} is the micro-compositor optimized for running video games on Wayland.
+%{realname} is the micro-compositor optimized for running video games on Wayland.
 
-%package libs
-Summary:	libs for %{name}
-%description libs
-%summary
+%package -n   %{realname}
+Summary:      Micro-compositor for video games on Wayland
+Requires:     %{realname}-libs = %{version}-%{release}
+Requires:     %{realname}-libs(x86-32) = %{version}-%{release}
+Requires:     terra-%{realname}
+
+%description -n %{realname}
+%{realname} is the micro-compositor optimized for running video games on Wayland.
+
+%package -n %{realname}-libs
+Summary:	libs for %{realname}
+Requires:   %{realname} = %{version}-%{release}
+Requires:   terra-%{realname}
+
+%description -n %{realname}-libs
+libs for %{realname}
 
 %prep
 # git clone --depth 1 --branch %%{gamescope_tag} %%{url}.git
 git clone %{url}.git
-cd gamescope
+cd %{realname}
 git checkout %{gamescope_commit} 
 git submodule update --init --recursive
 mkdir -p pkgconfig
@@ -121,7 +133,7 @@ export PKG_CONFIG_PATH=pkgconfig
 cd gamescope
 %meson_install --skip-subprojects
 
-%files
+%files -n %{realname}
 %license gamescope/LICENSE
 %doc gamescope/README.md
 %caps(cap_sys_nice=eip) %{_bindir}/gamescope
@@ -130,7 +142,7 @@ cd gamescope
 %{_bindir}/gamescopereaper
 %{_datadir}/gamescope/*
 
-%files libs
+%files -n %{realname}-libs
 %{_libdir}/libVkLayer_FROG_gamescope_wsi_*.so
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.*.json
 
