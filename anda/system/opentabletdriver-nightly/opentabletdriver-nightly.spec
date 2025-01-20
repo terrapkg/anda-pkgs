@@ -11,7 +11,7 @@
 
 Name:           opentabletdriver-nightly
 Version:        %ver^%commit_date.git~%shortcommit
-Release:        1%?dist
+Release:        2%?dist
 Summary:        Open source, cross-platform, user-mode tablet driver
 License:        LGPL-3.0-or-later
 Conflicts:      opentabletdriver
