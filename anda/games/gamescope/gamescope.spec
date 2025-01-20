@@ -103,7 +103,7 @@ Summary:	libs for %{realname}
 Requires:   %{realname} = %{version}-%{release}
 Requires:   terra-%{realname}
 %description
-%summary
+libs for %{realname}
 
 %prep
 # git clone --depth 1 --branch %%{gamescope_tag} %%{url}.git
