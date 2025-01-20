@@ -69,6 +69,7 @@ cp -r bin "%{buildroot}/%{_prefix}/lib/opentabletdriver"
 %{_bindir}/otd
 %{_bindir}/otd-daemon
 %{_bindir}/otd-gui
+%{_datadir}/libinput/30-vendor-opentabletdriver.quirks
 %{_prefix}/lib/modprobe.d/99-opentabletdriver.conf
 %{_prefix}/lib/modules-load.d/opentabletdriver.conf
 %{_prefix}/lib/opentabletdriver/*
