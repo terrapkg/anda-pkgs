@@ -11,7 +11,7 @@
 
 Name:           opentabletdriver-nightly
 Version:        %ver^%commit_date.git~%shortcommit
-Release:        1%?dist
+Release:        2%?dist
 Summary:        Open source, cross-platform, user-mode tablet driver
 License:        LGPL-3.0-or-later
 Conflicts:      opentabletdriver
@@ -64,6 +64,7 @@ cp -r bin "%{buildroot}/%{_prefix}/lib/opentabletdriver"
 %{_bindir}/otd
 %{_bindir}/otd-daemon
 %{_bindir}/otd-gui
+%{_datadir}/libinput/30-vendor-opentabletdriver.quirks
 %{_prefix}/lib/modprobe.d/99-opentabletdriver.conf
 %{_prefix}/lib/modules-load.d/opentabletdriver.conf
 %{_prefix}/lib/opentabletdriver/*
