@@ -84,8 +84,6 @@ BuildRequires:  git
 Requires:       libliftoff%{?_isa} >= %{libliftoff_minver}
 Requires:       xorg-x11-server-Xwayland
 Requires:       %{realname} = %{version}-%{release}
-Requires:       gamescope-libs = %{version}-%{release}
-Requires:       gamescope-libs(x86-32) = %{version}-%{release}
 Recommends:     mesa-dri-drivers
 Recommends:     mesa-vulkan-drivers
 
@@ -95,6 +93,7 @@ Recommends:     mesa-vulkan-drivers
 %package -n   %{realname}
 Summary:      %{summary}
 Requires:     %{realname}-libs = %{version}-%{release}
+Requires:     %{realname}-libs(x86-32) = %{version}-%{release}
 Requires:     terra-%{realname}
 %description 
 %{description}
