@@ -91,10 +91,11 @@ Recommends:     mesa-vulkan-drivers
 %{realname} is the micro-compositor optimized for running video games on Wayland.
 
 %package -n   %{realname}
-Summary:      %{summary}
+Summary:      Micro-compositor for video games on Wayland
 Requires:     %{realname}-libs = %{version}-%{release}
 Requires:     %{realname}-libs(x86-32) = %{version}-%{release}
 Requires:     terra-%{realname}
+
 %description -n %{realname}
 %{realname} is the micro-compositor optimized for running video games on Wayland.
 
@@ -102,6 +103,7 @@ Requires:     terra-%{realname}
 Summary:	libs for %{realname}
 Requires:   %{realname} = %{version}-%{release}
 Requires:   terra-%{realname}
+
 %description -n %{realname}-libs
 libs for %{realname}
 
