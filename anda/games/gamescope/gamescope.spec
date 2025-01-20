@@ -102,7 +102,7 @@ Requires:     terra-%{realname}
 Summary:	libs for %{realname}
 Requires:   %{realname} = %{version}-%{release}
 Requires:   terra-%{realname}
-%description
+%description -n %{realname}-libs
 libs for %{realname}
 
 %prep
