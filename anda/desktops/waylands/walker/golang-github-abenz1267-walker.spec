@@ -10,7 +10,7 @@
 
 # https://github.com/abenz1267/walker
 %global goipath         github.com/abenz1267/walker
-Version:                0.12.2
+Version:                0.12.7
 
 %gometa -f
 
@@ -30,7 +30,7 @@ Source:         %{gosource}
 Provides:       golang-github-abenz1267-walker = %version-%release
 Obsoletes:      golang-github-abenz1267-walker < 0.11.4-2
 Packager:       madonuko <mado@fyralabs.com>
-Requires:       gtk4-layer-shell
+Conflicts:      gtk4-layer-shell
 BuildRequires:  anda-srpm-macros
 BuildRequires:  gtk4-devel
 BuildRequires:  gtk4-layer-shell-devel
