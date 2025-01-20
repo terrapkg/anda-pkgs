@@ -95,14 +95,14 @@ Summary:      %{summary}
 Requires:     %{realname}-libs = %{version}-%{release}
 Requires:     %{realname}-libs(x86-32) = %{version}-%{release}
 Requires:     terra-%{realname}
-%description 
+%description -n %{realname}
 %{realname} is the micro-compositor optimized for running video games on Wayland.
 
 %package -n %{realname}-libs
 Summary:	libs for %{realname}
 Requires:   %{realname} = %{version}-%{release}
 Requires:   terra-%{realname}
-%description libs
+%description %{realname}-libs
 %summary
 
 %prep
